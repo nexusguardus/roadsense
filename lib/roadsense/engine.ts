@@ -31,7 +31,8 @@ const VEHICLES: ReadonlySet<RoadUserFact["kind"]> = new Set(["car", "motorcycle"
 function decide(facts: SceneFacts): EngineVerdict {
   const unknown = (code: UnknownCode) => facts.unknowns.includes(code);
 
-  if (!facts.inScope) return outOfScope();
+  // A reason given with inScope true is contradictory output: take the cautious reading.
+  if (!facts.inScope || facts.outOfScopeReason !== null) return outOfScope();
 
   const emergency = facts.roadUsers.find((u) => u.kind === "emergency_vehicle" && u.emergencyLightsOn);
   if (emergency) return decided("yield_to_emergency_vehicle", ["rgc-67-1", "rgc-69"], [emergency.id]);
@@ -63,10 +64,13 @@ function decide(facts: SceneFacts): EngineVerdict {
   const yieldTriangle = egoMarks.find((m) => m.kind === "yield_triangle");
   const yieldLine = egoMarks.find((m) => m.kind === "yield_line");
 
+  // Hidden signage could be a STOP the answer must include (art. 56.5), even with a pedestrian on the crossing.
+  if (unknown("ego_signage_hidden")) return insufficient(["ego_signage_hidden"]);
+
   if (pedestrian) {
-    // Art. 65.1.a covers marked crossings ("debidamente señalizados") only.
-    const zebra = facts.markings.some((m) => m.kind === "zebra_crossing");
-    const crossingSign = facts.signs.some((s) => s.kind === "pedestrian_crossing");
+    // Art. 65.1.a covers marked crossings ("debidamente señalizados") only, and only one in the learner's path.
+    const zebra = egoMarks.some((m) => m.kind === "zebra_crossing");
+    const crossingSign = egoSigns.some((s) => s.kind === "pedestrian_crossing");
     if (!zebra && !crossingSign) return insufficient([]);
     const crossing = ["rgc-65-1-a", ...(zebra ? ["anexo-i-m-4-3"] : [])];
     // A STOP still requires the full stop (art. 56.5) on top of letting the pedestrians cross.
@@ -77,8 +81,6 @@ function decide(facts: SceneFacts): EngineVerdict {
     return decided("yield_to_pedestrians", crossing, [pedestrian.id]);
   }
 
-  // Hidden signage could be a higher-ranked light or sign (art. 133), so it outranks what is visible.
-  if (unknown("ego_signage_hidden")) return insufficient(["ego_signage_hidden"]);
   if (!atJunction) return outOfScope();
 
   // A STOP and a yield indication on the same approach: art. 133.2 settles which one binds.
@@ -108,14 +110,24 @@ function decide(facts: SceneFacts): EngineVerdict {
     );
   }
 
-  // The crossing road has a STOP or yield of its own (sign or painted): its drivers give way to me,
-  // whichever side they come from (art. 56.5). A line alone imposes nothing (Anexo I M-4.1, M-4.2).
   const onCrossRoad = (appliesTo: string) => appliesTo === "left" || appliesTo === "right";
+  // A priority-road sign for the crossing road makes mine the minor road, but the corpus has no
+  // rule for my duty without a sign of my own: say so rather than guess.
+  if (facts.signs.some((s) => onCrossRoad(s.appliesTo) && s.kind === "priority_road")) return insufficient([]);
+
+  // The crossing road has a STOP or yield of its own (sign or painted): its drivers give way to me
+  // (art. 56.5). It binds only them: an unsigned road on my right keeps its priority (art. 57.1).
+  // A line alone imposes nothing (Anexo I M-4.1, M-4.2).
   const crossSignals = [
     ...facts.signs.filter((s) => onCrossRoad(s.appliesTo) && (s.kind === "stop" || s.kind === "yield")),
     ...facts.markings.filter((m) => onCrossRoad(m.appliesTo) && (m.kind === "stop_word" || m.kind === "yield_triangle")),
   ];
-  if (crossSignals.length > 0) return decided("proceed", ["rgc-56-1", "rgc-56-5"], crossSignals.map((signal) => signal.id));
+  if (crossSignals.length > 0) {
+    const rightSigned = crossSignals.some((signal) => signal.appliesTo === "right");
+    const fromUnsignedRight = !rightSigned && facts.roadUsers.some((u) => u.position === "from_right" && VEHICLES.has(u.kind));
+    if (!rightSigned && unknown("right_approach_hidden")) return insufficient(["right_approach_hidden"]);
+    if (!fromUnsignedRight) return decided("proceed", ["rgc-56-1", "rgc-56-5"], crossSignals.map((signal) => signal.id));
+  }
 
   const tram = facts.roadUsers.find((u) => u.kind === "tram" && u.position !== "behind");
   if (tram) return decided("yield", ["rgc-57-1-b"], [tram.id]);

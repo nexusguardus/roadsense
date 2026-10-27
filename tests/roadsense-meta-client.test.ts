@@ -174,3 +174,45 @@ test("image generation asks for WebP at 3:2", async () => {
   assert.equal(calls[0].body.size, "1536x1024");
   assert.equal(calls[0].body.output_format, "webp");
 });
+
+test("a reply whose body stalls still times out", { timeout: 3000 }, async () => {
+  const stalling = ((_url: string, init: RequestInit) => {
+    const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode('{"choices":'));
+        init.signal?.addEventListener("abort", () => controller.error(new DOMException("aborted", "AbortError")));
+      },
+    });
+    return Promise.resolve(new Response(body, { status: 200, headers: { "Content-Type": "application/json" } }));
+  }) as unknown as typeof fetch;
+  await assert.rejects(client(stalling, { timeoutMs: 20 }).chatJson(CHAT_ARGS), MetaTimeoutError);
+});
+
+test("no call runs past the client's deadline", { timeout: 3000 }, async () => {
+  const hanging = ((_url: string, init: RequestInit) =>
+    new Promise((_resolve, reject) => {
+      init.signal?.addEventListener("abort", () => reject(new DOMException("aborted", "AbortError")));
+    })) as unknown as typeof fetch;
+  const started = Date.now();
+  await assert.rejects(client(hanging, { timeoutMs: 10_000, deadline: Date.now() + 40 }).chatJson(CHAT_ARGS), MetaTimeoutError);
+  assert.ok(Date.now() - started < 1000, "stopped at the deadline, not at timeoutMs");
+});
+
+test("a retry that would end after the deadline is not attempted", { timeout: 3000 }, async () => {
+  const { impl, calls } = fakeFetch([json(503, { error: "busy" }), CHAT_OK]);
+  const waits: number[] = [];
+  const sleepy = createMetaClient({ apiKey: "k", fetchImpl: impl, sleep: async (ms: number) => void waits.push(ms), deadline: Date.now() + 100 });
+  await assert.rejects(sleepy.chatJson(CHAT_ARGS), MetaApiError);
+  assert.equal(calls.length, 1);
+  assert.deepEqual(waits, []);
+});
+
+test("a reply that isn't JSON still reports what it cost", async () => {
+  const { impl } = fakeFetch([json(200, { choices: [{ message: { content: "not json" } }], usage: { prompt_tokens: 1000, completion_tokens: 0 } })]);
+  await assert.rejects(client(impl).chatJson(CHAT_ARGS), (err: unknown) => err instanceof RoadsenseValidationError && (err as { costUsd: number }).costUsd > 0);
+});
+
+test("an image reply without an image still reports what it cost", async () => {
+  const { impl } = fakeFetch([json(200, { data: [{}] })]);
+  await assert.rejects(client(impl).editImage({ imageDataUrl: "data:image/webp;base64,AAAA", prompt: "p" }), (err: unknown) => err instanceof RoadsenseValidationError && (err as { costUsd: number }).costUsd > 0);
+});

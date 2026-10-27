@@ -19,7 +19,7 @@ export interface AnalysisOutcome {
 }
 
 /** A failure the page explains with its own copy, or with the server's localized message. */
-export type AnalysisError = { code: StreamErrorCode | "network" } | { message: string };
+export type AnalysisError = { code: StreamErrorCode | "network"; refunded?: boolean } | { message: string };
 
 export type AnalysisState =
   | { status: "idle" }
@@ -49,7 +49,9 @@ export async function readAnalysisStream(response: Response, onStage: (stage: St
   const take = (text: string) => {
     const line = parseStreamLine(text);
     if (line?.type === "stage") onStage(line.stage);
-    else if (line?.type === "error") finished = { status: "error", error: { code: line.code } };
+    else if (line?.type === "error") {
+      finished = { status: "error", error: line.refunded === undefined ? { code: line.code } : { code: line.code, refunded: line.refunded } };
+    }
     else if (line?.type === "result") {
       finished = { status: "done", outcome: { result: line.result, applied: line.applied, imageDataUrl: line.imageDataUrl } };
     }

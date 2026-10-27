@@ -137,6 +137,11 @@ test("unconfirmed evidence, a doubtful fact and a missing explanation are each a
   ]);
 });
 
+test("an answer with nothing in the photo to confirm says so", () => {
+  const engine = { status: "decided", obligation: "proceed", ruleIds: ["rgc-57-1"], criticalFactIds: [], missing: [] };
+  assert.deepEqual(notSureReasons(result({ certainty: "not_sure", engine, evidence: [] })), [{ kind: "nothing_to_confirm" }]);
+});
+
 test("a critical fact SAM never looked at counts as unconfirmed", () => {
   const engine = { status: "decided", obligation: "stop_and_yield", ruleIds: ["rgc-56-5"], criticalFactIds: ["s1"], missing: [] };
   assert.deepEqual(notSureReasons(result({ certainty: "not_sure", engine, evidence: [] })), [{ kind: "unconfirmed" }]);
@@ -196,6 +201,7 @@ test("NDJSON chunks split into whole lines and a remainder", () => {
 test("stream lines are parsed only when they are a known type", () => {
   assert.deepEqual(parseStreamLine('{"type":"stage","stage":"perceive"}'), { type: "stage", stage: "perceive" });
   assert.deepEqual(parseStreamLine('{"type":"error","code":"timeout"}'), { type: "error", code: "timeout" });
+  assert.deepEqual(parseStreamLine('{"type":"error","code":"model","refunded":false}'), { type: "error", code: "model", refunded: false });
   assert.equal(parseStreamLine('{"type":"stage","stage":"launch"}'), null);
   assert.equal(parseStreamLine('{"type":"surprise"}'), null);
   assert.equal(parseStreamLine("not json"), null);
@@ -234,8 +240,9 @@ test("a live what-if that didn't come out right is a result, not an error", asyn
 });
 
 test("an error line ends the stream with its code", async () => {
-  const done = await readAnalysisStream(ndjson(['{"type":"stage","stage":"perceive"}\n{"type":"error","code":"timeout"}\n']), () => {});
-  assert.deepEqual(done, { status: "error", error: { code: "timeout" } });
+  const done = await readAnalysisStream(ndjson(['{"type":"stage","stage":"perceive"}\n{"type":"error","code":"timeout","refunded":true}\n']), () => {});
+  // The server says whether the failed analysis was refunded, so the page can say whether it counted.
+  assert.deepEqual(done, { status: "error", error: { code: "timeout", refunded: true } });
 });
 
 test("a stream that stops without a result is an internal error", async () => {
@@ -255,4 +262,16 @@ test("Spanish terms in brackets are split out so Arabic text can isolate them", 
 
 test("templates fill their numbered gaps", () => {
   assert.equal(fillTemplate("{right} of {total}, {right}", { right: 22, total: 24 }), "22 of 24, 22");
+});
+
+test("learner photos are kept out of session recordings", () => {
+  // PostHog replays record image sources unless the element carries ph-no-capture; uploads and live edits are data URLs.
+  const { readFileSync } = process.getBuiltinModule("node:fs") as typeof import("node:fs");
+  for (const file of ["EvidenceImage.tsx", "UploadPanel.tsx"]) {
+    const source = readFileSync(new URL(`../components/roadsense/${file}`, import.meta.url), "utf8");
+    // Elements, not the word in comments: a JSX <img> always has attributes.
+    const images = source.match(/<img\s[^>]*>/gs) ?? [];
+    assert.ok(images.length > 0, file);
+    for (const image of images) assert.match(image, /ph-no-capture/, `${file}: ${image.slice(0, 60)}`);
+  }
 });

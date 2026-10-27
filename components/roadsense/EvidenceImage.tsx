@@ -17,8 +17,9 @@ interface EvidenceImageProps {
 export default function EvidenceImage({ src, alt, tag, overlays, busy }: EvidenceImageProps) {
   return (
     <figure className="relative overflow-hidden rounded-2xl border border-outline-variant/60 bg-surface-container-lowest">
-      {/* A plain <img>: uploads and live edits are data URLs, and the outlines need the photo's exact box. */}
-      <img src={src} alt={alt} className="block h-auto w-full" decoding="async" />
+      {/* A plain <img>: uploads and live edits are data URLs, and the outlines need the photo's exact box.
+          ph-no-capture keeps the learner's photo out of PostHog session recordings. */}
+      <img src={src} alt={alt} className="ph-no-capture block h-auto w-full" decoding="async" />
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         {overlays.map((overlay) => (
           // The outline sits a few pixels outside the box, with a light halo, so it shows even on a sign's own border.

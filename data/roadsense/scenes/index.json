@@ -1632,7 +1632,7 @@
     "shown": true,
     "precomputed": {
       "es": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -1691,7 +1691,7 @@
         ]
       },
       "en": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -1750,7 +1750,7 @@
         ]
       },
       "fr": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -1809,7 +1809,7 @@
         ]
       },
       "ar": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -16662,7 +16662,7 @@
     "shown": true,
     "precomputed": {
       "es": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -16782,7 +16782,7 @@
         ]
       },
       "en": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -16902,7 +16902,7 @@
         ]
       },
       "fr": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -17022,7 +17022,7 @@
         ]
       },
       "ar": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -24273,7 +24273,7 @@
     "shown": true,
     "precomputed": {
       "es": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -24380,7 +24380,7 @@
         ]
       },
       "en": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -24487,7 +24487,7 @@
         ]
       },
       "fr": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -24594,7 +24594,7 @@
         ]
       },
       "ar": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -25415,7 +25415,7 @@
     "shown": true,
     "precomputed": {
       "es": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -25487,7 +25487,7 @@
         ]
       },
       "en": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -25559,7 +25559,7 @@
         ]
       },
       "fr": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,
@@ -25631,7 +25631,7 @@
         ]
       },
       "ar": {
-        "certainty": "checked",
+        "certainty": "not_sure",
         "facts": {
           "inScope": true,
           "outOfScopeReason": null,

@@ -14,6 +14,8 @@ export interface EvalRow {
 
 export interface EvalReport {
   answerable: { total: number; correct: number; notSure: number; checkedWrong: number };
+  /** Checked answers that are wrong on any kind of scene: a checked answer where the honest one is "not sure" or "outside scope" is wrong too. */
+  checkedWrong: number;
   abstain: { total: number; correct: number };
   outOfScope: { total: number; correct: number };
   citations: { total: number; valid: number };
@@ -81,10 +83,14 @@ export function scoreRun(rows: readonly EvalRow[], corpusIds: readonly string[])
       notSure: answerable.filter((row) => row.result?.certainty === "not_sure").length,
       checkedWrong: answerable.filter((row) => row.result?.certainty === "checked" && row.result.model?.obligation !== row.expected.obligation).length,
     },
+    checkedWrong: rows.filter(
+      (row) => row.result?.certainty === "checked" && (row.expected.kind !== "answerable" || row.result.model?.obligation !== row.expected.obligation),
+    ).length,
     abstain: { total: abstain.length, correct: abstain.filter(isCorrect).length },
     outOfScope: { total: outOfScope.length, correct: outOfScope.filter(isCorrect).length },
     citations: { total: citations.length, valid: citations.filter(Boolean).length },
-    schema: { total: rows.length, valid: results.length },
+    // A decision rejected for its shape leaves a decided engine without a model answer: that output was not valid.
+    schema: { total: rows.length, valid: results.filter((result) => result.engine.status !== "decided" || result.model !== null).length },
     latencyMs: { p50: nearestRank(latencies, 50), p95: nearestRank(latencies, 95) },
     costUsd: { total: totalCost, perScene: results.length > 0 ? totalCost / results.length : 0 },
     byRule,
@@ -100,7 +106,7 @@ export function renderEvalMarkdown(report: EvalReport, meta: { mode: "live" | "r
   const { answerable: a, abstain, outOfScope, citations, schema, latencyMs, costUsd } = report;
   const rows: [string, string, string, boolean | null][] = [
     ["Answerable scenes answered right and checked", `${a.correct}/${a.total} (${percent(a.correct, a.total)})`, "≥ 90%", share(a.correct, a.total) >= TARGETS.answerableCorrect],
-    ["Wrong answers marked checked", String(a.checkedWrong), "0", a.checkedWrong === TARGETS.checkedWrong],
+    ["Wrong answers marked checked", String(report.checkedWrong), "0", report.checkedWrong === TARGETS.checkedWrong],
     ["Answerable scenes left not sure", `${a.notSure}/${a.total}`, "reported", null],
     ["Abstain scenes answered not sure", `${abstain.correct}/${abstain.total} (${percent(abstain.correct, abstain.total)})`, "≥ 80%", share(abstain.correct, abstain.total) >= TARGETS.abstainCorrect],
     ["Out-of-scope scenes caught", `${outOfScope.correct}/${outOfScope.total}`, "reported", null],

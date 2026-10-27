@@ -17,7 +17,7 @@ The first rule that matches wins. "My" signs, lights and markings are only those
 | 9 | A pedestrian is on the crossing in my path, but no zebra or crossing sign is visible | not sure: art. 65.1.a) covers marked crossings only | none |
 | 10 | A pedestrian is on a marked crossing in my path and I have a STOP (sign or marking) | stop, then give way | arts. 56.1, 56.5, 65.1.a), plus 133.1 (sign) or marking M-6.3, and M-4.3 when the zebra is visible |
 | 11 | A pedestrian is on a marked crossing in my path | give way to the pedestrians | art. 65.1.a), plus marking M-4.3 when the zebra is visible |
-| 12 | Signage on my approach is hidden | not sure: what's hidden could be a higher-ranked light or sign | none |
+| 12 | Signage on my approach is hidden (checked before rows 10 and 11) | not sure: what's hidden could be a higher-ranked light or sign | none |
 | 13 | There is no junction (a light or a pedestrian crossing ahead would have decided above) | outside scope | none |
 | 14 | I have a STOP sign | stop, then give way | arts. 56.1, 56.5, 133.1 (+ 133.2 if a yield sign or marking contradicts it) |
 | 15 | I have a yield sign | give way | arts. 56.1, 56.5, 133.1 (+ 133.2 if a STOP marking contradicts it: the sign outranks the marking) |
@@ -26,7 +26,7 @@ The first rule that matches wins. "My" signs, lights and markings are only those
 | 18 | A yield triangle is painted on my lane | give way | arts. 56.1, 56.5, marking M-6.5 (+ M-4.2 when the yield line is visible) |
 | 19 | Only a stop line is visible | not sure: the line only marks where to stop for a sign or light I can't see | none |
 | 20 | It's a roundabout and I'm approaching the entry | give way to traffic already on it | art. 57.1.c) |
-| 21 | The road crossing mine (left or right) has a STOP or yield of its own, as a sign or painted, and I have none | go: its drivers must give way to me, whichever side they come from | arts. 56.1, 56.5 |
+| 21 | The road crossing mine (left or right) has a STOP or yield of its own, as a sign or painted, and I have none | go: its drivers must give way to me. It binds only them: a vehicle from an unsigned road on my right still has priority (row 27), and with only the left road signed, a hidden right approach is not sure. A priority-road sign for the crossing road, with no sign of my own, is not sure: the corpus has no rule for my duty then | arts. 56.1, 56.5 |
 | 22 | A tram is crossing or approaching | give way to the tram | art. 57.1.b) |
 | 23 | The road surface is unclear | not sure | none |
 | 24 | My road is unpaved and the other is paved | give way | art. 57.1.a) |

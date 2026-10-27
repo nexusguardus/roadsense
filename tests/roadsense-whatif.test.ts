@@ -120,6 +120,17 @@ test("verifyEdit rejects when another critical fact changed", () => {
   assert.equal(verifyEdit(FACTS, { ...SWAPPED, roadUsers: [] }, SWAP), false);
 });
 
+test("verifyEdit rejects an edit whose answer comes from something else that changed", () => {
+  // The learner's yield goes, and so does the right-hand road's STOP: the answer flips because of
+  // the lost STOP, not because of the edit (final review, probe M).
+  const withRightStop = { ...FACTS, signs: [...FACTS.signs, { id: "s2", kind: "stop", appliesTo: "right", box: BOX, confidence: 0.9 }] };
+  const removed = { ...FACTS, signs: [], roadUsers: [{ ...FACTS.roadUsers[0], id: "u7" }] };
+  assert.equal(verifyEdit(withRightStop, removed, { kind: "remove_sign", factId: "s1" }), false);
+  // With the right-hand STOP still there, the same edit is clean.
+  const kept = { ...removed, signs: [{ id: "s9", kind: "stop", appliesTo: "right", box: BOX, confidence: 0.9 }] };
+  assert.equal(verifyEdit(withRightStop, kept, { kind: "remove_sign", factId: "s1" }), true);
+});
+
 test("verifyEdit rejects an edit that changed the kind of scene", () => {
   assert.equal(verifyEdit(FACTS, { ...SWAPPED, junction: "none" }, SWAP), false);
 });

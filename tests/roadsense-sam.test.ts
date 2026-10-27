@@ -126,6 +126,13 @@ test("does not confirm when the best overlap is below 0.4", async () => {
   assert.equal(evidence[0].matchedBox, null);
 });
 
+test("a detection SAM itself doubts doesn't confirm a fact", async () => {
+  const doubtful = "<0f>0<|box;x1=670;y1=284;x2=737;y2=394;w=1000;h=1000;c=0.15|><|mask;x=0;y=0;data=1,1,~a|>";
+  const { client } = fakeClient({ "traffic sign": doubtful });
+  const { evidence } = await confirmEvidence(client, IMAGE, scene({ signs: [sign("s1")] }), ["s1"]);
+  assert.equal(evidence[0].confirmed, false);
+});
+
 test("a small fact box inside a much larger detection is not confirmed", async () => {
   const wholeImage = "<0f>0<|box;x1=0;y1=0;x2=1920;y2=1280;w=1920;h=1280;c=0.9|><|mask;x=0;y=0;data=1,1,~a|>";
   const { client } = fakeClient({ "traffic sign": wholeImage });

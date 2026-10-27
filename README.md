@@ -34,7 +34,7 @@ Replay mode answers every model call from the recordings in `data/roadsense/reco
 
 | Measure | Result | Target |
 |---|---|---|
-| Answerable scenes answered right and checked | 22/24 (92%) | ≥ 90% |
+| Answerable scenes answered right and checked | 17/24 (71%) | ≥ 90% (missed) |
 | Wrong answers marked checked | 0 | 0 |
 | Abstain scenes answered not sure | 4/5 | ≥ 80% |
 | Out-of-scope scenes caught | 4/4 | |
@@ -43,7 +43,7 @@ Replay mode answers every model call from the recordings in `data/roadsense/reco
 | Latency p95, contributor mode | 30.0 s | ≤ 20 s (missed) |
 | Latency p95, Standard mode (8 scenes) | 9.8 s | ≤ 20 s |
 
-The numbers are in-sample: the prompts and thresholds were tuned on these same scenes. `docs/roadsense/EVAL.md` has the full report, by rule, and what the evaluation changed.
+The numbers are in-sample: the prompts and thresholds were tuned on these same scenes. An answer that rests on nothing the photo can confirm (nobody coming, an empty roundabout, a dirt road) is "not sure" by design, because the badge promises evidence. Five answerable scenes are not sure for that reason alone. `docs/roadsense/EVAL.md` has the full report, by rule, and what the evaluation changed.
 
 ## What is here
 

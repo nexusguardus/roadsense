@@ -46,6 +46,8 @@ function reasonText(copy: RoadsenseCopy, reason: NotSureReason): string {
   switch (reason.kind) {
     case "unknown":
       return copy.unknowns[reason.code];
+    case "nothing_to_confirm":
+      return copy.result.nothingToConfirm;
     case "unconfirmed":
       return copy.result.unconfirmed;
     case "low_confidence":

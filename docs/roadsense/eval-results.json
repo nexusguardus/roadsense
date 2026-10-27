@@ -7,10 +7,11 @@
   "report": {
     "answerable": {
       "total": 24,
-      "correct": 22,
-      "notSure": 2,
+      "correct": 17,
+      "notSure": 7,
       "checkedWrong": 0
     },
+    "checkedWrong": 0,
     "abstain": {
       "total": 5,
       "correct": 4
@@ -38,7 +39,7 @@
     "byRule": {
       "rgc-57-1": {
         "total": 4,
-        "correct": 3
+        "correct": 1
       },
       "rgc-56-1": {
         "total": 7,
@@ -78,7 +79,7 @@
       },
       "rgc-57-1-c": {
         "total": 2,
-        "correct": 2
+        "correct": 1
       },
       "rgc-65-1-a": {
         "total": 2,
@@ -98,7 +99,7 @@
       },
       "rgc-57-1-a": {
         "total": 2,
-        "correct": 2
+        "correct": 0
       },
       "rgc-57-1-b": {
         "total": 1,
@@ -126,7 +127,12 @@
       }
     },
     "failures": [
+      "unsigned-2: expected checked (proceed), got not_sure (proceed)",
+      "unsigned-3: expected checked (proceed), got not_sure (proceed)",
+      "roundabout-2: expected checked (yield), got not_sure (yield)",
       "emergency-2: expected checked (proceed), got not_sure",
+      "surface-1: expected checked (yield), got not_sure (yield)",
+      "surface-2: expected checked (proceed), got not_sure (proceed)",
       "tram-1: expected checked (yield), got not_sure",
       "abstain-4: expected not_sure, got outside_scope"
     ]
@@ -161,7 +167,7 @@
           "rgc-57-1"
         ]
       },
-      "certainty": "checked",
+      "certainty": "not_sure",
       "obligation": "proceed",
       "engineObligation": "proceed",
       "ruleIds": [
@@ -180,7 +186,7 @@
           "rgc-57-1"
         ]
       },
-      "certainty": "checked",
+      "certainty": "not_sure",
       "obligation": "proceed",
       "engineObligation": "proceed",
       "ruleIds": [
@@ -380,7 +386,7 @@
           "rgc-57-1-c"
         ]
       },
-      "certainty": "checked",
+      "certainty": "not_sure",
       "obligation": "yield",
       "engineObligation": "yield",
       "ruleIds": [
@@ -508,7 +514,7 @@
           "rgc-57-1-a"
         ]
       },
-      "certainty": "checked",
+      "certainty": "not_sure",
       "obligation": "yield",
       "engineObligation": "yield",
       "ruleIds": [
@@ -528,7 +534,7 @@
           "rgc-57-1-a"
         ]
       },
-      "certainty": "checked",
+      "certainty": "not_sure",
       "obligation": "proceed",
       "engineObligation": "proceed",
       "ruleIds": [

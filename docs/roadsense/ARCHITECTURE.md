@@ -28,7 +28,11 @@ RoadSense answers one question about a photo taken from the driver's seat: what 
    Confirm and decide run in parallel.
 6. **Certainty** (`certaintyOf`):
    - `outside_scope`;
-   - `not_sure` when the engine lacks a fact, a critical fact is unconfirmed or doubtful (confidence under 0.6), or the decision failed validation;
+   - `not_sure` when:
+     - the engine lacks a fact;
+     - the answer rests on no fact SAM can confirm (nobody coming, the type of junction, the road surface);
+     - a critical fact is unconfirmed or doubtful (confidence under 0.6, or a SAM score under 0.5);
+     - or the decision failed validation;
    - `disagree` when the answers differ, or the model doesn't cite a rule the engine used;
    - otherwise `checked`.
 

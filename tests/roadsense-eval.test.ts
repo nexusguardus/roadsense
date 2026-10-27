@@ -167,3 +167,21 @@ test("replay client throws for an unrecorded call", async () => {
   const replay = createReplayClient({});
   await assert.rejects(replay.chatJson(CHAT), /no recording/);
 });
+
+test("a checked answer on an abstain or out-of-scope scene counts as checked wrong", () => {
+  const report = scoreRun([row("a1", ABSTAIN, result("checked", "yield")), row("o1", OUT, result("checked", "yield")), row("s1", YIELD, result("checked", "yield"))], CORPUS_IDS);
+  assert.equal(report.checkedWrong, 2);
+  // The answerable count keeps its own figure.
+  assert.equal(report.answerable.checkedWrong, 0);
+});
+
+test("a decision rejected for its shape counts as invalid structured output", () => {
+  const report = scoreRun([row("s1", YIELD, result("not_sure", null)), row("s2", YIELD, result("checked", "yield"))], CORPUS_IDS);
+  assert.deepEqual(report.schema, { total: 2, valid: 1 });
+});
+
+test("the report's wrong-checked row counts every kind of scene", () => {
+  const report = scoreRun([row("a1", ABSTAIN, result("checked", "yield"))], CORPUS_IDS);
+  const markdown = renderEvalMarkdown(report, { mode: "replay", date: "2026-10-27", modelIds: ["muse-spark-1.3"] });
+  assert.match(markdown, /Wrong answers marked checked \| 1 \|/);
+});

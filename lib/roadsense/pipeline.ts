@@ -57,6 +57,9 @@ export function certaintyOf(
 ): Certainty {
   if (engine.status === "out_of_scope") return "outside_scope";
   if (engine.status === "insufficient") return "not_sure";
+  // The badge says SAM found what the answer depends on. An answer that rests only on what is
+  // absent (no traffic) or on the scene as a whole (a roundabout, a dirt road) has nothing to confirm.
+  if (engine.criticalFactIds.length === 0) return "not_sure";
   const confirmed = (id: string) => evidence.some((check) => check.factId === id && check.confirmed);
   if (evidence.some((check) => !check.confirmed) || !engine.criticalFactIds.every(confirmed)) return "not_sure";
   if (engine.criticalFactIds.some((id) => (factById(facts, id)?.confidence ?? 0) < MIN_FACT_CONFIDENCE)) return "not_sure";
@@ -77,8 +80,8 @@ async function decideOrAbstain(
   try {
     return await decideWithModel(client, facts, rules, locale);
   } catch (err) {
-    // The rejected call was billed, but its cost is lost with the error (about a cent, rarely).
-    if (err instanceof RoadsenseValidationError) return { decision: null, costUsd: 0 };
+    // The rejected reply was billed; the error carries its cost.
+    if (err instanceof RoadsenseValidationError) return { decision: null, costUsd: err.costUsd };
     throw err;
   }
 }
@@ -126,12 +129,18 @@ export async function analyzeScene(
   const retrievedIds = [...new Set([...retrieveRuleIds(facts), ...engine.ruleIds])];
   const rules = rulesByIds(corpus, retrievedIds);
   enter("decide");
-  const [checked, decided] = await Promise.all([
+  // Both calls finish before any failure surfaces: the caller reads the spend then, and a call still
+  // running would be billed but never counted.
+  const [checkedOutcome, decidedOutcome] = await Promise.allSettled([
     deps.evidenceMode === "sam"
       ? confirmEvidence(client, input.imageDataUrl, facts, engine.criticalFactIds)
       : confirmEvidenceDual(client, input.imageDataUrl, facts, engine.criticalFactIds),
     decideOrAbstain(client, facts, rules, input.locale),
   ]);
+  if (checkedOutcome.status === "rejected") throw checkedOutcome.reason;
+  if (decidedOutcome.status === "rejected") throw decidedOutcome.reason;
+  const checked = checkedOutcome.value;
+  const decided = decidedOutcome.value;
   const samUsed = deps.evidenceMode === "sam" && engine.criticalFactIds.length > 0;
   return {
     certainty: certaintyOf(facts, engine, decided.decision, checked.evidence, retrievedIds),

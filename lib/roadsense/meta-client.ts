@@ -62,6 +62,8 @@ export interface MetaClientOptions {
   sparkMode?: SparkMode;
   /** Injectable for tests. */
   sleep?: (ms: number) => Promise<void>;
+  /** Epoch ms after which no attempt or retry runs: live requests must finish before the platform stops them. */
+  deadline?: number;
 }
 
 export class MetaApiError extends Error {
@@ -105,7 +107,7 @@ function chatCost(usage: ChatUsage | undefined, mode: SparkMode): number {
 function imageResult(body: unknown): { imageDataUrl: string; costUsd: number } {
   const b = body as { data?: { b64_json?: string }[]; output_format?: string };
   const b64 = b?.data?.[0]?.b64_json;
-  if (!b64) throw new RoadsenseValidationError("image response has no data[0].b64_json");
+  if (!b64) throw new RoadsenseValidationError("image response has no data[0].b64_json", PRICES.imagePerOutput);
   return { imageDataUrl: `data:image/${b.output_format ?? "png"};base64,${b64}`, costUsd: PRICES.imagePerOutput };
 }
 
@@ -117,33 +119,40 @@ export function createMetaClient(options: MetaClientOptions): MetaClient {
   const sleep = options.sleep ?? ((ms: number) => new Promise<void>((done) => setTimeout(done, ms)));
   const sparkMode: SparkMode = options.sparkMode ?? "standard";
   const sparkModel = sparkMode === "contributor" ? MODELS.sparkContributor : MODELS.spark;
+  const deadline = options.deadline ?? Infinity;
 
+  /** One request with retries. The timer runs until the body is read, and nothing outlives the deadline. */
   async function post(path: string, payload: Record<string, unknown>): Promise<unknown> {
     for (let attempt = 0; ; attempt++) {
+      const limit = Math.min(timeoutMs, deadline - Date.now());
+      if (limit <= 0) throw new MetaTimeoutError(path, 0);
       const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), timeoutMs);
-      let res: Response;
+      const timer = setTimeout(() => controller.abort(), limit);
       try {
-        res = await fetchImpl(baseUrl + path, {
+        const res = await fetchImpl(baseUrl + path, {
           method: "POST",
           headers: { Authorization: `Bearer ${options.apiKey}`, "Content-Type": "application/json" },
           body: JSON.stringify(payload),
           signal: controller.signal,
         });
+        if (res.ok) return await res.json();
+        if (RETRYABLE.has(res.status) && attempt < maxRetries) {
+          const retryAfter = Number(res.headers.get("retry-after")) * 1000;
+          const wait = retryAfter > 0 && retryAfter <= MAX_RETRY_AFTER_MS ? retryAfter : BACKOFF_MS[Math.min(attempt, BACKOFF_MS.length - 1)];
+          if (Date.now() + wait < deadline) {
+            clearTimeout(timer);
+            await sleep(wait);
+            continue;
+          }
+        }
+        const detail = await res.text().catch(() => "");
+        throw new MetaApiError(res.status, `Meta API ${path} returned ${res.status}: ${detail.slice(0, 300)}`);
       } catch (err) {
-        if (controller.signal.aborted) throw new MetaTimeoutError(path, timeoutMs);
+        if (controller.signal.aborted && !(err instanceof MetaApiError)) throw new MetaTimeoutError(path, limit);
         throw err;
       } finally {
         clearTimeout(timer);
       }
-      if (res.ok) return res.json();
-      if (RETRYABLE.has(res.status) && attempt < maxRetries) {
-        const retryAfter = Number(res.headers.get("retry-after")) * 1000;
-        await sleep(retryAfter > 0 && retryAfter <= MAX_RETRY_AFTER_MS ? retryAfter : BACKOFF_MS[Math.min(attempt, BACKOFF_MS.length - 1)]);
-        continue;
-      }
-      const detail = await res.text().catch(() => "");
-      throw new MetaApiError(res.status, `Meta API ${path} returned ${res.status}: ${detail.slice(0, 300)}`);
     }
   }
 
@@ -163,13 +172,14 @@ export function createMetaClient(options: MetaClientOptions): MetaClient {
         response_format: { type: "json_schema", json_schema: { name: schemaName, schema, strict: true } },
       })) as { choices?: { message?: { content?: string } }[]; usage?: ChatUsage };
       const raw = body?.choices?.[0]?.message?.content ?? "";
+      const costUsd = chatCost(body?.usage, sparkMode);
       let json: unknown;
       try {
         json = JSON.parse(raw);
       } catch {
-        throw new RoadsenseValidationError("Muse Spark returned content that is not JSON");
+        throw new RoadsenseValidationError("Muse Spark returned content that is not JSON", costUsd);
       }
-      return { json, costUsd: chatCost(body?.usage, sparkMode) };
+      return { json, costUsd };
     },
 
     async segment({ imageDataUrl, concept }) {

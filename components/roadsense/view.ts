@@ -36,6 +36,7 @@ export function evidenceOverlays(result: AnalysisResult): EvidenceOverlay[] {
 
 export type NotSureReason =
   | { kind: "unknown"; code: UnknownCode }
+  | { kind: "nothing_to_confirm" }
   | { kind: "unconfirmed" }
   | { kind: "low_confidence" }
   | { kind: "no_explanation" }
@@ -48,6 +49,7 @@ export function notSureReasons(result: AnalysisResult): NotSureReason[] {
   if (engine.status !== "decided") {
     return engine.missing.length > 0 ? engine.missing.map((code) => ({ kind: "unknown", code })) : [{ kind: "unsettled" }];
   }
+  if (engine.criticalFactIds.length === 0) return [{ kind: "nothing_to_confirm" }];
   const confirmed = (id: string) => evidence.some((check) => check.factId === id && check.confirmed);
   const reasons: NotSureReason[] = [];
   if (evidence.some((check) => !check.confirmed) || !engine.criticalFactIds.every(confirmed)) reasons.push({ kind: "unconfirmed" });
@@ -120,7 +122,7 @@ export type StreamErrorCode = (typeof ERROR_CODES)[number];
 export type StreamLine =
   | { type: "stage"; stage: StreamStage }
   | { type: "result"; result: AnalysisResult | null; applied?: boolean; imageDataUrl?: string | null }
-  | { type: "error"; code: StreamErrorCode };
+  | { type: "error"; code: StreamErrorCode; refunded?: boolean };
 
 /** One line of a live route's NDJSON stream, or null for anything this page doesn't know. */
 export function parseStreamLine(text: string): StreamLine | null {
@@ -136,7 +138,10 @@ export function parseStreamLine(text: string): StreamLine | null {
     return (STAGES as readonly unknown[]).includes(line.stage) ? { type: "stage", stage: line.stage as StreamStage } : null;
   }
   if (line.type === "error") {
-    return (ERROR_CODES as readonly unknown[]).includes(line.code) ? { type: "error", code: line.code as StreamErrorCode } : null;
+    if (!(ERROR_CODES as readonly unknown[]).includes(line.code)) return null;
+    const code = line.code as StreamErrorCode;
+    // Whether the failed analysis was given back; absent from older servers.
+    return typeof line.refunded === "boolean" ? { type: "error", code, refunded: line.refunded } : { type: "error", code };
   }
   if (line.type === "result") return line as unknown as StreamLine;
   return null;

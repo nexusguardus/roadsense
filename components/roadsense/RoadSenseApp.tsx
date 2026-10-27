@@ -55,7 +55,11 @@ export default function RoadSenseApp({ copy, locale, scenes, featuredId, evaluat
   const viewerRef = useRef<HTMLDivElement>(null);
   const busy = state.status === "running";
 
-  const errorText = (failure: AnalysisError): string => ("message" in failure ? failure.message : copy.errors[failure.code]);
+  const errorText = (failure: AnalysisError): string => {
+    if ("message" in failure) return failure.message;
+    if (failure.refunded === undefined) return copy.errors[failure.code];
+    return `${copy.errors[failure.code]} ${failure.refunded ? copy.errors.refunded : copy.errors.counted}`;
+  };
 
   /** Brings the viewer back into view when the learner acted further down the page. */
   function scrollToViewer() {
@@ -243,6 +247,7 @@ export default function RoadSenseApp({ copy, locale, scenes, featuredId, evaluat
         copy={copy}
         scenes={scenes}
         selectedId={view?.kind === "scene" ? view.scene.id : null}
+        disabled={busy && view?.kind === "upload"}
         onSelect={(scene) => {
           scrollToViewer();
           void openScene(scene, null, true);

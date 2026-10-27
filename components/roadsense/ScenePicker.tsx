@@ -14,11 +14,13 @@ interface ScenePickerProps {
   copy: RoadsenseCopy;
   scenes: SceneSummary[];
   selectedId: string | null;
+  /** True while the learner's own photo is being analysed: leaving would discard an analysis already counted. */
+  disabled: boolean;
   onSelect: (scene: SceneSummary) => void;
 }
 
 /** The curated scenes as a grid; their answers were worked out in advance. */
-export default function ScenePicker({ copy, scenes, selectedId, onSelect }: ScenePickerProps) {
+export default function ScenePicker({ copy, scenes, selectedId, disabled, onSelect }: ScenePickerProps) {
   return (
     <section aria-labelledby="roadsense-scenes" className="space-y-3">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -37,8 +39,9 @@ export default function ScenePicker({ copy, scenes, selectedId, onSelect }: Scen
               <button
                 type="button"
                 aria-pressed={selected}
+                disabled={disabled}
                 onClick={() => onSelect(scene)}
-                className={`group block w-full overflow-hidden rounded-xl border text-start transition-colors ${
+                className={`group block w-full overflow-hidden rounded-xl border text-start transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
                   selected ? "border-primary ring-2 ring-primary/50" : "border-outline-variant/60 hover:border-primary/60"
                 }`}
               >

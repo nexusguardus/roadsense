@@ -25,7 +25,7 @@ export default function UploadPanel({ copy, preview, busy, error, onFile, onAnal
       <div className="flex flex-wrap items-center gap-3">
         {preview && (
           // A data URL of the resized photo.
-          <img src={preview} alt="" className="h-20 w-auto max-w-[8rem] rounded-lg border border-outline-variant/60 object-cover" />
+          <img src={preview} alt="" className="ph-no-capture h-20 w-auto max-w-[8rem] rounded-lg border border-outline-variant/60 object-cover" />
         )}
         <label
           htmlFor={inputId}

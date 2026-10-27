@@ -200,10 +200,47 @@ test("a decision that fails validation is not sure", async () => {
   const result = await analyzeScene(deps(client), INPUT);
   assert.equal(result.model, null);
   assert.equal(result.certainty, "not_sure");
+  // The rejected decision was billed: perception 0.01, SAM 0.0025 and the decision 0.02.
+  assert.ok(Math.abs(result.costUsd - 0.0325) < 1e-9, String(result.costUsd));
+});
+
+test("a failed evidence check waits for the decision call before the error surfaces", async () => {
+  const events: string[] = [];
+  const client = {
+    sparkModel: "muse-spark-1.3",
+    async chatJson({ schemaName }: { schemaName: string }) {
+      if (schemaName !== "decision") return { json: FACTS, costUsd: 0.01 };
+      await new Promise((done) => setTimeout(done, 30));
+      events.push("decision:end");
+      return { json: DECISION, costUsd: 0.02 };
+    },
+    async segment() {
+      throw new Error("SAM is down");
+    },
+    async editImage() {
+      throw new Error("unused");
+    },
+    async generateImage() {
+      throw new Error("unused");
+    },
+  };
+  // The spend is read when the error surfaces, so the other call must have finished by then.
+  await assert.rejects(analyzeScene(deps(client), INPUT), /SAM is down/);
+  assert.deepEqual(events, ["decision:end"]);
 });
 
 test("not sure when a critical fact has no evidence", () => {
   assert.equal(certaintyOf(FACTS, decideObligation(FACTS), DECISION, [], RETRIEVED), "not_sure");
+});
+
+test("an answer that rests on nothing the photo can confirm is never checked", () => {
+  // An empty unsigned crossroads: "go" rests on the absence of traffic, which SAM can't confirm.
+  const empty = { ...FACTS, signs: [], roadUsers: [] };
+  const engine = decideObligation(empty);
+  assert.equal(engine.status, "decided");
+  assert.deepEqual(engine.criticalFactIds, []);
+  const decision = { ...DECISION, obligation: engine.obligation, priorityTo: [], ruleIds: engine.ruleIds };
+  assert.equal(certaintyOf(empty, engine, decision, [], [...engine.ruleIds, "rgc-59-1"]), "not_sure");
 });
 
 test("disagree when the model cites none of the engine's rules or a rule it was not given", () => {

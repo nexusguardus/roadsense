@@ -272,10 +272,16 @@ export const COPY = {
     loading: { es: "Cargando…", en: "Loading…", fr: "Chargement…", ar: "جارٍ التحميل…" },
     // {scenes}, {right}, {answerable} and {wrong} come from docs/roadsense/eval-results.json.
     evaluation: {
-      es: "En nuestra evaluación con {scenes} escenas generadas por IA: respuestas comprobadas y acertadas, {right} de {answerable}; respuestas comprobadas pero erróneas, {wrong}.",
-      en: "In our evaluation on {scenes} AI-generated scenes: answers checked and right, {right} of {answerable}; answers checked but wrong, {wrong}.",
-      fr: "Dans notre évaluation sur {scenes} scènes générées par IA : réponses contrôlées et justes, {right} sur {answerable} ; réponses contrôlées mais fausses, {wrong}.",
-      ar: "في تقييمنا على {scenes} مشهدًا مُولَّدًا بالذكاء الاصطناعي: إجابات مُدقَّقة وصحيحة: {right} من {answerable}؛ إجابات مُدقَّقة لكنها خاطئة: {wrong}.",
+      es: "En nuestra evaluación con {scenes} escenas generadas por IA: respuestas comprobadas y acertadas, {right} de {answerable}; respuestas comprobadas pero erróneas, {wrong}. Ajustamos el sistema con esas mismas escenas, así que con fotos reales puede acertar menos.",
+      en: "In our evaluation on {scenes} AI-generated scenes: answers checked and right, {right} of {answerable}; answers checked but wrong, {wrong}. We tuned the system on these same scenes, so real photos may fare worse.",
+      fr: "Dans notre évaluation sur {scenes} scènes générées par IA : réponses contrôlées et justes, {right} sur {answerable} ; réponses contrôlées mais fausses, {wrong}. Nous avons réglé le système sur ces mêmes scènes : avec de vraies photos, il peut se tromper davantage.",
+      ar: "في تقييمنا على {scenes} مشهدًا مُولَّدًا بالذكاء الاصطناعي: إجابات مُدقَّقة وصحيحة: {right} من {answerable}؛ إجابات مُدقَّقة لكنها خاطئة: {wrong}. ضبطنا النظام على المشاهد نفسها، لذا قد تكون نتائجه مع الصور الحقيقية أقل دقة.",
+    },
+    nothingToConfirm: {
+      es: "La respuesta depende de lo que no se ve (por ejemplo, que no venga nadie) o del tipo de cruce, y eso no se puede comprobar en la foto.",
+      en: "The answer depends on what isn't there (for example, nobody coming) or on the type of junction, which can't be checked in the photo.",
+      fr: "La réponse dépend de ce qui n'est pas visible (par exemple, que personne n'arrive) ou du type d'intersection, ce qui ne peut pas être contrôlé sur la photo.",
+      ar: "تعتمد الإجابة على ما لا يظهر (مثلًا ألا يكون أحد قادمًا) أو على نوع التقاطع، ولا يمكن التحقق من ذلك في الصورة.",
     },
     unconfirmed: {
       es: "SAM 3.1 no ha encontrado en la foto todo aquello de lo que depende la respuesta (contornos discontinuos).",
@@ -364,22 +370,35 @@ export const COPY = {
   },
   errors: {
     timeout: {
-      es: "El análisis ha tardado demasiado. No se ha descontado de tu límite; vuelve a intentarlo.",
-      en: "The analysis took too long. It didn't count against your limit; try again.",
-      fr: "L'analyse a pris trop de temps. Elle n'a pas été décomptée de votre limite ; réessayez.",
-      ar: "استغرق التحليل وقتًا طويلًا. لم يُحتسب من حدّك؛ حاول مرة أخرى.",
+      es: "El análisis ha tardado demasiado. Vuelve a intentarlo.",
+      en: "The analysis took too long. Please try again.",
+      fr: "L'analyse a pris trop de temps. Réessayez.",
+      ar: "استغرق التحليل وقتًا طويلًا. حاول مرة أخرى.",
     },
     model: {
-      es: "El servicio de IA no ha respondido bien. No se ha descontado de tu límite; vuelve a intentarlo.",
-      en: "The AI service didn't respond properly. It didn't count against your limit; try again.",
-      fr: "Le service d'IA n'a pas répondu correctement. Cela n'a pas été décompté de votre limite ; réessayez.",
-      ar: "لم تستجب خدمة الذكاء الاصطناعي كما يجب. لم يُحتسب من حدّك؛ حاول مرة أخرى.",
+      es: "El servicio de IA no ha respondido bien. Vuelve a intentarlo.",
+      en: "The AI service didn't respond properly. Please try again.",
+      fr: "Le service d'IA n'a pas répondu correctement. Réessayez.",
+      ar: "لم تستجب خدمة الذكاء الاصطناعي كما يجب. حاول مرة أخرى.",
     },
     internal: {
-      es: "Algo ha fallado. No se ha descontado de tu límite; vuelve a intentarlo.",
-      en: "Something went wrong. It didn't count against your limit; try again.",
-      fr: "Une erreur s'est produite. Elle n'a pas été décomptée de votre limite ; réessayez.",
-      ar: "حدث خطأ ما. لم يُحتسب من حدّك؛ حاول مرة أخرى.",
+      es: "Algo ha fallado. Vuelve a intentarlo.",
+      en: "Something went wrong. Please try again.",
+      fr: "Une erreur s'est produite. Réessayez.",
+      ar: "حدث خطأ ما. حاول مرة أخرى.",
+    },
+    // After a failed live analysis, the server says whether it was given back (once a day if it was billed).
+    refunded: {
+      es: "No se ha descontado de tu límite diario.",
+      en: "It didn't count against your daily limit.",
+      fr: "Elle n'a pas été décomptée de votre limite quotidienne.",
+      ar: "لم يُحتسب من حدّك اليومي.",
+    },
+    counted: {
+      es: "Ha contado como uno de tus análisis de hoy.",
+      en: "It counted as one of today's analyses.",
+      fr: "Elle a compté comme l'une de vos analyses du jour.",
+      ar: "احتُسب ضمن تحليلاتك لهذا اليوم.",
     },
     network: {
       es: "No hemos podido conectar. Revisa tu conexión y vuelve a intentarlo.",

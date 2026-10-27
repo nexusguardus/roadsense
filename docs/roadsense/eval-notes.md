@@ -41,7 +41,16 @@ These numbers are in-sample: the prompts, thresholds and settings below were tun
 - **Evidence matching.** Correct signs and markings measured 0.45 and 0.49 overlap with SAM's boxes, so the threshold is now 0.4. SAM finds nothing for "emergency vehicle" or "tram", so it is asked for an "ambulance" and a "streetcar".
 - **Reasoning effort.** Low effort halved latency in Standard mode, and no wrong answer was checked.
 
+## What the final review changed (2026-10-27)
+
+- **No badge without evidence.** An answer that rests on nothing SAM 3.1 can confirm is now "not sure", because the badge promises that SAM found what the answer depends on. Examples are "go" because nobody is coming, an empty roundabout entry, or an unpaved road. Five answerable scenes moved from checked to not sure (unsigned-2, unsigned-3, roundabout-2, surface-1, surface-2): 17 of 24 instead of 22.
+- **Crossing roads.** A STOP or yield on the road to the left no longer gives the learner priority over an unsigned road on the right (art. 57.1). A priority-road sign on the crossing road, with no sign for the learner, is "not sure". No curated scene has either, so no number moved.
+- **Order and paths.** Hidden signage now outranks a pedestrian on the crossing, and the crossing must be in the learner's path.
+- **Scoring.** "Wrong answers marked checked" counts every kind of scene, and a decision rejected for its shape counts as invalid output. Neither changed a number.
+
 ## Known limits
+
+- SAM 3.1 confirms where a sign, light or vehicle is, not its colour or type. A red light read as green, or a yield sign read as a STOP, would still be confirmed. Colour- and type-specific checks need a new live evaluation.
 
 - A still photo cannot show whether an amber light is flashing. Amber is read as steady, and no scene claims a flashing light.
 - The scenes are generated: real dashcam and phone photos are messier.

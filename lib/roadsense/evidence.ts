@@ -18,6 +18,8 @@ const MAX_CONCEPTS = 5;
 const MIN_OVERLAP = 0.4;
 /** Overlap over the smaller box is 1 for any box inside a bigger one, so the two must also be of comparable size. */
 const MIN_AREA_RATIO = 0.25;
+/** A detection SAM itself scores lower confirms nothing; the recorded scenes never went below 0.504. */
+const MIN_SAM_CONFIDENCE = 0.5;
 
 interface Match {
   box: Box | null;
@@ -66,7 +68,8 @@ export async function confirmEvidence(
   const critical = criticalFacts(facts, criticalFactIds);
   const concepts = [...new Set(critical.map(samConceptFor))].slice(0, opts.maxConcepts ?? MAX_CONCEPTS);
   const answers = await Promise.all(concepts.map((concept) => client.segment({ imageDataUrl, concept })));
-  const detections = new Map(concepts.map((concept, i) => [concept, parseSamOutput(answers[i].text).map(toGridBox)]));
+  const trusted = (text: string) => parseSamOutput(text).filter((d) => d.confidence === null || d.confidence >= MIN_SAM_CONFIDENCE);
+  const detections = new Map(concepts.map((concept, i) => [concept, trusted(answers[i].text).map(toGridBox)]));
   const evidence = critical.map((fact) => {
     const concept = samConceptFor(fact);
     return evidenceFor(fact, concept, bestMatch(fact.box, detections.get(concept) ?? []), minOverlap);

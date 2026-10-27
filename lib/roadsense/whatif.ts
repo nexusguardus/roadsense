@@ -1,3 +1,4 @@
+import { decideObligation } from "./engine";
 import { factById } from "./facts";
 import { MODELS } from "./meta-client";
 import { perceiveScene } from "./perceive";
@@ -108,7 +109,36 @@ export function verifyEdit(before: SceneFacts, after: SceneFacts, edit: WhatIfEd
   const { visible, alters } = intended(before, after, edit);
   if (!visible) return false;
   const kept = tally(after, () => false);
-  return [...tally(before, alters)].every(([key, count]) => (kept.get(key) ?? 0) >= count);
+  if (![...tally(before, alters)].every(([key, count]) => (kept.get(key) ?? 0) >= count)) return false;
+  // The answer must follow from the edit alone: whatever else the photo now reads differently
+  // (a crossing road's sign, the surface, an added car) must not change the engine's verdict.
+  const expected = decideObligation(simulateEdit(before, edit));
+  const actual = decideObligation(after);
+  return expected.status === actual.status && expected.obligation === actual.obligation;
+}
+
+const NO_BOX: Box = { x1: 0, y1: 0, x2: 0, y2: 0 };
+
+/** The facts as the edit alone would leave them. */
+function simulateEdit(facts: SceneFacts, edit: WhatIfEdit): SceneFacts {
+  switch (edit.kind) {
+    case "swap_sign":
+      return { ...facts, signs: facts.signs.map((s) => (s.id === edit.factId ? { ...s, kind: edit.to } : s)) };
+    case "remove_sign":
+      return { ...facts, signs: facts.signs.filter((s) => s.id !== edit.factId) };
+    case "set_light":
+      return { ...facts, lights: facts.lights.map((l) => (l.id === edit.factId ? { ...l, state: edit.to } : l)) };
+    case "add_emergency_vehicle":
+      return {
+        ...facts,
+        roadUsers: [...facts.roadUsers, { id: "edit", kind: "emergency_vehicle", position: "oncoming", emergencyLightsOn: true, box: NO_BOX, confidence: 1 }],
+      };
+    case "add_pedestrian_on_crossing":
+      return {
+        ...facts,
+        roadUsers: [...facts.roadUsers, { id: "edit", kind: "pedestrian", position: "on_crossing_ahead", emergencyLightsOn: false, box: NO_BOX, confidence: 1 }],
+      };
+  }
 }
 
 /**

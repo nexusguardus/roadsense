@@ -52,5 +52,11 @@ export async function decideWithModel(
     schemaName: "decision",
     schema: decisionSchema(ids),
   });
-  return { decision: parseDecision(json, ids), costUsd };
+  try {
+    return { decision: parseDecision(json, ids), costUsd };
+  } catch (err) {
+    // The reply was billed even though it is unusable; the caller still counts it.
+    if (err instanceof RoadsenseValidationError) throw new RoadsenseValidationError(err.message, costUsd);
+    throw err;
+  }
 }
