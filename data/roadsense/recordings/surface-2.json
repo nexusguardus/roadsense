@@ -1,0 +1,47 @@
+{
+  "latencyMs": 13752,
+  "calls": {
+    "sparkModel": "muse-spark-1.3-contributor",
+    "51e378a0751783e4b877340bb3086ce8cf8e3b6c0bab95e8877c6a32e2bf0cb8": {
+      "json": {
+        "crossRoadPaved": false,
+        "egoRoadPaved": true,
+        "inScope": true,
+        "junction": "t_junction",
+        "lights": [],
+        "markings": [],
+        "outOfScopeReason": null,
+        "roadUsers": [],
+        "signs": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 554,
+              "x2": 614,
+              "y1": 278,
+              "y2": 360
+            },
+            "confidence": 0.95,
+            "id": "s1",
+            "kind": "other"
+          }
+        ],
+        "unknowns": []
+      },
+      "costUsd": 0.00044758600000000003
+    },
+    "916cfc0989b94645c91182cb7efdbfc17a65db28bd10308b6353468d74c00443": {
+      "json": {
+        "obligation": "proceed",
+        "priorityTo": [],
+        "rationale": "You are on a paved road (vía pavimentada) and the crossing road is unpaved. Under the rule, vehicles on a paved road have preference (preferencia de paso) over those coming from an unpaved road. No one is approaching, so you can continue.",
+        "ruleIds": [
+          "rgc-57-1-a"
+        ],
+        "temptingWrongAnswer": "You must yield (ceda el paso) because you are arriving at a T-junction.",
+        "whyWrong": "The excerpt decides it by surface, not by the junction shape: paved has preference (preferencia de paso) over unpaved, so you do not yield to the side road."
+      },
+      "costUsd": 0.0002457
+    }
+  }
+}

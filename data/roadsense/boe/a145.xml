@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a145" tipo="precepto" titulo="Artículo 145">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 145. Semáforos reservados para peatones.</p>
+        <p class="parrafo">El significado de las luces de estos semáforos es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja no intermitente, en forma de peatón inmóvil, indica a los peatones que no deben comenzar a cruzar la calzada.</p>
+        <p class="parrafo">b) Una luz verde no intermitente, en forma de peatón en marcha, indica a los peatones que pueden comenzar a atravesar la calzada. Cuando dicha luz pase a intermitente, significa que el tiempo de que aún disponen para terminar de atravesar la calzada está a punto de finalizar y que se va a encender la luz roja.</p>
+      </version>
+      <version id_norma="BOE-A-2025-12199" fecha_publicacion="20250617" fecha_vigencia="20250701">
+        <p class="articulo">Artículo 145. Señales de reglamentación. Objeto, clases y normas comunes.</p>
+        <p class="parrafo">1. Las señales de reglamentación tienen por objeto indicar a los usuarios de la vía las obligaciones, limitaciones o prohibiciones especiales que deben observar.</p>
+        <p class="parrafo">2. Las señales de reglamentación se subdividen en:</p>
+        <p class="parrafo_2">a) Señales de prioridad: están destinadas a poner en conocimiento de los usuarios de la vía reglas especiales de prioridad en las intersecciones o en los pasos estrechos.</p>
+        <p class="parrafo">b) Señales de prohibición de entrada: para quienes se las encuentren de frente en el sentido de su marcha y a partir del lugar en que están situadas, prohíben el acceso a los vehículos o usuarios según el significado de cada una de las señales.</p>
+        <p class="parrafo">c) Señales de restricción de paso: para quienes se las encuentren de frente en el sentido de su marcha y a partir del lugar en que están situadas, prohíben o limitan el acceso de los vehículos según el significado de cada una de las señales.</p>
+        <p class="parrafo">d) Otras señales de prohibición o restricción.</p>
+        <p class="parrafo">e) Señales de obligación: señalan una norma de circulación obligatoria.</p>
+        <p class="parrafo">f) Señales de fin de prohibición o restricción.</p>
+        <p class="parrafo_2">3. Las señales de reglamentación colocadas al lado o en la vertical de una señal que indique el nombre del poblado significan que la reglamentación se aplica a todo el poblado, excepto si en este se indicara otra reglamentación distinta mediante otras señales en ciertos tramos de la vía.</p>
+        <p class="parrafo">4. Las obligaciones, limitaciones o prohibiciones especiales establecidas por las señales de reglamentación regirán a partir de la sección transversal donde estén colocadas dichas señales, salvo que mediante un panel complementario colocado debajo de ellas se indique la distancia a la sección donde empiecen a regir las citadas señales.</p>
+        <p class="parrafo">5. Cuando las señales sean luminosas, podrá admitirse que los símbolos aparezcan iluminados en blanco sobre fondo oscuro no luminoso.</p>
+        <p class="parrafo">6. La forma, color, diseño y significado de las señales, así como las dimensiones de las mismas en función de cada tipo de vía y sistemas de colocación se regulan en el apartado 5 del anexo I.</p>
+        <blockquote>
+          <p class="nota_pie">Se modifica por el art. único.15 del Real Decreto 465/2025, de 10 de junio. <a class="refPost">Ref. BOE-A-2025-12199</a></p>
+        </blockquote>
+      </version>
+    </bloque>
+  </data>
+</response>

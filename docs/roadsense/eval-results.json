@@ -1,0 +1,791 @@
+{
+  "mode": "replay",
+  "spark": "contributor",
+  "effort": "low",
+  "date": "2026-10-27",
+  "locale": "en",
+  "report": {
+    "answerable": {
+      "total": 24,
+      "correct": 22,
+      "notSure": 2,
+      "checkedWrong": 0
+    },
+    "abstain": {
+      "total": 5,
+      "correct": 4
+    },
+    "outOfScope": {
+      "total": 4,
+      "correct": 4
+    },
+    "citations": {
+      "total": 56,
+      "valid": 56
+    },
+    "schema": {
+      "total": 33,
+      "valid": 33
+    },
+    "latencyMs": {
+      "p50": 17880,
+      "p95": 29968
+    },
+    "costUsd": {
+      "total": 0.070813094,
+      "perScene": 0.002145851333333333
+    },
+    "byRule": {
+      "rgc-57-1": {
+        "total": 4,
+        "correct": 3
+      },
+      "rgc-56-1": {
+        "total": 7,
+        "correct": 7
+      },
+      "rgc-56-5": {
+        "total": 6,
+        "correct": 6
+      },
+      "rgc-133-1": {
+        "total": 10,
+        "correct": 10
+      },
+      "rgc-56-4": {
+        "total": 1,
+        "correct": 1
+      },
+      "rgc-56-3": {
+        "total": 5,
+        "correct": 5
+      },
+      "anexo-i-light-red": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-light-green": {
+        "total": 3,
+        "correct": 3
+      },
+      "rgc-59-1": {
+        "total": 3,
+        "correct": 3
+      },
+      "anexo-i-light-amber": {
+        "total": 2,
+        "correct": 2
+      },
+      "rgc-57-1-c": {
+        "total": 2,
+        "correct": 2
+      },
+      "rgc-65-1-a": {
+        "total": 2,
+        "correct": 2
+      },
+      "anexo-i-m-4-3": {
+        "total": 2,
+        "correct": 2
+      },
+      "rgc-67-1": {
+        "total": 1,
+        "correct": 1
+      },
+      "rgc-69": {
+        "total": 1,
+        "correct": 1
+      },
+      "rgc-57-1-a": {
+        "total": 2,
+        "correct": 2
+      },
+      "rgc-57-1-b": {
+        "total": 1,
+        "correct": 0
+      },
+      "rgc-133-2": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-m-6-3": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-m-4-1": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-m-6-5": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-m-4-2": {
+        "total": 1,
+        "correct": 1
+      }
+    },
+    "failures": [
+      "emergency-2: expected checked (proceed), got not_sure",
+      "tram-1: expected checked (yield), got not_sure",
+      "abstain-4: expected not_sure, got outside_scope"
+    ]
+  },
+  "results": [
+    {
+      "sceneId": "unsigned-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-57-1",
+        "rgc-58-1"
+      ],
+      "latencyMs": 23676,
+      "costUsd": 0.0034882,
+      "error": null
+    },
+    {
+      "sceneId": "unsigned-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-57-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-57-1"
+      ],
+      "latencyMs": 20273,
+      "costUsd": 0.0009104,
+      "error": null
+    },
+    {
+      "sceneId": "unsigned-3",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-57-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-57-1"
+      ],
+      "latencyMs": 24336,
+      "costUsd": 0.000882886,
+      "error": null
+    },
+    {
+      "sceneId": "signs-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_and_yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_and_yield",
+      "engineObligation": "stop_and_yield",
+      "ruleIds": [
+        "rgc-56-5",
+        "rgc-56-1"
+      ],
+      "latencyMs": 20149,
+      "costUsd": 0.0035130000000000005,
+      "error": null
+    },
+    {
+      "sceneId": "signs-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5"
+      ],
+      "latencyMs": 14016,
+      "costUsd": 0.0033645999999999997,
+      "error": null
+    },
+    {
+      "sceneId": "signs-3",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-4"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-4"
+      ],
+      "latencyMs": 13976,
+      "costUsd": 0.003190086,
+      "error": null
+    },
+    {
+      "sceneId": "lights-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_at_light",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-red",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_at_light",
+      "engineObligation": "stop_at_light",
+      "ruleIds": [
+        "rgc-56-3",
+        "anexo-i-light-red",
+        "rgc-133-1"
+      ],
+      "latencyMs": 28373,
+      "costUsd": 0.003578286,
+      "error": null
+    },
+    {
+      "sceneId": "lights-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-green",
+          "rgc-133-1",
+          "rgc-59-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-56-3",
+        "anexo-i-light-green",
+        "rgc-133-1"
+      ],
+      "latencyMs": 22612,
+      "costUsd": 0.0034113859999999998,
+      "error": null
+    },
+    {
+      "sceneId": "lights-3",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_at_light",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-amber",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_at_light",
+      "engineObligation": "stop_at_light",
+      "ruleIds": [
+        "rgc-56-3",
+        "anexo-i-light-amber",
+        "rgc-133-1"
+      ],
+      "latencyMs": 22548,
+      "costUsd": 0.0034252860000000005,
+      "error": null
+    },
+    {
+      "sceneId": "lights-4",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_at_light",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-amber",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_at_light",
+      "engineObligation": "stop_at_light",
+      "ruleIds": [
+        "anexo-i-light-amber",
+        "rgc-56-3",
+        "rgc-133-1"
+      ],
+      "latencyMs": 18082,
+      "costUsd": 0.003289986,
+      "error": null
+    },
+    {
+      "sceneId": "roundabout-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1-c"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5",
+        "anexo-i-m-6-5",
+        "anexo-i-m-4-2",
+        "rgc-58-1"
+      ],
+      "latencyMs": 22751,
+      "costUsd": 0.003481286,
+      "error": null
+    },
+    {
+      "sceneId": "roundabout-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1-c"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-57-1-c",
+        "rgc-58-1"
+      ],
+      "latencyMs": 17198,
+      "costUsd": 0.0007704859999999999,
+      "error": null
+    },
+    {
+      "sceneId": "crossing-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield_to_pedestrians",
+        "ruleIds": [
+          "rgc-65-1-a",
+          "anexo-i-m-4-3"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield_to_pedestrians",
+      "engineObligation": "yield_to_pedestrians",
+      "ruleIds": [
+        "rgc-65-1-a",
+        "anexo-i-m-4-3"
+      ],
+      "latencyMs": 11044,
+      "costUsd": 0.003202486,
+      "error": null
+    },
+    {
+      "sceneId": "crossing-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "anexo-i-light-green",
+          "rgc-133-1",
+          "rgc-59-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "anexo-i-light-green",
+        "rgc-133-1"
+      ],
+      "latencyMs": 17481,
+      "costUsd": 0.0033263859999999998,
+      "error": null
+    },
+    {
+      "sceneId": "crossing-3",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_and_yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-133-1",
+          "rgc-65-1-a",
+          "anexo-i-m-4-3"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_and_yield",
+      "engineObligation": "stop_and_yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5",
+        "rgc-65-1-a",
+        "anexo-i-m-4-3"
+      ],
+      "latencyMs": 29968,
+      "costUsd": 0.006125086,
+      "error": null
+    },
+    {
+      "sceneId": "emergency-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield_to_emergency_vehicle",
+        "ruleIds": [
+          "rgc-67-1",
+          "rgc-69"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield_to_emergency_vehicle",
+      "engineObligation": "yield_to_emergency_vehicle",
+      "ruleIds": [
+        "rgc-67-1",
+        "rgc-69",
+        "rgc-58-1"
+      ],
+      "latencyMs": 33308,
+      "costUsd": 0.003596586,
+      "error": null
+    },
+    {
+      "sceneId": "emergency-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-57-1"
+        ]
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 20485,
+      "costUsd": 0.000704386,
+      "error": null
+    },
+    {
+      "sceneId": "surface-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1-a"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-57-1-a",
+        "rgc-58-1"
+      ],
+      "latencyMs": 14821,
+      "costUsd": 0.000719786,
+      "error": null
+    },
+    {
+      "sceneId": "surface-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-57-1-a"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-57-1-a"
+      ],
+      "latencyMs": 13752,
+      "costUsd": 0.000693286,
+      "error": null
+    },
+    {
+      "sceneId": "tram-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1-b"
+        ]
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 17880,
+      "costUsd": 0.000692586,
+      "error": null
+    },
+    {
+      "sceneId": "conflict-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-133-1",
+          "rgc-133-2"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5",
+        "rgc-133-1",
+        "rgc-133-2"
+      ],
+      "latencyMs": 20866,
+      "costUsd": 0.003411486,
+      "error": null
+    },
+    {
+      "sceneId": "conflict-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-green",
+          "rgc-133-1",
+          "rgc-59-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-133-1",
+        "anexo-i-light-green",
+        "rgc-56-3"
+      ],
+      "latencyMs": 19753,
+      "costUsd": 0.003353286,
+      "error": null
+    },
+    {
+      "sceneId": "markings-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_and_yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "anexo-i-m-6-3",
+          "anexo-i-m-4-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_and_yield",
+      "engineObligation": "stop_and_yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "anexo-i-m-6-3",
+        "anexo-i-m-4-1"
+      ],
+      "latencyMs": 20515,
+      "costUsd": 0.003385186,
+      "error": null
+    },
+    {
+      "sceneId": "markings-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "anexo-i-m-6-5",
+          "anexo-i-m-4-2"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5",
+        "anexo-i-m-6-5"
+      ],
+      "latencyMs": 11794,
+      "costUsd": 0.003225786,
+      "error": null
+    },
+    {
+      "sceneId": "abstain-1",
+      "expected": {
+        "kind": "abstain",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 19282,
+      "costUsd": 0.000732586,
+      "error": null
+    },
+    {
+      "sceneId": "abstain-2",
+      "expected": {
+        "kind": "abstain",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 10423,
+      "costUsd": 0.000540386,
+      "error": null
+    },
+    {
+      "sceneId": "abstain-3",
+      "expected": {
+        "kind": "abstain",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 15565,
+      "costUsd": 0.000682586,
+      "error": null
+    },
+    {
+      "sceneId": "abstain-4",
+      "expected": {
+        "kind": "abstain",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "outside_scope",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 6687,
+      "costUsd": 0.000460986,
+      "error": null
+    },
+    {
+      "sceneId": "abstain-5",
+      "expected": {
+        "kind": "abstain",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 9904,
+      "costUsd": 0.000494986,
+      "error": null
+    },
+    {
+      "sceneId": "out-1",
+      "expected": {
+        "kind": "out_of_scope",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "outside_scope",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 15756,
+      "costUsd": 0.0006625860000000001,
+      "error": null
+    },
+    {
+      "sceneId": "out-2",
+      "expected": {
+        "kind": "out_of_scope",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "outside_scope",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 8514,
+      "costUsd": 0.0004987860000000001,
+      "error": null
+    },
+    {
+      "sceneId": "out-3",
+      "expected": {
+        "kind": "out_of_scope",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "outside_scope",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 5182,
+      "costUsd": 0.00041418600000000004,
+      "error": null
+    },
+    {
+      "sceneId": "out-4",
+      "expected": {
+        "kind": "out_of_scope",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "outside_scope",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 10772,
+      "costUsd": 0.0005837860000000001,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+[
+  {
+    "id": "unsigned-1",
+    "family": "unsigned",
+    "country": "es",
+    "title": { "es": "Cruce sin señales: coche por la derecha", "en": "Unsigned crossroads: car from the right", "fr": "Carrefour sans signalisation : voiture venant de droite", "ar": "تقاطع بلا إشارات: سيارة قادمة من اليمين" },
+    "prompt": "Approaching an unsigned crossroads in a quiet residential street of a Spanish town, about 15 metres ahead. A white hatchback is driving towards the crossroads along the road from the right and is clearly visible. There are no traffic signs, no traffic lights and no road markings at the crossroads. Both roads are asphalt.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-57-1"] }
+  },
+  {
+    "id": "unsigned-2",
+    "family": "unsigned",
+    "country": "es",
+    "title": { "es": "Cruce sin señales: coche por la izquierda", "en": "Unsigned crossroads: car from the left", "fr": "Carrefour sans signalisation : voiture venant de gauche", "ar": "تقاطع بلا إشارات: سيارة قادمة من اليسار" },
+    "prompt": "Approaching an unsigned crossroads in a quiet residential street of a Spanish town, about 15 metres ahead. A red car, seen from its side, is entering the crossroads from the road on the left and is crossing from left to right in front of the driver; no car is coming towards the driver. The road on the right is clearly visible and empty. There are no traffic signs, no traffic lights and no road markings at the crossroads. Both roads are asphalt.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-57-1"] }
+  },
+  {
+    "id": "unsigned-3",
+    "family": "unsigned",
+    "country": "es",
+    "title": { "es": "Cruce sin señales y sin tráfico", "en": "Unsigned crossroads, no traffic", "fr": "Carrefour sans signalisation ni circulation", "ar": "تقاطع بلا إشارات ولا حركة مرور" },
+    "prompt": "Approaching an empty unsigned crossroads in a quiet residential street of a Spanish town, about 15 metres ahead. The roads to the left, ahead and to the right are all clearly visible and empty, with no vehicles or people. There are no traffic signs, no traffic lights and no road markings at the crossroads. Both roads are asphalt.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-57-1"] }
+  },
+  {
+    "id": "signs-1",
+    "family": "signs",
+    "country": "es",
+    "title": { "es": "Señal de STOP", "en": "STOP sign", "fr": "Panneau STOP", "ar": "إشارة قف (STOP)" },
+    "prompt": "Approaching a crossroads on a suburban road, about 10 metres ahead. On the right-hand side of the road, just before the crossroads, a Spanish STOP sign (a red octagon with the white word STOP) faces the driver and is clearly readable. A solid white stop line is painted across the lane. The cross road is empty.",
+    "expected": { "kind": "answerable", "obligation": "stop_and_yield", "ruleIds": ["rgc-56-1", "rgc-56-5", "rgc-133-1"] }
+  },
+  {
+    "id": "signs-2",
+    "family": "signs",
+    "country": "es",
+    "title": { "es": "Señal de ceda el paso", "en": "Yield sign (ceda el paso)", "fr": "Panneau cédez le passage (ceda el paso)", "ar": "إشارة إفساح الطريق (ceda el paso)" },
+    "prompt": "Approaching a crossroads on a suburban road, about 10 metres ahead. On the right-hand side of the road, just before the crossroads, a Spanish yield sign (a white inverted triangle with a thick red border, with nothing written on it) faces the driver and is clearly visible. The cross road is empty.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-56-1", "rgc-56-5", "rgc-133-1"] }
+  },
+  {
+    "id": "signs-3",
+    "family": "signs",
+    "country": "es",
+    "title": { "es": "Calzada con prioridad y coche esperando a la derecha", "en": "Priority road, car waiting on the right", "fr": "Route prioritaire, voiture qui attend à droite", "ar": "طريق ذو أولوية وسيارة تنتظر على اليمين" },
+    "prompt": "Driving along a main road towards a crossroads with a side street, about 15 metres ahead. On the right-hand side of the road, a Spanish priority-road sign (a yellow square diamond with a white border, standing on one corner) faces the driver and is clearly visible. A grey car is waiting at the end of the side street on the right, about to enter the crossroads.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-56-1", "rgc-56-4"] }
+  },
+  {
+    "id": "lights-1",
+    "family": "lights",
+    "country": "es",
+    "title": { "es": "Semáforo en rojo", "en": "Red light", "fr": "Feu rouge", "ar": "إشارة ضوئية حمراء" },
+    "prompt": "Approaching a crossroads in a Spanish city, about 15 metres ahead. A traffic light on a pole on the right-hand side of the road faces the driver and shows a steady red light; its amber and green lamps are dark. Cross traffic is passing through the crossroads. No pedestrians are on the road.",
+    "expected": { "kind": "answerable", "obligation": "stop_at_light", "ruleIds": ["rgc-56-3", "anexo-i-light-red", "rgc-133-1"] }
+  },
+  {
+    "id": "lights-2",
+    "family": "lights",
+    "country": "es",
+    "title": { "es": "Semáforo en verde", "en": "Green light", "fr": "Feu vert", "ar": "إشارة ضوئية خضراء" },
+    "prompt": "Approaching a crossroads in a Spanish city, about 15 metres ahead. A traffic light on a pole on the right-hand side of the road faces the driver and shows a steady green light; its red and amber lamps are dark. The crossroads is clear and no pedestrians are on the road.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-56-3", "anexo-i-light-green", "rgc-133-1", "rgc-59-1"] }
+  },
+  {
+    "id": "lights-3",
+    "family": "lights",
+    "country": "es",
+    "title": { "es": "Ámbar con una señal de ceda el paso debajo", "en": "Amber light with a yield sign below", "fr": "Feu orange avec un panneau cédez le passage (ceda el paso) en dessous", "ar": "ضوء برتقالي وتحته إشارة إفساح الطريق (ceda el paso)" },
+    "prompt": "Approaching a crossroads in a Spanish town at dusk, about 15 metres ahead. A traffic light on a pole on the right-hand side faces the driver with only its amber lamp lit, as when the light is set to flash amber; its red and green lamps are dark. Directly below the traffic light, on the same pole, a Spanish yield sign (a white inverted triangle with a thick red border) faces the driver. The cross road is empty.",
+    "expected": { "kind": "answerable", "obligation": "stop_at_light", "ruleIds": ["rgc-56-3", "anexo-i-light-amber", "rgc-133-1"] }
+  },
+  {
+    "id": "lights-4",
+    "family": "lights",
+    "country": "es",
+    "title": { "es": "Semáforo en ámbar", "en": "Amber light", "fr": "Feu orange", "ar": "إشارة ضوئية برتقالية" },
+    "prompt": "Approaching a crossroads in a Spanish city in daylight, about 20 metres ahead. A traffic light on a pole on the right-hand side of the road faces the driver and shows a steady amber light; its red and green lamps are dark. No pedestrians are on the road.",
+    "expected": { "kind": "answerable", "obligation": "stop_at_light", "ruleIds": ["rgc-56-3", "anexo-i-light-amber", "rgc-133-1"] }
+  },
+  {
+    "id": "roundabout-1",
+    "family": "roundabout",
+    "country": "es",
+    "title": { "es": "Glorieta con un coche dentro", "en": "Roundabout with a car already on it", "fr": "Giratoire avec une voiture déjà engagée (glorieta)", "ar": "دوّار فيه سيارة تسير داخله (glorieta)" },
+    "prompt": "Approaching the entry of a small roundabout in a Spanish town, about 10 metres ahead, with a planted central island. A blue car is driving on the ring of the roundabout itself, passing across in front of the driver's entry from left to right and seen side-on, so the driver has to wait for it. The only sign at the entry is a round blue sign with three white arrows in a circle; there is no yield sign and no yield marking on the road.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-57-1-c"] }
+  },
+  {
+    "id": "roundabout-2",
+    "family": "roundabout",
+    "country": "es",
+    "title": { "es": "Glorieta vacía", "en": "Empty roundabout", "fr": "Giratoire vide (glorieta)", "ar": "دوّار خالٍ (glorieta)" },
+    "prompt": "Approaching the entry of a small empty roundabout in a Spanish town, about 10 metres ahead, with a planted central island and no vehicles on it. The only sign at the entry is a round blue sign with three white arrows in a circle; there is no yield sign and no yield marking on the road.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-57-1-c"] }
+  },
+  {
+    "id": "crossing-1",
+    "family": "crossing",
+    "country": "es",
+    "title": { "es": "Peatón en el paso de cebra", "en": "Pedestrian on the zebra crossing", "fr": "Piéton sur le passage piéton (paso de cebra)", "ar": "مشاة على ممر المشاة (paso de cebra)" },
+    "prompt": "Driving along a town street towards a zebra crossing (wide white stripes across the road) about 10 metres ahead, away from any junction. A pedestrian is walking across the zebra crossing in front of the car. A blue square sign with a white triangle showing a walking figure stands beside the crossing.",
+    "expected": { "kind": "answerable", "obligation": "yield_to_pedestrians", "ruleIds": ["rgc-65-1-a", "anexo-i-m-4-3"] }
+  },
+  {
+    "id": "crossing-2",
+    "family": "crossing",
+    "country": "es",
+    "title": { "es": "Paso de peatones con semáforo en verde", "en": "Zebra crossing with a green light", "fr": "Passage piéton avec feu vert", "ar": "ممر مشاة مع إشارة خضراء" },
+    "prompt": "Driving along a town street towards a zebra crossing about 15 metres ahead, away from any junction. A traffic light on a pole on the right-hand side faces the driver and shows a steady green light; its red and amber lamps are dark. Nobody is on the crossing; two pedestrians wait on the pavement.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["anexo-i-light-green", "rgc-133-1", "rgc-59-1"] }
+  },
+  {
+    "id": "crossing-3",
+    "family": "crossing",
+    "country": "es",
+    "title": { "es": "STOP con un peatón cruzando", "en": "STOP sign with a pedestrian crossing", "fr": "Panneau STOP avec un piéton qui traverse", "ar": "إشارة قف (STOP) ومشاة يعبرون" },
+    "prompt": "Approaching a crossroads in a Spanish town, about 10 metres ahead. On the right-hand side, a Spanish STOP sign (a red octagon with the white word STOP) faces the driver. Just ahead of the car, before the crossroads, there is a zebra crossing, and a pedestrian is walking across it.",
+    "expected": { "kind": "answerable", "obligation": "stop_and_yield", "ruleIds": ["rgc-56-1", "rgc-56-5", "rgc-133-1", "rgc-65-1-a", "anexo-i-m-4-3"] }
+  },
+  {
+    "id": "emergency-1",
+    "family": "emergency",
+    "country": "es",
+    "title": { "es": "Ambulancia con las luces encendidas", "en": "Ambulance with its lights on", "fr": "Ambulance avec gyrophares allumés", "ar": "سيارة إسعاف بأضواء تنبيه مضاءة" },
+    "prompt": "Approaching a crossroads in a Spanish town, about 20 metres ahead. A Spanish ambulance (white van with yellow and green chequered markings) with its blue emergency lights clearly flashing is driving towards the crossroads along the road from the left. There are no traffic signs or traffic lights at the crossroads.",
+    "expected": { "kind": "answerable", "obligation": "yield_to_emergency_vehicle", "ruleIds": ["rgc-67-1", "rgc-69"] }
+  },
+  {
+    "id": "emergency-2",
+    "family": "emergency",
+    "country": "es",
+    "title": { "es": "Ambulancia con las luces apagadas", "en": "Ambulance with its lights off", "fr": "Ambulance avec gyrophares éteints", "ar": "سيارة إسعاف بأضواء تنبيه مطفأة" },
+    "prompt": "Approaching a crossroads in a Spanish town, about 20 metres ahead. A Spanish ambulance (white van with yellow and green chequered markings) with all its emergency lights switched off is driving towards the crossroads along the road from the left. The road on the right is clearly visible and empty. There are no traffic signs or traffic lights at the crossroads.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-57-1"] }
+  },
+  {
+    "id": "surface-1",
+    "family": "surface",
+    "country": "es",
+    "title": { "es": "Salgo de un camino de tierra a una carretera asfaltada", "en": "From a dirt track onto a paved road", "fr": "D'un chemin de terre vers une route goudronnée", "ar": "من طريق ترابي إلى طريق معبّد" },
+    "prompt": "Driving along an unpaved dirt track in the Spanish countryside towards the point, about 15 metres ahead, where it meets a paved asphalt road that crosses in front from left to right. There are no traffic signs or road markings at the junction. The asphalt road is empty.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-57-1-a"] }
+  },
+  {
+    "id": "surface-2",
+    "family": "surface",
+    "country": "es",
+    "title": { "es": "Carretera asfaltada y camino de tierra a la derecha", "en": "Paved road, dirt track joining from the right", "fr": "Route goudronnée, chemin de terre qui arrive à droite", "ar": "طريق معبّد وطريق ترابي يلتقي به من اليمين" },
+    "prompt": "Driving along a paved asphalt country road in Spain towards a junction about 15 metres ahead where an unpaved dirt track joins from the right. There are no traffic signs or road markings at the junction. The dirt track is empty.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-57-1-a"] }
+  },
+  {
+    "id": "tram-1",
+    "family": "tram",
+    "country": "es",
+    "title": { "es": "Tranvía por la izquierda", "en": "Tram from the left", "fr": "Tramway venant de gauche", "ar": "ترام قادم من اليسار" },
+    "prompt": "Approaching a crossroads in a Spanish city, about 15 metres ahead, where tram tracks cross the road. A modern tram is approaching the crossroads along the tracks from the left. There are no traffic lights and no traffic signs at this crossing.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-57-1-b"] }
+  },
+  {
+    "id": "conflict-1",
+    "family": "conflict",
+    "country": "es",
+    "title": { "es": "Señal de ceda el paso y STOP pintado a la vez", "en": "Yield sign and STOP painted on the road", "fr": "Panneau cédez le passage et STOP peint sur la chaussée", "ar": "إشارة إفساح الطريق وكلمة STOP مرسومة على الطريق" },
+    "prompt": "Approaching a crossroads on a suburban road, about 10 metres ahead. On the right-hand side, a Spanish yield sign (a white inverted triangle with a thick red border, with nothing written on it) faces the driver. The word STOP is painted in large white letters on the road surface in the driver's lane, followed by a solid white stop line at the edge of the crossroads. The cross road is empty.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-56-1", "rgc-56-5", "rgc-133-1", "rgc-133-2"] }
+  },
+  {
+    "id": "conflict-2",
+    "family": "conflict",
+    "country": "es",
+    "title": { "es": "Semáforo en verde y señal de ceda el paso", "en": "Green light and a yield sign", "fr": "Feu vert et panneau cédez le passage", "ar": "إشارة خضراء وإشارة إفساح الطريق" },
+    "prompt": "Approaching a crossroads in a Spanish town, about 15 metres ahead. A traffic light on a pole on the right-hand side faces the driver and shows a steady green light; its red and amber lamps are dark. Below the traffic light, on the same pole, a Spanish yield sign (a white inverted triangle with a thick red border) faces the driver. The crossroads is clear and no pedestrians are on the road.",
+    "expected": { "kind": "answerable", "obligation": "proceed", "ruleIds": ["rgc-56-3", "anexo-i-light-green", "rgc-133-1", "rgc-59-1"] }
+  },
+  {
+    "id": "markings-1",
+    "family": "markings",
+    "country": "es",
+    "title": { "es": "STOP pintado en el suelo, sin señal", "en": "STOP painted on the road, no sign", "fr": "STOP peint sur la chaussée, sans panneau", "ar": "كلمة STOP مرسومة على الطريق دون إشارة" },
+    "prompt": "Approaching a crossroads on a quiet road, about 10 metres ahead, with no traffic signs anywhere. The word STOP is painted in large white letters on the road surface in the driver's lane, followed by a solid white stop line across the lane at the edge of the crossroads. The cross road is empty.",
+    "expected": { "kind": "answerable", "obligation": "stop_and_yield", "ruleIds": ["rgc-56-1", "rgc-56-5", "anexo-i-m-6-3", "anexo-i-m-4-1"] }
+  },
+  {
+    "id": "markings-2",
+    "family": "markings",
+    "country": "es",
+    "title": { "es": "Triángulo de ceda el paso pintado, sin señal", "en": "Yield triangle painted on the road, no sign", "fr": "Triangle cédez le passage peint, sans panneau", "ar": "مثلث إفساح الطريق مرسوم على الطريق دون إشارة" },
+    "prompt": "Approaching a crossroads on a quiet road, about 10 metres ahead, with no traffic signs anywhere. A large white inverted triangle is painted on the road surface in the driver's lane, followed by a broken white line of short dashes across the lane at the edge of the crossroads. The cross road is empty.",
+    "expected": { "kind": "answerable", "obligation": "yield", "ruleIds": ["rgc-56-1", "rgc-56-5", "anexo-i-m-6-5", "anexo-i-m-4-2"] }
+  },
+  {
+    "id": "abstain-1",
+    "family": "abstain",
+    "country": "es",
+    "title": { "es": "Señal tapada por un camión", "en": "Sign hidden by a lorry", "fr": "Panneau caché par un camion", "ar": "إشارة تحجبها شاحنة" },
+    "prompt": "Approaching a crossroads in a Spanish town, about 15 metres ahead. A large white delivery lorry parked on the right-hand side of the road, just before the crossroads, completely hides the place where a traffic sign would stand; only the top of a metal sign post shows above the lorry, and the sign itself cannot be seen.",
+    "expected": { "kind": "abstain", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "abstain-2",
+    "family": "abstain",
+    "country": "es",
+    "title": { "es": "Un muro tapa el lado derecho", "en": "A wall hides the right-hand approach", "fr": "Un mur cache la voie de droite", "ar": "جدار يحجب الطريق القادم من اليمين" },
+    "prompt": "Approaching an unsigned crossroads in an old Spanish village, about 10 metres ahead. A road clearly branches off to the right at the crossroads (its kerb corner and the first metres of its surface are visible), but a tall stone wall at that corner hides everything further along it, so it is impossible to see whether a vehicle is coming from the right. A street also goes off to the left. There are no traffic signs, traffic lights or road markings.",
+    "expected": { "kind": "abstain", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "abstain-3",
+    "family": "abstain",
+    "country": "es",
+    "title": { "es": "Semáforo deslumbrado por el sol", "en": "Traffic light washed out by the sun", "fr": "Feu ébloui par le soleil", "ar": "إشارة ضوئية لا تُرى بسبب وهج الشمس" },
+    "prompt": "Approaching a crossroads in a Spanish city, driving straight into a very low, blinding sun. A traffic light facing the driver hangs right in front of the sun and is completely washed out by the glare, so it is impossible to tell which of its lamps is lit.",
+    "expected": { "kind": "abstain", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "abstain-4",
+    "family": "abstain",
+    "country": "es",
+    "title": { "es": "Cruce de noche con lluvia", "en": "Junction at night in the rain", "fr": "Intersection de nuit sous la pluie", "ar": "تقاطع ليلًا تحت المطر" },
+    "prompt": "Driving at night in heavy rain on an unlit road in the Spanish countryside. Raindrops cover the windscreen and the road ahead is very dark; there may be a junction ahead, but its layout cannot be made out.",
+    "expected": { "kind": "abstain", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "abstain-5",
+    "family": "abstain",
+    "country": "es",
+    "title": { "es": "Señal tapada por las ramas", "en": "Sign hidden by branches", "fr": "Panneau caché par les branches", "ar": "إشارة تحجبها أغصان الشجر" },
+    "prompt": "Approaching a crossroads in a Spanish town, about 10 metres ahead. On the right-hand side, just before the crossroads, a metal sign post stands under a tree, but the sign on it is hidden behind thick leafy branches: only a sliver of its edge shows and its shape and colour cannot be made out. There are no traffic lights and no road markings in the driver's lane.",
+    "expected": { "kind": "abstain", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "out-1",
+    "family": "out",
+    "country": "gb",
+    "title": { "es": "Glorieta en el Reino Unido", "en": "Roundabout in the United Kingdom", "fr": "Giratoire au Royaume-Uni", "ar": "دوّار في المملكة المتحدة" },
+    "prompt": "Approaching the entry of a roundabout in an English town, keeping to the left-hand side of the road. A British give-way sign and the white dashed give-way line are visible, and cars with yellow rear number plates drive around the roundabout clockwise.",
+    "expected": { "kind": "out_of_scope", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "out-2",
+    "family": "out",
+    "country": "us",
+    "title": { "es": "Cruce con STOP en todas las vías (EE. UU.)", "en": "All-way STOP in the United States", "fr": "STOP sur toutes les voies (États-Unis)", "ar": "قف (STOP) في كل الاتجاهات (الولايات المتحدة)" },
+    "prompt": "Approaching a four-way STOP crossroads in an American suburb. A red octagonal STOP sign with a white 'ALL WAY' plate below it stands on the right, the road has yellow centre lines, and an American pickup truck waits at the opposite corner.",
+    "expected": { "kind": "out_of_scope", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "out-3",
+    "family": "out",
+    "country": "es",
+    "title": { "es": "Autopista sin cruces", "en": "Motorway with no junction", "fr": "Autoroute sans intersection", "ar": "طريق سريع بلا تقاطعات" },
+    "prompt": "Driving in the middle lane of a three-lane Spanish motorway (autopista) through open countryside. There is no junction, exit or crossing anywhere in sight, only the motorway continuing straight ahead with light traffic.",
+    "expected": { "kind": "out_of_scope", "obligation": null, "ruleIds": [] }
+  },
+  {
+    "id": "out-4",
+    "family": "out",
+    "country": "es",
+    "title": { "es": "Agente dirigiendo el tráfico", "en": "Police officer directing traffic", "fr": "Agent qui règle la circulation", "ar": "شرطي ينظّم حركة المرور" },
+    "prompt": "Approaching a crossroads in a Spanish city, about 15 metres ahead. A local police officer in uniform and a high-visibility vest stands in the middle of the crossroads directing traffic, with one arm raised towards the driver.",
+    "expected": { "kind": "out_of_scope", "obligation": null, "ruleIds": [] }
+  }
+]

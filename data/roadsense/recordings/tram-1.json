@@ -1,0 +1,62 @@
+{
+  "latencyMs": 17880,
+  "calls": {
+    "sparkModel": "muse-spark-1.3-contributor",
+    "949094563dec01f86e080e2f10f177f5338d8a5eacea128c8b0f4888b1b6489e": {
+      "json": {
+        "crossRoadPaved": true,
+        "egoRoadPaved": true,
+        "inScope": true,
+        "junction": "t_junction",
+        "lights": [],
+        "markings": [],
+        "outOfScopeReason": null,
+        "roadUsers": [
+          {
+            "box": {
+              "x1": 355,
+              "x2": 678,
+              "y1": 330,
+              "y2": 497
+            },
+            "confidence": 0.9,
+            "emergencyLightsOn": false,
+            "id": "u1",
+            "kind": "tram",
+            "position": "from_left"
+          }
+        ],
+        "signs": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 708,
+              "x2": 734,
+              "y1": 324,
+              "y2": 361
+            },
+            "confidence": 0.7,
+            "id": "s1",
+            "kind": "other"
+          },
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 708,
+              "x2": 734,
+              "y1": 362,
+              "y2": 399
+            },
+            "confidence": 0.85,
+            "id": "s2",
+            "kind": "other"
+          }
+        ],
+        "unknowns": [
+          "junction_unclear"
+        ]
+      },
+      "costUsd": 0.000692586
+    }
+  }
+}

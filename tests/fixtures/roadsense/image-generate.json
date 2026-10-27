@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "webpAccepted": true,
+  "body": {
+    "created": 1793043711,
+    "data": [
+      {
+        "b64_json": "UklGRvCOBQBXRUJQVlA4WAoAAAAEAAAAfwcA/wQAVlA4IEiNBQCQLRKdASqA…[485708 chars]"
+      }
+    ],
+    "output_format": "webp",
+    "background": "opaque",
+    "usage": {
+      "input_tokens": 18741,
+      "output_tokens": 2092,
+      "total_tokens": 20833
+    }
+  }
+}

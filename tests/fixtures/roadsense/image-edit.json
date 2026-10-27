@@ -1,0 +1,18 @@
+{
+  "status": 200,
+  "body": {
+    "created": 1793043773,
+    "data": [
+      {
+        "b64_json": "UklGRvxrBgBXRUJQVlA4WAoAAAAEAAAAfwcA/wQAVlA4IFRqBgCQWhKdASqA…[561160 chars]"
+      }
+    ],
+    "output_format": "webp",
+    "background": "opaque",
+    "usage": {
+      "input_tokens": 11773,
+      "output_tokens": 542,
+      "total_tokens": 12315
+    }
+  }
+}

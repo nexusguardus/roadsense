@@ -1,0 +1,23 @@
+{
+  "name": "roadsense",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RoadSense: who goes first at a Spanish junction, from a photo, checked against the law. Meta Global AI Developer Hackathon 2026.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.15"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "typecheck": "tsc -p .",
+    "eval:replay": "tsx scripts/roadsense/eval.ts --mode replay --effort low",
+    "analyze": "tsx scripts/roadsense/analyze.ts"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.18",
+    "@types/react": "18.3.28",
+    "react": "18.3.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  }
+}

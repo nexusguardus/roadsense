@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a59" tipo="precepto" titulo="Artículo 59">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 59. Intersecciones.</p>
+        <p class="parrafo">1. Aun cuando goce de prioridad de paso, ningún conductor deberá penetrar con su vehículo en una intersección o en un paso para peatones o para ciclistas si la situación de la circulación es tal que, previsiblemente, pueda quedar detenido de forma que impida u obstruya la circulación transversal (artículo 24.2 del texto articulado).</p>
+        <p class="parrafo">2. Todo conductor que tenga detenido su vehículo en una intersección regulada por semáforo y su situación constituya obstáculo para la circulación deberá salir de aquélla sin esperar a que se permita la circulación en la dirección que se propone tomar, siempre que al hacerlo no entorpezca la marcha de los demás usuarios que avancen en el sentido permitido (artículo 24.3 del texto articulado).</p>
+        <p class="parrafo">3. Las infracciones a las normas de este precepto tendrán la consideración de graves, conforme se prevé en el artículo 65.4.c) del texto articulado.</p>
+      </version>
+    </bloque>
+  </data>
+</response>

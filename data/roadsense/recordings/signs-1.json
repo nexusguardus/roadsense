@@ -1,0 +1,77 @@
+{
+  "latencyMs": 20149,
+  "calls": {
+    "sparkModel": "muse-spark-1.3-contributor",
+    "9057017e3110436667c15224afcf6180310a6eb86529f7da8bb01157940891d6": {
+      "json": {
+        "crossRoadPaved": true,
+        "egoRoadPaved": true,
+        "inScope": true,
+        "junction": "crossroads",
+        "lights": [],
+        "markings": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 312,
+              "x2": 781,
+              "y1": 534,
+              "y2": 730
+            },
+            "confidence": 0.95,
+            "id": "m1",
+            "kind": "stop_line"
+          },
+          {
+            "appliesTo": "ahead",
+            "box": {
+              "x1": 344,
+              "x2": 520,
+              "y1": 323,
+              "y2": 371
+            },
+            "confidence": 0.7,
+            "id": "m2",
+            "kind": "stop_line"
+          }
+        ],
+        "outOfScopeReason": null,
+        "roadUsers": [],
+        "signs": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 842,
+              "x2": 923,
+              "y1": 118,
+              "y2": 259
+            },
+            "confidence": 0.98,
+            "id": "s1",
+            "kind": "stop"
+          }
+        ],
+        "unknowns": []
+      },
+      "costUsd": 0.0007237000000000001
+    },
+    "8c7fd747115d12b32474a489ad2b54309feda3eaf514e45581193edaf7644f27": {
+      "text": "<0f>0<|box;x1=681;y1=237;x2=703;y2=277;w=1920;h=1280;c=0.675126850605011|><|mask;x=0;y=0;c=0.675126850605011;data=41,23,~!!!&B!TT1+H*6jT-Q.K+b-)M@YbcR8+EjlGVopx6[[Su:D]Q?F?4K3/?8pJ]b_[7=YwN*?h_seZJL7Z2Exc:zD%]Fm5)P%(RkB.t%O%)M.2[`Ii#ar09dT{=YFfq6Yv]qsQj^/hEayxxgUBAWpVtQ$mH/KB*u+f'tWu'(pMzvIA3#=b(hL6tXHo)+r1P9fUkCj%j9tLoJ4Rw`gf[gQ.g3Nvb%Pro0)wgnTH6!J&xL2Smc!)'VE7oc+`F#dA-rU8!mQmDl6?0Zoh01wf5g]%WXbCHLVo=h?EpNnus/jj:A9E$W+jDi&vH)q@JK*KgZZXNXa'EvONE/Mkk&ucBT5Xwh]+DcLHALktW5Lj8D-:i#9`hlTU8Ppc#'J*O.s9jT7N'WcTPdOK^)BO!E_`5O'5OHoOY2[afQ$wR2r$Ydg'W]i&7raBO22toMpynTZ`&X'Gr=`xbWeCJiY[!`gP`3|>,1<|box;x1=1542;y1=156;x2=1688;y2=305;w=1920;h=1280;c=0.9064327478408813|><|mask;x=0;y=0;c=0.9064327478408813;data=150,147,~!!!9W!0cY]jQeY0f*NF]Rv6rX2UKlh!8tNh08H8@3X9hjsr`fMLW+.V@or('Rx8++q%e@RT%oith+#R#xD(v*8(Zw65k1awN8uhEaT$b&O14:[HoS5)lm4V^ZD:nXH=H!OH6Y0Q.aRMblbY0C)337]T_CHN9P]IgYoR]JDkyf{m.4=Wl$EC#r%vYXuTy29U$!HE4KVXCM0t0.U=!o{1+TvAVTWk(p^#`KCLS?H?x6g-H{pFm0NjQa*F#.uvCgyjVFm(6R)`EZ#K2%SE1uWpEnj=+eQPKl^_wz7*BUsiZu#-IqP^lv+Fxr@*!v/_m4Y*%-BBeXI%h_q2yo)5QYteZAbwQ1n]NtUVYoS&D'P&P3[2o`NtlZNOFt%v#bZRCKY(`HUh]TOP[l:zsV]$2Vvhw&BVfP=*p$81co(sE:'8DcS1q*f[/BTXwaKJ`Na{$Li9lQ5w(p$?g`XZhc4oew^JMzKn51uhx5S/%$$Gw0kh.])SY@53b1.KBd)2Gz'!%)[R:p0m9y{=H8Hb5OgpqXttwx[AG/b$eHlHA'I4M%`KhQ#JIvEPWcf*eZ]MdE89O%AOcBn{N8QafVG`OgBM@#wSeC2nYO_Erq*t`F@c%9q#pawm&@jZQulo^)d]2uA$JT/w4[qioY/S1K7pVCs4&*ef{!jrdk&h)q&6L(:emD*bm5elzrK8_Mp7Qsfs2s.[_uK`fJu9PR@Q*(89&$ThQiTxplXu0#I-%Yltb!KV3L1Q/vvhg-A(%wB%J5COue-.Uw]J-.P.-W:wnVvj&6U]EqkbO8cpP1MOZ:5y!3m?h$#j`s:*&16t*D$Ek+cGjvg$r{vAf%B-tDPcy-&zjK`$Wdx[=_RB7)f(Md$f9#Ah0%no!ggLb4a&Btt3BSh6Hv2J=`U=X3yNG`S-_X*=0T7u+kI*6N){CxF@DYPvX'kxao(g6'kMzs[T1&Vj6-2Ai(@TRu9$691oHtY41f2g$L]Y*W#_3v@e91Z?Ta:rTBZ/.4/p%I6MEO?b8`iW%0K227+EI1:%u&sC'0_1WLA2ZK)&v4t8te$-)%p_gd3]?$1sL+au]of]cN^4WWr+Q@OpjJC5.I93#lSc9n6HP's=?/'o9R'3gkQIL'oqc{w3j_!wct?5pBUwq15o^{S5DAcS^U.91.^E8Dxk-UnMc0]AD3kT1[(:dK+5`hWMAo^n6FK3mfE6D)9h&.YzHPUR[6J0=p8tF_:^]2B`i#+A-id=9+Dl9gl7R-9TA_*z=rrSJQ(0LxWT*?r&(5@r1+$M^AYq(goMA{xUpL8rVEPBe`U)Q'gk[?@EWL?ZC6-?G/9Qz0-Z%VpD--9q3/%NT8:5b]Tx^lYvMS{i0?O_scots:bnDLzv`ao()(6-ItJ]Sib5IF*ZT@[_vKsEshIM/W0=y9H#b@^]a*@B?Wtl:DX^=#b_:w!)Ffig[W_NzQxO.TKCti@[7!YJel`dd5/[M[LJrQxU#MT's_=@X*SRqe5o.%=v4+$]fJMIhqk_8YEUR'e07=#g{jmoBxt^sIPskSF'G3me8a/#nn[/rD.NYG6pXl*iVjsnEH[x3g$mmV*jEKP:$&UpfpE^=Vy1uL8Jsiic:ld8coi`hwgFIw.1r^HZ&HNHvf-9i1eFYQe3?nmjB(aS1nw?R=[g0g8eILRoi*!p=Zk]ZGW.FK&]9!K^dI&&$]a&I3j7u)cH#p`Ld9{:pw3[)l#MV4(Bldoapw43u?=mMp83_VyBNI4^kWFDl8HS&qHxQ:f3mEg?fFAIP)w.'8$F&p=LGzAq6$O1wosrI#Gc/LurK1%tl&#S_-tzu=^GtdUY[mkgCS6N8]rw*kT1qB9pa1`va#rE)U#xg8:zaidHACSS``pp!JQ7'hg]:dmoT_JoP(=nP{UXQ`9PJ+bapSslLpltSl7W#Rl`uK=8Z%Ap#'C+e$dC84K[))%vQhJPzY5QCHQ{s+B'+h-WHhw3O5YTC_Kw6Kv`LUr0@cJkkyY#qRQq#!sfyM_B]OQYJq.ZmBg(AIW71hKSrySY_BKtH3mPO:P&RvTI8vR3Di=5&1{eHVYXUlzOHgEl^Br^ertE[%F/cBUV6i`Pt3]@vOF`7O[]l]I`#qIyc/FC%J[BFOCuTNWIgaVb2i@[h{/5C+LJ*:1_&%Cc38Vs1NL(s?lRCgVkxo%(7&O$n5ewYJi371f*'Hl7mR^X*y*S7pRua3/0=U:K%Z2/F?HY3G5-#h3fSU]gKZZxXLhOwqjc/3:fXNlBkvBx9(o%C-%7)QS*nk3_P`BimCZU!ZMVE:3B1K?@eLl$]Nt!xG{[{y:['c$Ist:dw?iG%QG7rIST^Y@E(vEKL?AuCtBzjlI8OXK'sF7=CmE[Ea^`0VcN2uF]/Uh@V.#A/oO]fadu=)'e@D{Lo{+bN:kUK55LWvsbHROmQGQEfCE-C0lcU|>,2<|box;x1=1102;y1=247;x2=1129;y2=276;w=1920;h=1280;c=0.5857605338096619|><|mask;x=0;y=0;c=0.5857605338096619;data=30,28,~!!!%:!O'!xdF%NfmQshWe)nU^l!Bh#Exm)Yt.+pTo:mMDpA8(h^=W+.-Z&sN+Pq3$qw(nl3Hn6Lowi(S(XFf3x=1.T)#f^N[RgTF${vh'@LAIu`c[s`ftf(-r7`L]41LP!Pz5Ou3O!L{o7$AN!4{`)Aw1ws3u`o_hCmoUxJtf!?1S-w-mx&C%Ze+A)=:-gPDDq'72T$Q-FjrM35_3i_#7kwseJ&vr8rL:)Vx-LF)0GTbnb7l*nmv*6GnL]#]_:wU2XmN=07DoXhX*utOJ'tPzX4*]hXS5ON+rylrcNjw`qJ=DdxQ.Z_4jVAD13Y0Y:(a1+Gb+Y_V:R8RsNUAnoaT+y3gs0w$3)XM'|>\n",
+      "costUsd": 0.0025
+    },
+    "6ddd42d0e8fffedc3cdd0a0ef6486c6be1a9e75a0094416ecaea3362ee532cf5": {
+      "json": {
+        "obligation": "stop_and_yield",
+        "priorityTo": [],
+        "rationale": "You are at a crossroads with a vertical Stop sign (detención obligatoria o stop) and a stop line for your approach. That signalling regulates priority (preferencia de paso), so you must always give way (ceder el paso) to vehicles on the priority road and stop completely. With no one in sight you must still stop, then you may go once it is clear.",
+        "ruleIds": [
+          "rgc-56-5",
+          "rgc-56-1"
+        ],
+        "temptingWrongAnswer": "Proceed without stopping because no vehicles are visible.",
+        "whyWrong": "A Stop requires you to always give way and to stop completely when indicated, even if the road looks empty."
+      },
+      "costUsd": 0.0002893
+    }
+  }
+}

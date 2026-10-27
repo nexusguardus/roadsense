@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a58" tipo="precepto" titulo="Artículo 58">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 58. Normas generales.</p>
+        <p class="parrafo">1. El conductor de un vehículo que haya de ceder el paso a otro no deberá iniciar o continuar su marcha o su maniobra, ni reemprenderlas, hasta haberse asegurado de que con ello no fuerza al conductor del vehículo que tiene la prioridad a modificar bruscamente la trayectoria o la velocidad de éste, y debe mostrar con suficiente antelación, por su forma de circular y especialmente con la reducción paulatina de la velocidad que efectivamente va a cederlo (artículo 24.1 del texto articulado).</p>
+        <p class="parrafo">2. En todos los preceptos de este capítulo que regulan la prioridad de paso deberán tenerse en cuenta, en su caso, las normas previstas en el apartado anterior.</p>
+        <p class="parrafo">3. Las infracciones a las normas de este precepto tendrán la consideración de graves, conforme se prevé en el artículo 65.4.c) del texto articulado.</p>
+      </version>
+    </bloque>
+  </data>
+</response>

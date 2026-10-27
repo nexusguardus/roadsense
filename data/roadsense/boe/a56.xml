@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a56" tipo="precepto" titulo="Artículo 56">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 56. Intersecciones señalizadas.</p>
+        <p class="parrafo">1. En las intersecciones la preferencia de paso se verificará siempre ateniéndose a la señalización que la regule (artículo 21.1 del texto articulado).</p>
+        <p class="parrafo">2. Los conductores de vehículos que se aproximen a una intersección regulada por un agente de la circulación deberán detener sus vehículos cuando así lo ordene éste mediante las señales previstas en el artículo 143.</p>
+        <p class="parrafo">3. Todo conductor de un vehículo que se aproxime a una intersección regulada por semáforos deberá actuar en la forma ordenada en el artículo 146.</p>
+        <p class="parrafo">4. Los conductores de los vehículos que se aproximen a una intersección señalizada con señal de intersección con prioridad, o que circulen por una vía señalizada con señal de calzada con prioridad, previstas en los artículos 149 y 151, tendrán prioridad de paso sobre los vehículos que circulen por otra vía o procedan de ella.</p>
+        <p class="parrafo">5. En las intersecciones de vías señalizadas con señal de «ceda el paso» o «detención obligatoria o stop», previstas en los artículos 151 y 169, los conductores cederán siempre el paso a los vehículos que transiten por la vía preferente, cualquiera que sea el lado por el que se aproximen, llegando a detener por completo su marcha cuando sea preciso y, en todo caso, cuando así lo indique la señal correspondiente.</p>
+        <p class="parrafo">6. Las infracciones a las normas de este precepto relativas a la prioridad de paso tendrán la consideración de graves, conforme lo dispuesto en el artículo 65.4.c) del texto articulado.</p>
+      </version>
+      <version id_norma="BOE-A-2025-12199" fecha_publicacion="20250617" fecha_vigencia="20250701">
+        <p class="articulo">Artículo 56. Intersecciones señalizadas.</p>
+        <p class="parrafo">1. La preferencia de paso en las intersecciones se ajustará a la señalización que la regule.</p>
+        <p class="parrafo">2. Los conductores de vehículos que se aproximen a una intersección regulada por un agente de la circulación deberán detener sus vehículos cuando así lo ordene este mediante las señales previstas en el artículo 141, desarrolladas en el apartado 1 del anexo I.</p>
+        <p class="parrafo">3. Todo conductor de un vehículo que se aproxime a una intersección regulada por semáforos deberá actuar en la forma ordenada en el apartado 4 del anexo I respecto a los semáforos circulares para vehículos.</p>
+        <p class="parrafo">4. Los conductores de los vehículos que se aproximen a una intersección señalizada con señal de intersección con prioridad, o que circulen por una vía señalizada con señal de calzada con prioridad, previstas en el Catálogo dentro de las “señales de advertencia de peligro” y “señales de prioridad”, tendrán prioridad de paso sobre los vehículos que circulen por otra vía o procedan de ella.</p>
+        <p class="parrafo">5. En las intersecciones de vías señalizadas con señal de “ceda el paso” o “detención obligatoria o stop”, previstas en el Catálogo dentro de las “señales de prioridad” y “señales horizontales”, los conductores cederán siempre el paso a los vehículos que transiten por la vía preferente, cualquiera que sea el lado por el que se aproximen, llegando a detener por completo su marcha cuando sea preciso y, en todo caso, cuando así lo indique la señal correspondiente.</p>
+        <p class="parrafo">6. Las infracciones a las normas de este precepto relativas a la preferencia de paso tendrán la consideración de graves, conforme a lo dispuesto en el artículo 76.c) del texto refundido.</p>
+        <blockquote>
+          <p class="nota_pie">Se modifica por el art. único.5 del Real Decreto 465/2025, de 10 de junio. <a class="refPost">Ref. BOE-A-2025-12199</a></p>
+        </blockquote>
+      </version>
+    </bloque>
+  </data>
+</response>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a69" tipo="precepto" titulo="Artículo 69">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 69. Comportamiento de los demás conductores respecto de los vehículos prioritarios.</p>
+        <p class="parrafo">Tan pronto perciban las señales especiales que anuncien la proximidad de un vehículo prioritario, los demás conductores adoptarán las medidas adecuadas, según las circunstancias del momento y lugar, para facilitarles el paso, apartándose normalmente a su derecha o deteniéndose si fuera preciso.</p>
+        <p class="parrafo">Cuando un vehículo de policía que manifiesta su presencia según lo dispuesto en el artículo 68.2 se sitúa detrás de cualquier otro vehículo y activa además un dispositivo de emisión de luz amarilla hacia adelante de forma intermitente o destellante, el conductor de éste deberá detenerlo con las debidas precauciones en el lado derecho, delante del vehículo policial, en un lugar donde no genere mayores riesgos o molestias para el resto de los usuarios, y permanecerá en su interior. En todo momento el conductor ajustará su comportamiento a las instrucciones que imparta el agente a través de la megafonía o por cualquier otro medio que pueda ser percibido claramente por aquél.</p>
+      </version>
+      <version id_norma="BOE-A-2025-12199" fecha_publicacion="20250617" fecha_vigencia="20250701">
+        <p class="articulo">Artículo 69. Comportamiento de los demás conductores respecto de los vehículos prioritarios.</p>
+        <p class="parrafo">Tan pronto perciban las señales especiales que anuncien la proximidad de un vehículo prioritario, los demás conductores adoptarán las medidas adecuadas, según las circunstancias del momento y lugar, para facilitarles el paso, apartándose normalmente a su derecha o deteniéndose si fuera preciso.</p>
+        <p class="parrafo">Cuando un vehículo de policía que manifiesta su presencia según lo dispuesto en el artículo 68.2 se sitúa detrás de cualquier otro vehículo y activa además un dispositivo de emisión de luz roja hacia adelante de forma intermitente o destellante, el conductor de este deberá detenerlo con las debidas precauciones en el lado derecho, delante del vehículo policial, en un lugar donde no genere mayores riesgos o molestias para el resto de los usuarios, y permanecerá en su interior. En todo momento el conductor ajustará su comportamiento a las instrucciones que imparta el agente a través de la megafonía o por cualquier otro medio que pueda ser percibido claramente por aquel.</p>
+        <blockquote>
+          <p class="nota_pie">Se modifica por el art. único.8 del Real Decreto 465/2025, de 10 de junio. <a class="refPost">Ref. BOE-A-2025-12199</a></p>
+        </blockquote>
+      </version>
+      <version id_norma="BOE-A-2026-13889" fpub="" fecha_publicacion="20260626" fecha_vigencia="20261001">
+        <p class="articulo">Artículo 69. Comportamiento de los demás conductores respecto de los vehículos prioritarios.</p>
+        <p class="parrafo">Tan pronto perciban las señales especiales que anuncien la proximidad de un vehículo prioritario, los demás conductores adoptarán las medidas adecuadas, según las circunstancias del momento y lugar, para facilitarles el paso, apartándose normalmente a su derecha o deteniéndose si fuera preciso, o actuando conforme a lo dispuesto en el artículo 32.</p>
+        <blockquote caduca="20261001" class="soloTexto">
+          <p class="parrafo">Téngase en cuenta que esta actualización del primer párrafo, establecida por el art. único.11 del Real Decreto 518/2026, de 24 de junio, <a class="refPost">Ref. BOE-A-2026-13889</a>, entra en vigor el 1 de octubre de 2026, según determina su disposición final 3.</p>
+          <p class="cita_con_pleca">Redacción anterior:</p>
+          <p class="parrafo">"Tan pronto perciban las señales especiales que anuncien la proximidad de un vehículo prioritario, los demás conductores adoptarán las medidas adecuadas, según las circunstancias del momento y lugar, para facilitarles el paso, apartándose normalmente a su derecha o deteniéndose si fuera preciso."</p>
+        </blockquote>
+        <p class="parrafo">Cuando un vehículo de policía que manifiesta su presencia según lo dispuesto en el artículo 68.2 se sitúa detrás de cualquier otro vehículo y activa además un dispositivo de emisión de luz roja hacia adelante de forma intermitente o destellante, el conductor de este deberá detenerlo con las debidas precauciones en el lado derecho, delante del vehículo policial, en un lugar donde no genere mayores riesgos o molestias para el resto de los usuarios, y permanecerá en su interior. En todo momento el conductor ajustará su comportamiento a las instrucciones que imparta el agente a través de la megafonía o por cualquier otro medio que pueda ser percibido claramente por aquel.</p>
+        <blockquote>
+          <p class="nota_pie">Se modifica el primer párrafo, con efectos de 1 de octubre de 2026, por el art. único.11 del Real Decreto 518/2026, de 24 de junio. <a class="refPost">Ref. BOE-A-2026-13889</a></p>
+          <p class="nota_pie">Se modifica por el art. único.8 del Real Decreto 465/2025, de 10 de junio. <a class="refPost">Ref. BOE-A-2025-12199</a></p>
+        </blockquote>
+      </version>
+    </bloque>
+  </data>
+</response>

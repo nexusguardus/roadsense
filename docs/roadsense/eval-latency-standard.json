@@ -1,0 +1,255 @@
+{
+  "mode": "live",
+  "spark": "standard",
+  "effort": "low",
+  "date": "2026-10-27",
+  "locale": "en",
+  "report": {
+    "answerable": {
+      "total": 7,
+      "correct": 6,
+      "notSure": 1,
+      "checkedWrong": 0
+    },
+    "abstain": {
+      "total": 1,
+      "correct": 1
+    },
+    "outOfScope": {
+      "total": 0,
+      "correct": 0
+    },
+    "citations": {
+      "total": 15,
+      "valid": 15
+    },
+    "schema": {
+      "total": 8,
+      "valid": 8
+    },
+    "latencyMs": {
+      "p50": 7369,
+      "p95": 9773
+    },
+    "costUsd": {
+      "total": 0.12603770000000003,
+      "perScene": 0.015754712500000004
+    },
+    "byRule": {
+      "rgc-57-1": {
+        "total": 1,
+        "correct": 0
+      },
+      "rgc-56-1": {
+        "total": 2,
+        "correct": 2
+      },
+      "rgc-56-5": {
+        "total": 2,
+        "correct": 2
+      },
+      "rgc-133-1": {
+        "total": 4,
+        "correct": 4
+      },
+      "rgc-56-3": {
+        "total": 2,
+        "correct": 2
+      },
+      "anexo-i-light-red": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-light-green": {
+        "total": 1,
+        "correct": 1
+      },
+      "rgc-59-1": {
+        "total": 1,
+        "correct": 1
+      },
+      "rgc-57-1-c": {
+        "total": 1,
+        "correct": 1
+      },
+      "rgc-65-1-a": {
+        "total": 1,
+        "correct": 1
+      },
+      "anexo-i-m-4-3": {
+        "total": 1,
+        "correct": 1
+      }
+    },
+    "failures": [
+      "unsigned-1: expected checked (yield), got not_sure"
+    ]
+  },
+  "results": [
+    {
+      "sceneId": "unsigned-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1"
+        ]
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 7369,
+      "costUsd": 0.01144875,
+      "error": null
+    },
+    {
+      "sceneId": "signs-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_and_yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_and_yield",
+      "engineObligation": "stop_and_yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5"
+      ],
+      "latencyMs": 9686,
+      "costUsd": 0.01691275,
+      "error": null
+    },
+    {
+      "sceneId": "signs-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5"
+      ],
+      "latencyMs": 6686,
+      "costUsd": 0.0160075,
+      "error": null
+    },
+    {
+      "sceneId": "lights-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "stop_at_light",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-red",
+          "rgc-133-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "stop_at_light",
+      "engineObligation": "stop_at_light",
+      "ruleIds": [
+        "rgc-133-1",
+        "anexo-i-light-red",
+        "rgc-56-3"
+      ],
+      "latencyMs": 8854,
+      "costUsd": 0.01820575,
+      "error": null
+    },
+    {
+      "sceneId": "lights-2",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "proceed",
+        "ruleIds": [
+          "rgc-56-3",
+          "anexo-i-light-green",
+          "rgc-133-1",
+          "rgc-59-1"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-56-3",
+        "anexo-i-light-green",
+        "rgc-133-1"
+      ],
+      "latencyMs": 9773,
+      "costUsd": 0.01925375,
+      "error": null
+    },
+    {
+      "sceneId": "roundabout-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield",
+        "ruleIds": [
+          "rgc-57-1-c"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-56-1",
+        "rgc-56-5",
+        "anexo-i-m-6-5"
+      ],
+      "latencyMs": 9152,
+      "costUsd": 0.0205145,
+      "error": null
+    },
+    {
+      "sceneId": "crossing-1",
+      "expected": {
+        "kind": "answerable",
+        "obligation": "yield_to_pedestrians",
+        "ruleIds": [
+          "rgc-65-1-a",
+          "anexo-i-m-4-3"
+        ]
+      },
+      "certainty": "checked",
+      "obligation": "yield_to_pedestrians",
+      "engineObligation": "yield_to_pedestrians",
+      "ruleIds": [
+        "rgc-65-1-a",
+        "anexo-i-m-4-3"
+      ],
+      "latencyMs": 6173,
+      "costUsd": 0.01593725,
+      "error": null
+    },
+    {
+      "sceneId": "abstain-1",
+      "expected": {
+        "kind": "abstain",
+        "obligation": null,
+        "ruleIds": []
+      },
+      "certainty": "not_sure",
+      "obligation": null,
+      "engineObligation": null,
+      "ruleIds": [],
+      "latencyMs": 4158,
+      "costUsd": 0.00775745,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a67" tipo="precepto" titulo="Artículo 67">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 67. Vehículos prioritarios.</p>
+        <p class="parrafo">1. Tendrán prioridad de paso sobre los demás vehículos y otros usuarios de la vía los vehículos de servicios de urgencia, públicos o privados, cuando se hallen en servicio de tal carácter. Podrán circular por encima de los límites de velocidad y estarán exentos de cumplir otras normas o señales en los casos y con las condiciones que se determinan en esta sección (artículo 25 del texto articulado).</p>
+        <p class="parrafo">2. Los conductores de los vehículos destinados a los referidos servicios harán uso ponderado de su régimen especial únicamente cuando circulen en prestación de un servicio urgente y cuidarán de no vulnerar la prioridad de paso en las intersecciones de vías o las señales de los semáforos, sin antes adoptar extremadas precauciones, hasta cerciorarse de que no existe riesgo de atropello a peatones y de que los conductores de otros vehículos han detenido su marcha o se disponen a facilitar la suya.</p>
+        <p class="parrafo">3. La instalación de aparatos emisores de luces y señales acústicas especiales en vehículos prioritarios requerirá autorización de la Jefatura Provincial de Tráfico correspondiente, de conformidad con lo dispuesto en las normas reguladoras de los vehículos.</p>
+      </version>
+    </bloque>
+  </data>
+</response>

@@ -1,0 +1,74 @@
+{
+  "latencyMs": 15756,
+  "calls": {
+    "sparkModel": "muse-spark-1.3-contributor",
+    "ff584fb3d2400bbb3f00b8aa5fe8ac1b36473b138096e06124c4a7199b8c8ec3": {
+      "json": {
+        "crossRoadPaved": true,
+        "egoRoadPaved": true,
+        "inScope": false,
+        "junction": "roundabout",
+        "lights": [],
+        "markings": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 230,
+              "x2": 560,
+              "y1": 505,
+              "y2": 690
+            },
+            "confidence": 0.9,
+            "id": "m1",
+            "kind": "yield_triangle"
+          }
+        ],
+        "outOfScopeReason": "not_spain",
+        "roadUsers": [
+          {
+            "box": {
+              "x1": 707,
+              "x2": 764,
+              "y1": 406,
+              "y2": 453
+            },
+            "confidence": 0.85,
+            "emergencyLightsOn": false,
+            "id": "u1",
+            "kind": "car",
+            "position": "from_right"
+          },
+          {
+            "box": {
+              "x1": 793,
+              "x2": 889,
+              "y1": 437,
+              "y2": 523
+            },
+            "confidence": 0.85,
+            "emergencyLightsOn": false,
+            "id": "u2",
+            "kind": "car",
+            "position": "inside_roundabout"
+          }
+        ],
+        "signs": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 110,
+              "x2": 170,
+              "y1": 438,
+              "y2": 607
+            },
+            "confidence": 0.96,
+            "id": "s1",
+            "kind": "yield"
+          }
+        ],
+        "unknowns": []
+      },
+      "costUsd": 0.0006625860000000001
+    }
+  }
+}

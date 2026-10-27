@@ -1,0 +1,410 @@
+[
+  {
+    "id": "rgc-56-1",
+    "law": "RGC",
+    "boeBlockId": "a56",
+    "article": "RGC art. 56.1",
+    "title": "Intersecciones señalizadas",
+    "excerptEs": "1. La preferencia de paso en las intersecciones se ajustará a la señalización que la regule.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a56",
+    "versionDate": "2025-07-01",
+    "sha256": "195691d8e622a5a85b0e684435ac2f6b536a64b066c33d7a4efa2468dedf4def",
+    "explanation": {
+      "es": "En un cruce con señales, quién pasa primero lo deciden las señales, no la regla de la derecha.",
+      "en": "At a junction with signs or signals, they decide who goes first, not the give-way-to-the-right rule.",
+      "fr": "À un carrefour signalisé, ce sont les signaux qui décident qui passe en premier, pas la règle de la priorité à droite (prioridad a la derecha).",
+      "ar": "في التقاطع المزوَّد بإشارات، تحدد الإشارات من يمر أولاً، وليس قاعدة الأولوية لليمين (prioridad a la derecha)."
+    }
+  },
+  {
+    "id": "rgc-56-3",
+    "law": "RGC",
+    "boeBlockId": "a56",
+    "article": "RGC art. 56.3",
+    "title": "Intersecciones reguladas por semáforos",
+    "excerptEs": "3. Todo conductor de un vehículo que se aproxime a una intersección regulada por semáforos deberá actuar en la forma ordenada en el apartado 4 del anexo I respecto a los semáforos circulares para vehículos.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a56",
+    "versionDate": "2025-07-01",
+    "sha256": "2c9259e43b1307e974c2b3cb3768868852072258fbc6d63d6ae769e68ef8571a",
+    "explanation": {
+      "es": "Si el cruce tiene semáforo, debes hacer lo que indica el semáforo para vehículos.",
+      "en": "If the junction has traffic lights, you must do what the vehicle lights tell you.",
+      "fr": "Si le carrefour est équipé de feux, vous devez obéir aux feux pour véhicules (semáforos).",
+      "ar": "إذا كان التقاطع مزوَّداً بإشارات ضوئية، يجب عليك الالتزام بما تشير إليه إشارات المركبات (semáforos)."
+    }
+  },
+  {
+    "id": "rgc-56-4",
+    "law": "RGC",
+    "boeBlockId": "a56",
+    "article": "RGC art. 56.4",
+    "title": "Vía con prioridad",
+    "excerptEs": "4. Los conductores de los vehículos que se aproximen a una intersección señalizada con señal de intersección con prioridad, o que circulen por una vía señalizada con señal de calzada con prioridad, previstas en el Catálogo dentro de las “señales de advertencia de peligro” y “señales de prioridad”, tendrán prioridad de paso sobre los vehículos que circulen por otra vía o procedan de ella.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a56",
+    "versionDate": "2025-07-01",
+    "sha256": "78d699a29feba7e8132ac0320e3a1e9b469af3fe7efe8d88051dad6cbda8dafa",
+    "explanation": {
+      "es": "Si una señal indica que tu vía tiene prioridad, pasas antes que quien llega por la otra vía.",
+      "en": "If a sign shows that your road has priority, you go before traffic coming from the other road.",
+      "fr": "Si un panneau indique que votre route est prioritaire (calzada con prioridad), vous passez avant les véhicules venant de l'autre voie.",
+      "ar": "إذا أشارت لافتة إلى أن طريقك له الأولوية (calzada con prioridad)، فإنك تمر قبل القادمين من الطريق الآخر."
+    }
+  },
+  {
+    "id": "rgc-56-5",
+    "law": "RGC",
+    "boeBlockId": "a56",
+    "article": "RGC art. 56.5",
+    "title": "Ceda el paso y STOP",
+    "excerptEs": "5. En las intersecciones de vías señalizadas con señal de “ceda el paso” o “detención obligatoria o stop”, previstas en el Catálogo dentro de las “señales de prioridad” y “señales horizontales”, los conductores cederán siempre el paso a los vehículos que transiten por la vía preferente, cualquiera que sea el lado por el que se aproximen, llegando a detener por completo su marcha cuando sea preciso y, en todo caso, cuando así lo indique la señal correspondiente.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a56",
+    "versionDate": "2025-07-01",
+    "sha256": "1d1206dcbe890702859f4fe6a0a59b92ff160ebb656d17b17de5bb6155a18dac",
+    "explanation": {
+      "es": "Con «ceda el paso» o «STOP», cedes siempre el paso a quien circula por la vía preferente, venga por el lado que venga; con STOP, además, te detienes del todo.",
+      "en": "With a give-way or STOP sign, you always give way to traffic on the main road, whichever side it comes from; at a STOP you also come to a full stop.",
+      "fr": "Avec un « cédez le passage » (ceda el paso) ou un STOP, vous laissez toujours passer les véhicules de la voie prioritaire, quel que soit leur côté ; au STOP, vous vous arrêtez complètement.",
+      "ar": "عند لافتة إفساح الطريق (ceda el paso) أو التوقف (STOP)، تفسح الطريق دائماً لمن يسير على الطريق ذي الأولوية من أي جهة أتى، وعند STOP تتوقف توقفاً تاماً."
+    }
+  },
+  {
+    "id": "rgc-57-1",
+    "law": "RGC",
+    "boeBlockId": "a57",
+    "article": "RGC art. 57.1",
+    "title": "Intersecciones sin señalizar",
+    "excerptEs": "1. En defecto de señal que regule la preferencia de paso, el conductor está obligado a cederlo a los vehículos que se aproximen por su derecha, salvo en los siguientes supuestos:",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a57",
+    "versionDate": "2004-01-23",
+    "sha256": "19997b3f35f76f908abfe90cc2e60636c42d7d02912dc1aef8996edf4c95ac69",
+    "explanation": {
+      "es": "Si ninguna señal regula el cruce, cedes el paso a quien llega por tu derecha, salvo las excepciones que enumera el artículo.",
+      "en": "If no sign controls the junction, you give way to traffic coming from your right, except in the cases the article lists.",
+      "fr": "Si aucun signal ne règle le carrefour, vous cédez le passage à ceux qui arrivent par votre droite (prioridad a la derecha), sauf les exceptions prévues.",
+      "ar": "إذا لم تنظّم أي إشارة التقاطع، تفسح الطريق لمن يأتي من يمينك (prioridad a la derecha)، إلا في الحالات المستثناة في المادة."
+    }
+  },
+  {
+    "id": "rgc-57-1-a",
+    "law": "RGC",
+    "boeBlockId": "a57",
+    "article": "RGC art. 57.1.a)",
+    "title": "Vía pavimentada frente a vía sin pavimentar",
+    "excerptEs": "a) Tendrán derecho de preferencia de paso los vehículos que circulen por una vía pavimentada frente a los procedentes de otra sin pavimentar.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a57",
+    "versionDate": "2004-01-23",
+    "sha256": "a98c6e663a3b825534e85b64903938304278616fc1efae701e20298ae177478d",
+    "explanation": {
+      "es": "Sin señales, quien circula por una vía asfaltada pasa antes que quien sale de un camino de tierra.",
+      "en": "With no signs, traffic on a paved road goes before traffic coming out of an unpaved track.",
+      "fr": "Sans signalisation, les véhicules sur une route revêtue passent avant ceux qui sortent d'un chemin non revêtu (vía sin pavimentar).",
+      "ar": "في غياب الإشارات، يمر من يسير على طريق معبَّد قبل الخارج من طريق غير معبَّد (vía sin pavimentar)."
+    }
+  },
+  {
+    "id": "rgc-57-1-b",
+    "law": "RGC",
+    "boeBlockId": "a57",
+    "article": "RGC art. 57.1.b)",
+    "title": "Vehículos sobre raíles",
+    "excerptEs": "b) Los vehículos que circulen por raíles tienen derecho de prioridad de paso sobre los demás usuarios.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a57",
+    "versionDate": "2004-01-23",
+    "sha256": "925396521ed2379747f788bafb2ac4d945fa6eb4632b4d096a347258e24da98d",
+    "explanation": {
+      "es": "Los vehículos que van sobre raíles, como el tranvía, pasan antes que los demás.",
+      "en": "Vehicles running on rails, such as trams, go before everyone else.",
+      "fr": "Les véhicules circulant sur rails, comme le tramway (tranvía), passent avant les autres usagers.",
+      "ar": "المركبات التي تسير على قضبان، مثل الترام (tranvía)، تمر قبل غيرها من مستخدمي الطريق."
+    }
+  },
+  {
+    "id": "rgc-57-1-c",
+    "law": "RGC",
+    "boeBlockId": "a57",
+    "article": "RGC art. 57.1.c)",
+    "title": "Glorietas",
+    "excerptEs": "c) En las glorietas, los que se hallen dentro de la vía circular tendrán preferencia de paso sobre los que pretendan acceder a aquéllas (artículo 21.2 del texto articulado).",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a57",
+    "versionDate": "2004-01-23",
+    "sha256": "c9d742e92845d1dc104f5cf1f3004a2c448aee67a868b1fe871c5985a96c9413",
+    "explanation": {
+      "es": "En una glorieta, quien ya circula dentro pasa antes que quien quiere entrar.",
+      "en": "At a roundabout, traffic already on it goes before traffic trying to enter.",
+      "fr": "Dans un giratoire (glorieta), les véhicules qui y circulent déjà passent avant ceux qui veulent y entrer.",
+      "ar": "في الدوّار (glorieta)، يمر من يسير داخله قبل من يريد الدخول إليه."
+    }
+  },
+  {
+    "id": "rgc-58-1",
+    "law": "RGC",
+    "boeBlockId": "a58",
+    "article": "RGC art. 58.1",
+    "title": "Cómo ceder el paso",
+    "excerptEs": "1. El conductor de un vehículo que haya de ceder el paso a otro no deberá iniciar o continuar su marcha o su maniobra, ni reemprenderlas, hasta haberse asegurado de que con ello no fuerza al conductor del vehículo que tiene la prioridad a modificar bruscamente la trayectoria o la velocidad de éste, y debe mostrar con suficiente antelación, por su forma de circular y especialmente con la reducción paulatina de la velocidad que efectivamente va a cederlo (artículo 24.1 del texto articulado).",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a58",
+    "versionDate": "2004-01-23",
+    "sha256": "3ae76ceec9f5a82100c5da7f61da2e064555950b1213935ae938caac1ece4f39",
+    "explanation": {
+      "es": "Si debes ceder el paso, no arranques hasta estar seguro de no obligar al otro a frenar o desviarse, y deja claro con tiempo, reduciendo la velocidad, que vas a cederlo.",
+      "en": "If you must give way, do not move off until you are sure the other driver will not have to brake or swerve, and show in good time, by slowing down, that you are giving way.",
+      "fr": "Si vous devez céder le passage (ceder el paso), ne repartez pas avant d'être sûr de ne pas forcer l'autre à freiner ou à dévier, et montrez-le à temps en ralentissant.",
+      "ar": "إذا كان عليك إفساح الطريق (ceder el paso)، فلا تنطلق حتى تتأكد من أنك لن تجبر الآخر على الفرملة أو الانحراف، وأظهر ذلك مبكراً بتخفيف السرعة."
+    }
+  },
+  {
+    "id": "rgc-59-1",
+    "law": "RGC",
+    "boeBlockId": "a59",
+    "article": "RGC art. 59.1",
+    "title": "No bloquear el cruce",
+    "excerptEs": "1. Aun cuando goce de prioridad de paso, ningún conductor deberá penetrar con su vehículo en una intersección o en un paso para peatones o para ciclistas si la situación de la circulación es tal que, previsiblemente, pueda quedar detenido de forma que impida u obstruya la circulación transversal (artículo 24.2 del texto articulado).",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a59",
+    "versionDate": "2004-01-23",
+    "sha256": "af16c1bf3c62e39b807fdba5fcbe38e82b88261e9d53a6b068ef042408d9f156",
+    "explanation": {
+      "es": "Aunque tengas prioridad, no entres en un cruce o paso de peatones si vas a quedarte parado bloqueándolo.",
+      "en": "Even with priority, do not enter a junction or crossing if you are likely to get stuck blocking it.",
+      "fr": "Même si vous êtes prioritaire, n'entrez pas dans un carrefour ou un passage (paso para peatones) si vous risquez d'y rester bloqué.",
+      "ar": "حتى إن كانت لك الأولوية، لا تدخل تقاطعاً أو ممر مشاة (paso para peatones) إذا كان من المرجح أن تتوقف فيه فتعرقل الحركة."
+    }
+  },
+  {
+    "id": "rgc-65-1-a",
+    "law": "RGC",
+    "boeBlockId": "a65",
+    "article": "RGC art. 65.1.a)",
+    "title": "Peatones en pasos señalizados",
+    "excerptEs": "1. Los peatones tienen prioridad de paso, respecto de los vehículos, en los casos siguientes, con independencia de otros supuestos contemplados en el presente reglamento: a) En los pasos para peatones debidamente señalizados, aceras y demás zonas peatonales.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a65",
+    "versionDate": "2026-10-01",
+    "sha256": "e99e071a67ea110377f3e22734edc7b7f81ec6d93271110a9f0f31faa49419f8",
+    "explanation": {
+      "es": "En un paso de peatones señalizado, los peatones tienen prioridad sobre los vehículos.",
+      "en": "On a marked pedestrian crossing, pedestrians have priority over vehicles.",
+      "fr": "Sur un passage pour piétons signalisé (paso para peatones), les piétons sont prioritaires sur les véhicules.",
+      "ar": "في ممر المشاة المُعلَّم (paso para peatones)، تكون الأولوية للمشاة على المركبات."
+    }
+  },
+  {
+    "id": "rgc-67-1",
+    "law": "RGC",
+    "boeBlockId": "a67",
+    "article": "RGC art. 67.1",
+    "title": "Vehículos prioritarios",
+    "excerptEs": "1. Tendrán prioridad de paso sobre los demás vehículos y otros usuarios de la vía los vehículos de servicios de urgencia, públicos o privados, cuando se hallen en servicio de tal carácter.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a67",
+    "versionDate": "2004-01-23",
+    "sha256": "70221290624996c0aa883f9ba9ab3631d51c2d5d82284759aee2d1cbdbfaf013",
+    "explanation": {
+      "es": "Ambulancias, bomberos y policía en servicio de urgencia tienen prioridad sobre los demás.",
+      "en": "Ambulances, fire engines and police on an emergency call have priority over everyone else.",
+      "fr": "Les véhicules d'urgence en service (vehículos prioritarios), comme les ambulances ou les pompiers, sont prioritaires sur tous les autres.",
+      "ar": "مركبات الطوارئ أثناء أداء مهمة عاجلة (vehículos prioritarios)، مثل الإسعاف والإطفاء، لها الأولوية على الجميع."
+    }
+  },
+  {
+    "id": "rgc-69",
+    "law": "RGC",
+    "boeBlockId": "a69",
+    "article": "RGC art. 69",
+    "title": "Qué hacer ante un vehículo prioritario",
+    "excerptEs": "Tan pronto perciban las señales especiales que anuncien la proximidad de un vehículo prioritario, los demás conductores adoptarán las medidas adecuadas, según las circunstancias del momento y lugar, para facilitarles el paso, apartándose normalmente a su derecha o deteniéndose si fuera preciso, o actuando conforme a lo dispuesto en el artículo 32.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a69",
+    "versionDate": "2026-10-01",
+    "sha256": "e6e55c9df6e90515b2414533ff8f950272b97ee82277484ed4faabb97903233f",
+    "explanation": {
+      "es": "Al ver o oír un vehículo prioritario, facilítale el paso: apártate normalmente a la derecha o detente si hace falta.",
+      "en": "When you see or hear an emergency vehicle, make way: normally move to the right, or stop if needed.",
+      "fr": "Dès que vous percevez un véhicule prioritaire, facilitez-lui le passage : rangez-vous normalement à droite ou arrêtez-vous si nécessaire (vehículo prioritario).",
+      "ar": "عندما ترى مركبة طوارئ أو تسمعها، أفسح لها الطريق: تنحَّ عادةً إلى اليمين أو توقف إذا لزم الأمر (vehículo prioritario)."
+    }
+  },
+  {
+    "id": "rgc-133-1",
+    "law": "RGC",
+    "boeBlockId": "a133",
+    "article": "RGC art. 133.1",
+    "title": "Orden de preferencia entre señales",
+    "excerptEs": "1. El orden de preferencia entre los distintos tipos de señales de circulación es el siguiente: a) Señales y órdenes de los agentes de la autoridad encargados de la vigilancia del tráfico en el ejercicio de las funciones que tengan encomendadas. b) Señalización y balizamiento circunstancial que modifique el régimen normal de utilización de la vía, dispositivos delimitadores y señales de balizamiento. c) Semáforos. d) Señales verticales de circulación. e) Marcas viales.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a133",
+    "versionDate": "2025-07-01",
+    "sha256": "0a0f8fbdaeefb6d642e0b310cea01074ba2fe5eca4aa543d4f5adf0a14557e96",
+    "explanation": {
+      "es": "Si las señales no coinciden, manda primero el agente, luego la señalización circunstancial, el semáforo, las señales verticales y, por último, las marcas viales.",
+      "en": "When signals conflict, an officer comes first, then temporary signs, traffic lights, upright signs, and finally road markings.",
+      "fr": "En cas de conflit, l'agent l'emporte, puis la signalisation temporaire, les feux, les panneaux et enfin le marquage au sol (orden de preferencia).",
+      "ar": "عند تعارض الإشارات، يُقدَّم شرطي المرور أولاً، ثم الإشارات المؤقتة، فالإشارات الضوئية، فاللافتات العمودية، وأخيراً علامات الطريق (orden de preferencia)."
+    }
+  },
+  {
+    "id": "rgc-133-2",
+    "law": "RGC",
+    "boeBlockId": "a133",
+    "article": "RGC art. 133.2",
+    "title": "Señales contradictorias",
+    "excerptEs": "2. En el caso de que las prescripciones indicadas por diferentes señales parezcan estar en contradicción entre sí, prevalecerá la preferente, según el orden a que se refiere el apartado anterior, o la más restrictiva, si se trata de señales del mismo tipo.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a133",
+    "versionDate": "2025-07-01",
+    "sha256": "cc5a9151682b25722b3a3cdfef83a86f49d9858e653d79d1f816372c3d3ee1d8",
+    "explanation": {
+      "es": "Si dos señales se contradicen, vale la de mayor rango; si son del mismo tipo, la más restrictiva.",
+      "en": "If two signals contradict each other, the higher-ranking one applies; if they are the same type, the stricter one.",
+      "fr": "Si deux signaux se contredisent, le plus prioritaire s'applique ; s'ils sont du même type, le plus restrictif (señales contradictorias).",
+      "ar": "إذا تعارضت إشارتان، تُطبَّق الأعلى مرتبة؛ وإذا كانتا من النوع نفسه، تُطبَّق الأشد تقييداً (señales contradictorias)."
+    }
+  },
+  {
+    "id": "anexo-i-light-red",
+    "law": "RGC",
+    "boeBlockId": "A4",
+    "article": "RGC anexo I, 4.2.a)",
+    "title": "Semáforo para vehículos: luz roja",
+    "excerptEs": "a) Una luz roja no intermitente prohíbe el paso.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A4",
+    "versionDate": "2026-10-01",
+    "sha256": "429dd2a28c94ee9ff688fa52b46671708ee9aa2dc9e1bb4e9c0b3f5996904924",
+    "explanation": {
+      "es": "La luz roja fija del semáforo prohíbe pasar.",
+      "en": "A steady red light means you must not go.",
+      "fr": "Un feu rouge fixe interdit le passage (luz roja).",
+      "ar": "الضوء الأحمر الثابت يمنع المرور (luz roja)."
+    }
+  },
+  {
+    "id": "anexo-i-light-amber",
+    "law": "RGC",
+    "boeBlockId": "A4",
+    "article": "RGC anexo I, 4.2.c)",
+    "title": "Semáforo para vehículos: luz amarilla fija",
+    "excerptEs": "c) Una luz amarilla no intermitente significa que los vehículos deben detenerse en las mismas condiciones que si se tratara de una luz roja fija, a no ser que, cuando se encienda, el vehículo se encuentre tan cerca del lugar de detención que no pueda detenerse antes del semáforo en condiciones de seguridad suficientes.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A4",
+    "versionDate": "2026-10-01",
+    "sha256": "d90be2498b1cdbc52bdb2e686731a9c027e5accd6eb8b557bd38a27767b355db",
+    "explanation": {
+      "es": "La luz amarilla fija obliga a detenerse como si fuera roja, salvo que estés tan cerca que no puedas parar con seguridad.",
+      "en": "A steady amber light means stop as for red, unless you are too close to stop safely.",
+      "fr": "Un feu orange fixe oblige à s'arrêter comme au rouge, sauf si vous êtes trop près pour vous arrêter en sécurité (luz amarilla).",
+      "ar": "الضوء الأصفر الثابت يُلزم بالتوقف كما في الأحمر، إلا إذا كنت قريباً جداً ولا يمكنك التوقف بأمان (luz amarilla)."
+    }
+  },
+  {
+    "id": "anexo-i-light-amber-flashing",
+    "law": "RGC",
+    "boeBlockId": "A4",
+    "article": "RGC anexo I, 4.2.d)",
+    "title": "Semáforo para vehículos: luz amarilla intermitente",
+    "excerptEs": "d) Una luz amarilla intermitente o dos luces amarillas alternativamente intermitentes obligan a los conductores a extremar la precaución y, en su caso, ceder el paso. Además, no eximen del cumplimiento de otras señales que obliguen a detenerse.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A4",
+    "versionDate": "2026-10-01",
+    "sha256": "e46d815b6a9daf6ed5e223bc5d4342533b5b96951f1a74c67a4f3773e862b287",
+    "explanation": {
+      "es": "La luz amarilla intermitente obliga a extremar la precaución y, si corresponde, ceder el paso; no anula otras señales que obliguen a detenerse.",
+      "en": "A flashing amber light means take extra care and give way where required; it does not cancel other signs that tell you to stop.",
+      "fr": "Un feu orange clignotant oblige à redoubler de prudence et, le cas échéant, à céder le passage ; il n'annule pas les autres signaux d'arrêt (luz amarilla intermitente).",
+      "ar": "الضوء الأصفر الوامض يُلزم بأقصى درجات الحذر وبإفساح الطريق عند الاقتضاء، ولا يُلغي الإشارات الأخرى التي تُلزم بالتوقف (luz amarilla intermitente)."
+    }
+  },
+  {
+    "id": "anexo-i-light-green",
+    "law": "RGC",
+    "boeBlockId": "A4",
+    "article": "RGC anexo I, 4.2.e)",
+    "title": "Semáforo para vehículos: luz verde",
+    "excerptEs": "e) Una luz verde no intermitente significa que está permitido el paso con prioridad, excepto en los supuestos a que se refiere el artículo 59.1.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A4",
+    "versionDate": "2026-10-01",
+    "sha256": "0e0eb8bd617de1d412274b5635a19fa91d656c0580eaece557d74e4704d517b6",
+    "explanation": {
+      "es": "La luz verde fija permite pasar con prioridad, salvo que vayas a quedarte bloqueando el cruce.",
+      "en": "A steady green light lets you go with priority, unless you would end up blocking the junction.",
+      "fr": "Un feu vert fixe permet de passer en priorité, sauf si vous risquez de bloquer le carrefour (luz verde).",
+      "ar": "الضوء الأخضر الثابت يسمح بالمرور بأولوية، إلا إذا كنت ستتوقف وتعرقل التقاطع (luz verde)."
+    }
+  },
+  {
+    "id": "anexo-i-m-4-1",
+    "law": "RGC",
+    "boeBlockId": "A5",
+    "article": "RGC anexo I, marca M-4.1",
+    "title": "Línea de detención continua",
+    "excerptEs": "Marca transversal continua (M-4.1): una línea continua dispuesta a lo ancho de uno o varios carriles es una línea de detención que indica que ningún vehículo o animal ni su carga debe franquearla en cumplimiento de la obligación impuesta por cualquiera de las siguientes señales o elementos: señal de detención obligatoria (R-2); una marca vial de STOP (M-6.3 o M-6.4); una señal de prohibición de pasar sin detenerse (R-200); un paso para peatones indicado por una marca vial; un semáforo, una señal de detención efectuada por un agente de la circulación o la existencia de un paso a nivel o un puente móvil.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A5",
+    "versionDate": "2025-07-01",
+    "sha256": "0b976c1c19636beb72d8ab8725ea9451bc6a6b7aad8ad7b383339b05ada97a44",
+    "explanation": {
+      "es": "La línea transversal continua es una línea de detención: no se cruza cuando un STOP, un semáforo, un agente o un paso de peatones te obligan a parar.",
+      "en": "A solid line across the lane is a stop line: do not cross it when a STOP, a light, an officer or a pedestrian crossing requires you to stop.",
+      "fr": "La ligne transversale continue est une ligne d'arrêt (línea de detención) : ne la franchissez pas quand un STOP, un feu, un agent ou un passage pour piétons vous impose de vous arrêter.",
+      "ar": "الخط العرضي المتصل هو خط توقف (línea de detención): لا تتجاوزه عندما تُلزمك لافتة STOP أو إشارة ضوئية أو شرطي أو ممر مشاة بالتوقف."
+    }
+  },
+  {
+    "id": "anexo-i-m-4-2",
+    "law": "RGC",
+    "boeBlockId": "A5",
+    "article": "RGC anexo I, marca M-4.2",
+    "title": "Línea de ceda el paso discontinua",
+    "excerptEs": "Marca transversal discontinua (M-4.2): una línea discontinua dispuesta a lo ancho de uno o varios carriles indica que, salvo en circunstancias anormales que reduzcan la visibilidad, ningún vehículo o animal ni su carga debe franquearla cuando tenga que ceder el paso en cumplimiento de la obligación impuesta por cualquiera de las siguientes señales o elementos: señal vertical (R-1) o marca vial de ceda el paso (M-6.5); flecha verde o ámbar intermitente de giro de un semáforo; o, cuando no haya ninguna señal de prioridad, por aplicación de las normas que rigen esta.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A5",
+    "versionDate": "2025-07-01",
+    "sha256": "45fb25341d7b021a5021f23ef442e819a7b47b9e1aeeaab0887e253b5fde903a",
+    "explanation": {
+      "es": "La línea transversal discontinua marca dónde detenerte, si hace falta, cuando debes ceder el paso.",
+      "en": "A broken line across the lane marks where to stop, if needed, when you must give way.",
+      "fr": "La ligne transversale discontinue indique où vous arrêter, si besoin, lorsque vous devez céder le passage (ceda el paso).",
+      "ar": "الخط العرضي المتقطع يحدد مكان التوقف عند الحاجة حين يجب عليك إفساح الطريق (ceda el paso)."
+    }
+  },
+  {
+    "id": "anexo-i-m-4-3",
+    "law": "RGC",
+    "boeBlockId": "A5",
+    "article": "RGC anexo I, marca M-4.3",
+    "title": "Paso para peatones (cebra)",
+    "excerptEs": "Marca de paso para peatones (M-4.3): una serie de líneas dispuestas en bandas paralelas al eje de la calzada, formando un conjunto transversal a esta, indica un paso para peatones en el cual los conductores de vehículos o animales deben dejarles paso.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A5",
+    "versionDate": "2025-07-01",
+    "sha256": "8aa89bbd6dd0a47bfc877f100c98823ce1f6795c28c1ee8a544d42ede72d7052",
+    "explanation": {
+      "es": "Las bandas blancas del paso de peatones obligan a los conductores a dejar pasar a los peatones.",
+      "en": "The white stripes of a pedestrian crossing mean drivers must let pedestrians cross.",
+      "fr": "Les bandes blanches du passage pour piétons (paso de cebra) obligent les conducteurs à laisser passer les piétons.",
+      "ar": "الخطوط البيضاء لممر المشاة (paso de cebra) تُلزم السائقين بترك المشاة يعبرون."
+    }
+  },
+  {
+    "id": "anexo-i-m-6-3",
+    "law": "RGC",
+    "boeBlockId": "A5",
+    "article": "RGC anexo I, marcas M-6.3 y M-6.4",
+    "title": "STOP pintado en el suelo",
+    "excerptEs": "Detención obligatoria o STOP (M-6.3 y M-6.4): indica la obligación de detener el vehículo ante una línea de detención (M-4.1) o, si esta no existiera, inmediatamente antes de la calzada a la que se aproxima, y, una vez detenido el vehículo, ceder el paso a los vehículos que circulen por ella.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A5",
+    "versionDate": "2025-07-01",
+    "sha256": "89021f3e8d8360c9f06c0a4d9751171e281d3c8ba2fb8611937f0d93bfbc6d84",
+    "explanation": {
+      "es": "La palabra STOP pintada obliga a detenerse en la línea (o justo antes de la calzada) y después ceder el paso.",
+      "en": "STOP painted on the road means stop at the line (or just before the road) and then give way.",
+      "fr": "Le marquage STOP au sol oblige à s'arrêter à la ligne (ou juste avant la chaussée), puis à céder le passage (ceder el paso).",
+      "ar": "كلمة STOP المرسومة على الطريق تُلزم بالتوقف عند الخط (أو قبيل الطريق مباشرة) ثم إفساح الطريق (ceder el paso)."
+    }
+  },
+  {
+    "id": "anexo-i-m-6-5",
+    "law": "RGC",
+    "boeBlockId": "A5",
+    "article": "RGC anexo I, marca M-6.5",
+    "title": "Ceda el paso pintado en el suelo",
+    "excerptEs": "Ceda el paso (M-6.5): indica a las personas conductoras la obligación de ceder el paso a los vehículos que circulen por la calzada a la que se aproxima, deteniéndose si es preciso ante la línea de ceda el paso (M-4.2).",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#A5",
+    "versionDate": "2025-07-01",
+    "sha256": "413860ee17a7d9fa95a3025b06d6fc619d5b87bd50abe7c063065eb05421f281",
+    "explanation": {
+      "es": "El triángulo de «ceda el paso» pintado obliga a ceder el paso a quien circula por la vía a la que te incorporas.",
+      "en": "A painted give-way triangle means you must give way to traffic on the road you are joining.",
+      "fr": "Le triangle « cédez le passage » peint au sol (ceda el paso) vous oblige à laisser passer les véhicules de la voie que vous rejoignez.",
+      "ar": "مثلث إفساح الطريق المرسوم على الأرض (ceda el paso) يُلزمك بترك المركبات على الطريق الذي تدخله تمر أولاً."
+    }
+  }
+]

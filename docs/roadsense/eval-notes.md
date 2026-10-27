@@ -1,0 +1,49 @@
+## How this evaluation works
+
+- **Scenes.** The 33 curated scenes in `data/roadsense/scenes/index.json`:
+  - 24 with a right-of-way answer;
+  - 5 where the honest answer is "not sure": a sign behind a lorry, a hidden right-hand approach, a light washed out by the sun, a junction at night in the rain, and a sign behind branches;
+  - 4 outside RoadSense's scope: the UK, the US, a motorway, and a police officer directing traffic.
+
+  The images are generated with Muse Image. Each scene's ground truth was written by looking at the image, never copied from model output. It agrees with the rule engine and was checked by an independent reviewer.
+- **Run.** Each scene's published 1920 px image is analysed once, in English, by the pipeline the app uses:
+  - perception (Muse Spark);
+  - the rule engine;
+  - the evidence check (SAM 3.1);
+  - the decision (Muse Spark).
+
+  Muse Spark runs at low reasoning effort, as in the app. It runs in contributor mode: the owner decided on 2026-10-26 to use contributor mode for DriveIQ's own images, while learners' photos always use Standard mode.
+- **Replay.** Every model response is saved in `data/roadsense/recordings/`. `npx tsx scripts/roadsense/eval.ts --mode replay` repeats the run from those files and gives the same numbers at no cost.
+- **Scoring:**
+  - An answerable scene counts as right only when the answer is "checked" and the model's obligation matches the ground truth.
+  - A wrong answer marked "checked" is the failure that must never happen, so it is counted on its own.
+  - "Not sure" on an answerable scene is neither right nor wrong.
+  - Abstain scenes count as right only when the answer is "not sure". Out-of-scope scenes count as right only when the answer is "outside scope".
+  - A citation is valid when it is a corpus rule that belongs to the scene: one of its expected rules, the engine's, or the excerpts retrieved for the model.
+
+## Latency in the mode learners get
+
+Contributor mode answers two to three times more slowly than Standard mode, so the latency above is not what learners see.
+
+The same pipeline in Standard mode at low reasoning effort, on 8 of the scenes (`eval-latency-standard.md`), gave:
+- p95 9.8 s;
+- about $0.016 an analysis;
+- 6 of 7 answerable scenes checked right, the abstain scene "not sure", and no wrong answer checked.
+
+At the default reasoning effort, a run of the same 8 scenes took p95 22.5 s, which is why the app uses low effort.
+
+## What the evaluation changed
+
+These numbers are in-sample: the prompts, thresholds and settings below were tuned on these same 33 scenes.
+
+- **Hidden signs.** In Standard mode, a crossroads whose sign stood behind a parked lorry came back checked "go". Perception now looks at the spot where the learner's sign would stand. It treats an empty spot in clear view as "no sign".
+- **Image size.** At 1280 px, SAM missed small signs and lights: 7 of 8 scenes came back checked right at 1920 px, against 5 of 8 at 1280 px. So analysis images stay at 1920 px.
+- **Evidence matching.** Correct signs and markings measured 0.45 and 0.49 overlap with SAM's boxes, so the threshold is now 0.4. SAM finds nothing for "emergency vehicle" or "tram", so it is asked for an "ambulance" and a "streetcar".
+- **Reasoning effort.** Low effort halved latency in Standard mode, and no wrong answer was checked.
+
+## Known limits
+
+- A still photo cannot show whether an amber light is flashing. Amber is read as steady, and no scene claims a flashing light.
+- The scenes are generated: real dashcam and phone photos are messier.
+- 33 scenes is a small set: one scene moves a percentage by 3 to 4 points.
+- At a roundabout entry, or when coming from an unpaved road, the answer is "give way" even with nobody in sight (`RULES.md`, "Standing duties").

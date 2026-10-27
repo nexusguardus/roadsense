@@ -1,0 +1,101 @@
+{
+  "latencyMs": 29968,
+  "calls": {
+    "sparkModel": "muse-spark-1.3-contributor",
+    "efd13977abaf63177678b20e752907fe47cb987e741640fae040a30c695edca7": {
+      "json": {
+        "crossRoadPaved": true,
+        "egoRoadPaved": true,
+        "inScope": true,
+        "junction": "crossroads",
+        "lights": [],
+        "markings": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 332,
+              "x2": 587,
+              "y1": 534,
+              "y2": 552
+            },
+            "confidence": 0.9,
+            "id": "m1",
+            "kind": "stop_line"
+          },
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 141,
+              "x2": 580,
+              "y1": 499,
+              "y2": 540
+            },
+            "confidence": 0.95,
+            "id": "m2",
+            "kind": "zebra_crossing"
+          }
+        ],
+        "outOfScopeReason": null,
+        "roadUsers": [
+          {
+            "box": {
+              "x1": 295,
+              "x2": 353,
+              "y1": 343,
+              "y2": 512
+            },
+            "confidence": 0.95,
+            "emergencyLightsOn": false,
+            "id": "u1",
+            "kind": "pedestrian",
+            "position": "on_crossing_ahead"
+          }
+        ],
+        "signs": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 628,
+              "x2": 680,
+              "y1": 264,
+              "y2": 341
+            },
+            "confidence": 0.97,
+            "id": "s1",
+            "kind": "stop"
+          }
+        ],
+        "unknowns": [
+          "right_approach_hidden"
+        ]
+      },
+      "costUsd": 0.0006271860000000001
+    },
+    "45053e3759e3fdb8a513c02ddba51e3d17538217936bc57c76b6fc0219d20c67": {
+      "text": "<0f>0<|box;x1=568;y1=483;x2=678;y2=682;w=1920;h=1280;c=0.9259259104728699|><|mask;x=0;y=0;c=0.9259259104728699;data=200,111,~!!!H?!0cY[Q]cZ(0f+'@rrl^pQyBNs(G9ZH5x2BodUMS-I.$bYjOciH$E/-ON8r=m0^ML-'i#=L&[McCMNBJnB9vN0CBKH$5jkt5$Zo-[m{(HelD!19dB)3.jw^PR)$1_JmWUr]PS)%TSW_1q3*QKu=9'$?PGkPq[l#FMa6ScOg2t-ChP[n--UDx&d=IYjr3U2K8ft!.kmaOv'Z/0)V1'LASLVKkUGdeVXH^K+Xb@1uBc[][$Q^xeEOVG5?#PYPsxNm{tdeKi-fXMw_@F+D=Gkwuy:A$[su+'.[A*xumall6U%NzOoi^KD/=.w3))6`*0aa[!Ol'/[^m)`vL)&FH#tXkGK=W*.K]l!0Scm2zC#5+^@=rzcc$(6jU&-]D`IN8/y8+*(U:=agu`Q!f9AFAeRnvBz5l[9tHRi79#ko87U(rG$'()BCVLZ`3RrqI!szPeyV^Uu&.u0OwCl3@?d!9R]U9x5LnDjjVQ5mRh2-J)`woHMM5@ar`6B*-GD(J6&jeZk4[Eu/cJiClFd968^HWfcdgz8)=w=^v[)y#1qad[mAONRuX[+`DXgRf9-hw(D=6G('kdW*X.p)0@(p[EPW#Qrfl-B?1pi./=`_UQ!Jg{Pc6(RTT%W_QK_dwX*LtHwwIJcq3Tdn/p&?^sBpc:B+gy(ED{MQfefAkDFr%w.Bo-qnI2DIj60Su{'MS2_#pO^vJ.D)ZkP#]C0i!lug:2vv)ecd&1fSqI-C?7FeO`o0%P@u1.yc.1P&u(HFDP^u70GTj**?[JhzeoLlS-F4UCPO(o`)R]6mYH)IC9Se2'wr(AZ)#U%8PwKU!)j1's?Ea5m!Rm[r9pmp[YvrTDtiR@)jnoBl_n'N3rj5[A5Vgby%M9+*6:`]TOHxh!tKIw)]sPq6xs&./n!`-rj*@WL1@YwT$Fn&L9*/ht!Il24QRQf0t%Ru'h%5P-FP5`2y9OWeZT3t9BzR:nPlC1).0l*xo/f[jVZshR`p2`jM1=&aA$S$/*=UZc7aKuv4VF_5ozEM_=9MTWvHnJ9$`b)3y63Q65R(M_0TPINJw]$[xzWJN#2F][Wyg{)o4HX:1s(kDh$.ADFEKndkm/vrQs!C-GJx7-D1nh!4#wo_BEEqf.:rk{i%R/b-#JaUheoZ[L#BLkE[5B`KyQkY[J40t]%:aCJnEnqPWkM_sMVlnk'rd2CtjoIaD@*VdzkvS_&*4R8u(39qd$9{3-_bN.)D+Z&a%)KGspl%)dgMN7sl#v%1U8#(xDgeC0{S@v('B47vF'=VuFP/m2Nxp+2L=kfLW`CQQhc2YBS8M58)]ag#j[4%5v+?:)'5:#4qRv1Fn^#3aDvyLFLyqh$_Z.hwxIEY-%:[AT(Q4rr#7K+WgqOZnE&%N4:*.5O7.VF_TnG.Fi?bDSW`eD%NmC'4C2J+ZZYLHC1bge-V&L$^16UetFJ4!XIG6^=*OWk-AB7[l(ZJ9jx+R5id+:G(BE7:qYgd8D3HSfvWR8VJH'5i(/MVP3m'QX)-mHh'P:LAUk=.3Y#Ha.YT!A%B30aB8bLMIp0D3@(n{lxh6[MspJQ%Ru6OHM?R20@73+Cu^W5z_?Wcnd1hf/L=_`e&mW2p='cVi65W@rNvC./O*HKK9QbF$eCI!0bu5AsQXS(.(CiSUS2udV`v+CoeonS._WMMYQ9J4iiNkhA_a*3VM1&O1H%R:MB%2Er*F#V@v:$rlqFoC:*-wKn7KxL=uV`EI+]##WvJmAqnJ3b{0E'k%UcJM)9td:)Wb@I@TG3V=L2PGm^c2QE^rHz)LP&8qr1:GFx-pN'vh{'AX=Vs*#w95x1q@`(60igqf841/jL3/99mZj1J3qGWl0G^tr1ec%s!WV$[!&5Udx4LSr)9Cb#m9or!l'oV/_Q7r7MskvG2+2_??Ck!?hC9*s[vt.&6OHW=*EnU37NdYM)$1Jt^/F8%28j]rg)[vJk@W{^B^@*3DXPJ!WQ=SD(_AQE'(QCQ1QVZvDgwJAeWn+iy$pzBI1uCtg)sPP-TB*BI&x-QF3=(9DB2J8cgg*.ApkEqnBG`2+a/i#tI9'_^+z$$//+V`&[L$`6Z%]b:ddj[ziDOsmrN78akM+OMA_wQx-C^$x-Fi/6{e`gO)oqaU/QvtTMMQ4`T8Iq]C@[32:k*mBeahibk1YDr6K/Z-['N!r?+Nvm^DuVn]`bM*lX]!xq3v.hnDh:Y]85woCX`!Hm]-Ps/fio^[/adsxSXbf]a4%fDgTs[gpxE)`RWGzJ2M6)Q#ch(02_oBJ4@DK:'8[1s-#ISp=@?6NW(xN(1i3vRAxN1FgoJdn-M*S?[.ve%Gi0H&B9q#wpdf&%0eD8J3-K]c`O%i-&C:H1_omI%aPFw3!snhT]Qq!:7]`=sa7Mjos3!F5/_G-W07j581*qkan_q(zjcA%zA#o0`s4@+[qVm{r!eq`Zg)Z{(B#a47Z?]Z'di]VDFG%8dP6'onuv*($/*^kXBX%iet6tL]V%r/z5+cYvc7&J+i@%U8/xNTK2RkcK-&[$/V:iL9Xd]N?{zRUFAey7cmnX+OTY$l`JH)ai3M.d$!y(P.H]f!krSxXU`?Os:$fav(e(x`W$vpuPEaFhp8LGwiZm4m@a&V8-B@72ZSz:a]bt[Al7h'uuTxwN1S8bf=MIKHht/84^QvxJsG5?@83E8nX&knBRQv3bkG8%R[^JcoR:scavMzlwmB]Bvy#%c=BKclv4@!WZ(vO+uQgZAEUZk2izpO*Iubk4t36.Fx_5YUH(0g0:`G.LDT?wf0u^6xv/h4j:pUf&9AszIlV*1_Ruu6gRKj#PS2ed#b%6E[-siFw)]3s#LdCuOa&%n`Unj1Aya?=&nl`@ZJ[!l.NMfO$h?l'wj5]/EyeCh1Yqyf0*0h68GU8nAE]v'$dX7z6`]as8BVUD^{Vo0gnu_H1GZujAae[9N?Tv/2t`9MK5N`o3Lxd=f)TJ-[sigNSn:(C]Kn8aa7k=Ct*X!fiU3BU@TraWS!uT9Q!o@fZ:I=0*X^$M.S9&V#jB_Pnso+*gz5Zq'?3@*33j{S?aeQ%0ZMh+-*eIVCZPbj)*sDupd-k29'5Yy^G&_hTaNE1`um=Sgm44S[(V/&i'8ayED&6_8Og7)W8MrD!T_3yU!8Db6M=8iVs1*u&&svGp@##?enweQl:W$GEa.3t@BW^M'//!4^4sQiWLu]Nd[1dfbwA_Kb9bw@mmmUEek-EqiQ4u3I=YT[7no:{LZ1-Q@v]+b3G:N%s^r?bE0Y#huBgTv50p{:2K!/Jh].)x&+Euwesl{1FkI2{HdZNCjkD0Rwz+vOk]Gm_e`T#:23ya#W.3=:v70'!irJ{gdaAj-uKmpZ*u#59HL.=2cP0Iss^$yWPmaXXWrZb.%9-.df%95Josl#mXCxejpF:c7#5[V2u9qgj/??=/T0%O&vgH_flFO4tO!8!jHaFo7qBIbT!-C%*w&4`ac_z=om%!1t`)FX2f'X{v-rx`YMMHDcoB`oSA`8:#_DP8)7)q#dZ.kq`DN43F`A8r/-Gphqpgl3Dw&PRgIQdFc]bgg)lLXcx56gXh7OBW!1uf{MA_n%E8Z-/gRk#2JQhTrWc7:PMFp{Yq0j6RP=8C0k.q@-8Erh1C''a(L@-c)te=.EO)Q)r?Z#4hh%L]Jpe/4X.7Gq7y8CGn+^G[MH]du6YdFt8|>\n",
+      "costUsd": 0.0025
+    },
+    "e7064b8380abaa017c6e4021c144d729f62b706e3c25ae34b5af280739ac370a": {
+      "text": "<0f>0<|box;x1=1209;y1=369;x2=1301;y2=465;w=1920;h=1280;c=0.9179486632347107|><|mask;x=0;y=0;c=0.9179486632347107;data=97,93,~!!!/g!0cYeFUyicefR9ws/KCF@?+5HTc/hf%Ze*JvcoD3?N[TqQ9kxZ2RHR^.vD't36S`Fv!L1dP5&+!&yv`8ok26V`.!MQYU{#Pif&h8fe!xaGNiEd2(Ly5%58?`Z66QMgc6p^-*^qWI^HZAt?ut4)Z(ShxlChX#sjnZjZ9{ikCV-9oru8.-tM4d8/RIa02SGZ4*vU`(qKmBY=*GYJsRHnmaK[hp[=7HEi/aF_NWk8GN'J^[_v8kps%B84]'LK0fOS-6Z#1Koy*+c6mW&Y*LeE:i0gXoE]veyxhETY^5yx@rn-/a&@np^SLf+Xo$IU'E5(IzliCSD?oB&_/F&[oBaeZ6J)-lV35NsO/qw$#wpG2.)$Hxc8GuLjI[uIor7Z9p`jQs$=bK.K^l2q(-WZZH]d:!%b2K0YHD[y[Edga]H8tu{lFiPhGhbtLFXB[aVPD3Yp.4wL9akJkHPIvnVIr$XbCH-]Va%+X8YHHg#Hcs'p=FN#(iv6sR7Xw4y7j'fjWC0$2]Q5U`HN[sd=')G//]wRJGG6z]^HeC8PUN[(L0K?EsZbO2#`3^e]@L7/z^B.']a2qcFdo?&qQ{15nyH{)2=ZdKI%'+1C[6$QX?ea6pqsN0hayi7c*1r=[^F8VgG)fsm_/iRzcio=SECoQS`_yN#CyS.B56BZ6?3+I`/*%kvRc$ka?-aIE!3VJ%4LXiGrw$bophDD62.gWsR?M.qnMC9[{[M6/[8&7PuU2b[a)t]9FpA_]I#HL{*Aph_6wC41L+[Ef1+4dx(!!'9UtKo#3C(TljK1V(BlGdI@_*Co=tkv@c#:3Za0)F+liugO9{4`/nhu1JVKh%fCN@]evpA?v%lV]X.6R?-.AgV^[83TQDi++cw_+8d^p!ZxHoc+ZB_'uJ6yvh]``K4saKII6KnX9K4]*D){O+HVlI%0ent4k$hU:8#NH&0seb`CiZyd@ts3X::]{e`J?A9-%clW1(uV?[wAWU'+J3(AH?c$S_j?_%Eg6c3NrP1bG2XGIXI2eT:hT$RQ1m:+Rp%u.)bTm[H_mc+d(b`d1OR6t^cYg'5[*8Q[Xh.75on]C5ID0FQs+5fYyXwEu0mA!5/wHP@xl[PMFK8(0W0FoJYWxY=*VW!c/*JgY.xua%g$q1{{8=pd+l&v77%.ZGQf3(fV5mg8g&{e=GO0nT@T_#x.c=N1wBiWa`5^GoMm5n^s4z@mP2W74$*T2Wj-+00j!OFH+N*%Fu[EDe/afaY:[H^p[AOgjsQgj@is%tp_35o#r?#uLYdKG*g3.QRUAbfTc&0SqH$E%A:0:CtaKD4DZbHx&ZM8T#aKrCG9`=/8v/nZ0oO]JRnbVJuRyh'jmclIC_M6^gR@r|>,1<|box;x1=560;y1=448;x2=582;y2=476;w=1920;h=1280;c=0.5395683646202087|><|mask;x=0;y=0;c=0.5395683646202087;data=29,23,~!!!$m!O'$&a`D/HEvTA/BieVxG@^JoxS1d)@'s/9wUKDWh0sCfuFk&RPPK#i-JWqPh*VJ-[?.[B#NDuUa=?44Oy/Y7vkf?@4lVIX5o]F-P-eq7rnn=O4$r!&OXZ5dEU.W3qwrGS^X^`Jv1you^@5z$9uS[=j9'+0AH7f!2^I30G:A&.'0vBN+Pc&me%uJwKcu&tCr^P$VtpK8^nUFsT{B`bpnIf1e1F=(rTfvDuB)%a%w**(lu%L6]2%LvZ]flR'j_BF1sgo-t)bjmagE*{8U.QBWd7n53JqcUhcjm=aq]+&(en_0|>\n",
+      "costUsd": 0.0025
+    },
+    "00e23e645f37ae2eb65dce5d0844c4e102b0245312f42e2b0cee5f107ca72784": {
+      "json": {
+        "obligation": "stop_and_yield",
+        "priorityTo": [
+          "u1"
+        ],
+        "rationale": "You have a vertical stop sign (detención obligatoria o stop) and a stop line for your approach, so you must stop completely and give way (ceda el paso) to the priority road. A pedestrian is on the zebra crossing (paso para peatones) ahead, and pedestrians have priority there. Stop before the crossing, let the pedestrian pass, then you may go once the crossing and junction are clear.",
+        "ruleIds": [
+          "rgc-56-1",
+          "rgc-56-5",
+          "rgc-65-1-a",
+          "anexo-i-m-4-3"
+        ],
+        "temptingWrongAnswer": "Stop for the sign but drive past the pedestrian because there are no cars coming.",
+        "whyWrong": "The excerpts require a full stop when the stop sign says so, and separately require drivers to give way to pedestrians on a properly marked crossing. No cars in sight does not remove the pedestrian's priority."
+      },
+      "costUsd": 0.0004979
+    }
+  }
+}

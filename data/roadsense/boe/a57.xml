@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a57" tipo="precepto" titulo="Artículo 57">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 57. Intersecciones sin señalizar.</p>
+        <p class="parrafo">1. En defecto de señal que regule la preferencia de paso, el conductor está obligado a cederlo a los vehículos que se aproximen por su derecha, salvo en los siguientes supuestos:</p>
+        <p class="parrafo_2">a) Tendrán derecho de preferencia de paso los vehículos que circulen por una vía pavimentada frente a los procedentes de otra sin pavimentar.</p>
+        <p class="parrafo">b) Los vehículos que circulen por raíles tienen derecho de prioridad de paso sobre los demás usuarios.</p>
+        <p class="parrafo">c) En las glorietas, los que se hallen dentro de la vía circular tendrán preferencia de paso sobre los que pretendan acceder a aquéllas (artículo 21.2 del texto articulado).</p>
+        <p class="parrafo">d) Los vehículos que circulen por una autopista o autovía tendrán preferencia de paso sobre los que pretenden acceder a aquélla.</p>
+        <p class="parrafo_2">2. Las infracciones a las normas de este precepto tendrán la consideración de graves, conforme se prevé en el artículo 65.4.c) del texto articulado.</p>
+      </version>
+    </bloque>
+  </data>
+</response>

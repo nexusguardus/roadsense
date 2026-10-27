@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a65" tipo="precepto" titulo="Artículo 65">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 65. Prioridad de paso de los conductores sobre los peatones.</p>
+        <p class="parrafo">1. Los conductores tienen prioridad de paso para sus vehículos, respecto de los peatones, salvo en los casos siguientes:</p>
+        <p class="parrafo_2">a) En los pasos para peatones debidamente señalizados.</p>
+        <p class="parrafo">b) Cuando vayan a girar con su vehículo para entrar en otra vía y haya peatones cruzándola, aunque no exista paso para éstos.</p>
+        <p class="parrafo">c) Cuando el vehículo cruce un arcén por el que estén circulando peatones que no dispongan de zona peatonal (artículo 23.1 del texto articulado).</p>
+        <p class="parrafo_2">2. En las zonas peatonales, cuando los vehículos las crucen por los pasos habilitados al efecto, los conductores tienen la obligación de dejar pasar a los peatones que circulen por ellas (artículo 23.2 del texto articulado).</p>
+        <p class="parrafo">3. También deberán ceder el paso:</p>
+        <p class="parrafo_2">a) A los peatones que vayan a subir o hayan bajado de un vehículo de transporte colectivo de viajeros, en una parada señalizada como tal, cuando se encuentren entre dicho vehículo y la zona peatonal o refugio más próximo.</p>
+        <p class="parrafo">b) A las tropas en formación, filas escolares o comitivas organizadas (artículo 23.3 del texto articulado).</p>
+        <p class="parrafo_2">4. Las infracciones a las normas de este precepto tendrán la consideración de graves, conforme se prevé en el artículo 65.4.c) del texto articulado.</p>
+      </version>
+      <version id_norma="BOE-A-2026-13889" fpub="" fecha_publicacion="20260626" fecha_vigencia="20261001">
+        <p class="articulo">Artículo 65. Supuestos de prioridad de paso de los peatones sobre los conductores.</p>
+        <p class="parrafo">1. Los peatones tienen prioridad de paso, respecto de los vehículos, en los casos siguientes, con independencia de otros supuestos contemplados en el presente reglamento:</p>
+        <p class="parrafo_2">a) En los pasos para peatones debidamente señalizados, aceras y demás zonas peatonales.</p>
+        <p class="parrafo">b) Cuando un vehículo vaya a girar para entrar en otra vía y haya peatones cruzándola, aunque no exista paso para éstos.</p>
+        <p class="parrafo">c) Cuando el vehículo cruce un arcén por el que estén circulando peatones que no dispongan de zona peatonal.</p>
+        <p class="parrafo">d) Cuando los peatones vayan a subir o hayan bajado de un vehículo de transporte colectivo de viajeros, en una parada señalizada como tal, y se encuentren entre dicho vehículo y la zona peatonal o refugio más próximo.</p>
+        <p class="parrafo">e) Cuando transiten unidades militares a pie, filas escolares y comitivas organizadas.</p>
+        <p class="parrafo_2">2. En las zonas peatonales, cuando los vehículos las crucen por las zonas habilitadas al efecto, los conductores tienen la obligación de dejar pasar a los peatones que circulen por ellas (artículo 25.2 del texto refundido).</p>
+        <p class="parrafo">3. Las infracciones a las normas de este precepto tendrán la consideración de graves, conforme se prevé en el artículo 76.c) del texto refundido.</p>
+        <blockquote caduca="20261001" class="soloTexto">
+          <p class="parrafo">Téngase en cuenta que esta actualización, establecida por el art. único.10 del Real Decreto 518/2026, de 24 de junio, <a class="refPost">Ref. BOE-A-2026-13889</a>, entra en vigor el 1 de octubre de 2026, según determina su disposición final 3.</p>
+          <p class="cita_con_pleca">Redacción anterior:</p>
+          <p class="parrafo">"<strong>Artículo 65. Prioridad de paso de los conductores sobre los peatones.</strong></p>
+          <p class="parrafo">1. Los conductores tienen prioridad de paso para sus vehículos, respecto de los peatones, salvo en los casos siguientes:</p>
+          <p class="parrafo_2">a) En los pasos para peatones debidamente señalizados.</p>
+          <p class="parrafo">b) Cuando vayan a girar con su vehículo para entrar en otra vía y haya peatones cruzándola, aunque no exista paso para éstos.</p>
+          <p class="parrafo">c) Cuando el vehículo cruce un arcén por el que estén circulando peatones que no dispongan de zona peatonal (artículo 23.1 del texto articulado).</p>
+          <p class="parrafo_2">2. En las zonas peatonales, cuando los vehículos las crucen por los pasos habilitados al efecto, los conductores tienen la obligación de dejar pasar a los peatones que circulen por ellas (artículo 23.2 del texto articulado).</p>
+          <p class="parrafo">3. También deberán ceder el paso:</p>
+          <p class="parrafo_2">a) A los peatones que vayan a subir o hayan bajado de un vehículo de transporte colectivo de viajeros, en una parada señalizada como tal, cuando se encuentren entre dicho vehículo y la zona peatonal o refugio más próximo.</p>
+          <p class="parrafo">b) A las tropas en formación, filas escolares o comitivas organizadas (artículo 23.3 del texto articulado).</p>
+          <p class="parrafo_2">4. Las infracciones a las normas de este precepto tendrán la consideración de graves, conforme se prevé en el artículo 65.4.c) del texto articulado."</p>
+        </blockquote>
+        <blockquote>
+          <p class="nota_pie">Se modifica, con efectos de 1 de octubre de 2026, por el art. único.10 del Real Decreto 518/2026, de 24 de junio. <a class="refPost">Ref. BOE-A-2026-13889</a></p>
+        </blockquote>
+      </version>
+    </bloque>
+  </data>
+</response>

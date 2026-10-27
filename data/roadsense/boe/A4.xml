@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="A4" tipo="encabezado" titulo="4">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="titulo">4. SEMÁFOROS</p>
+        <p class="capitulo">4.1. SEMÁFOROS RESERVADOS PARA PEATONES</p>
+        <table class="sinbordes">
+          <tr>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_411.png"/><br/>Luz roja no intermitente<br/>en forma de peatón inmóvil</p>
+            </td>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_412.png"/><br/>Luz verde no intermitente<br/>en forma de peatón en marcha</p>
+            </td>
+          </tr>
+        </table>
+        <p class="capitulo">4.2. SEMÁFOROS CIRCULARES PARA VEHÍCULOS</p>
+        <table class="sinbordes">
+          <tr>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_421.png"/><br/>Luz roja no intermitente</p>
+            </td>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_422.png"/><br/>Luz roja intermitente</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_423.png"/><br/>Luz amarilla<br/>no intermitente</p>
+            </td>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_424.png"/><br/>Luz amarilla intermitente</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_425.png"/><br/>Luz verde no intermitente</p>
+            </td>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_426.png"/><br/>Flecha negra</p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_427.png"/><br/>Flecha verde</p>
+            </td>
+          </tr>
+        </table>
+        <p class="capitulo">4.3. SEMÁFOROS CUADRADOS PARA VEHÍCULOS O DE CARRIL</p>
+        <table class="sinbordes">
+          <tr>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_431.png"/><br/>Luz roja en forma de aspa</p>
+            </td>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_432.png"/><br/>Luz verde en forma de flecha</p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_433.png"/><br/>Luz blanca o amarilla en forma de flecha</p>
+            </td>
+          </tr>
+        </table>
+        <p class="capitulo">4.4. SEMÁFOROS RESERVADOS A DETERMINADOS VEHÍCULOS</p>
+        <table class="sinbordes">
+          <tr>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_441.png"/><br/>Semáforos para ciclos<br/>y ciclomotores</p>
+            </td>
+            <td>
+              <p class="cuerpo_tabla_centro"><img src="/datos/imagenes/disp/2003/306/23514_442.png"/><br/>Semáforos reservados<br/>para tranvías y autobuses</p>
+            </td>
+          </tr>
+        </table>
+      </version>
+      <version id_norma="BOE-A-2025-12199" fecha_publicacion="20250617" fecha_vigencia="20250701">
+        <p class="titulo">4. Semáforos.</p>
+        <p class="parrafo_2">4.1 Semáforos reservados para peatones.</p>
+        <p class="parrafo_2">El significado de las luces de estos semáforos es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja no intermitente, en forma de peatón inmóvil, indica a los peatones que no deben comenzar a cruzar la calzada.</p>
+        <p class="parrafo">b) Una luz verde no intermitente, en forma de peatón en marcha, indica a los peatones que pueden comenzar a atravesar la calzada. Cuando dicha luz pase a intermitente, significa que el tiempo de que aún disponen para terminar de atravesar la calzada está a punto de finalizar y que se va a encender la luz roja.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="59.404464" data-ancho="119.4496128" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="702" src="/datos/imagenes/disp/2025/145/12199_15779007_9.png" width="1411"/>
+        </p>
+        <p class="parrafo_2">4.2 Semáforos circulares para vehículos.</p>
+        <p class="parrafo_2">El significado de sus luces y flechas es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja no intermitente prohíbe el paso.</p>
+        <p class="parrafo_2">Mientras permanece encendida, los vehículos no deben rebasar el semáforo ni, si existe, la línea de detención anterior más próxima a aquel. Si el semáforo estuviese dentro o al lado opuesto de una intersección, los vehículos no deben internarse en esta ni, si existe, rebasar la línea de detención situada antes de aquella.</p>
+        <p class="parrafo_2">b) Una luz roja intermitente, o dos luces rojas alternativamente intermitentes, prohíben temporalmente el paso a los vehículos antes de un paso a nivel, una entrada a un puente móvil o a un pontón transbordador, en las proximidades de una salida de vehículos de extinción de incendios o con motivo de la aproximación de una aeronave a escasa altura.</p>
+        <p class="parrafo">c) Una luz amarilla no intermitente significa que los vehículos deben detenerse en las mismas condiciones que si se tratara de una luz roja fija, a no ser que, cuando se encienda, el vehículo se encuentre tan cerca del lugar de detención que no pueda detenerse antes del semáforo en condiciones de seguridad suficientes.</p>
+        <p class="parrafo">d) Una luz amarilla intermitente o dos luces amarillas alternativamente intermitentes obligan a los conductores a extremar la precaución y, en su caso, ceder el paso. Además, no eximen del cumplimiento de otras señales que obliguen a detenerse.</p>
+        <p class="parrafo">e) Una luz verde no intermitente significa que está permitido el paso con prioridad, excepto en los supuestos a que se refiere el artículo 59.1.</p>
+        <p class="parrafo">f) Una flecha negra sobre una luz roja no intermitente o sobre una luz amarilla no cambia el significado de dichas luces, pero lo limita exclusivamente al movimiento indicado por la flecha.</p>
+        <p class="parrafo">g) Una flecha verde que se ilumina sobre un fondo circular negro significa que los vehículos pueden tomar la dirección y sentido indicados por aquella, cualquiera que sea la luz que esté simultáneamente encendida en el mismo semáforo o en otro contiguo.</p>
+        <p class="parrafo_2">Cualquier vehículo que, al encenderse la flecha verde, se encuentre en un carril reservado exclusivamente para la circulación en la dirección y sentidos indicados por la flecha o que, sin estar reservado, sea el que esta circulación tenga que utilizar, deberá avanzar en dicha dirección y sentido.</p>
+        <p class="parrafo">Los vehículos que avancen siguiendo la indicación de una flecha verde deben hacerlo con precaución, dejando pasar a los vehículos que circulen por el carril al que se incorporen y no poniendo en peligro a ningún usuario de la vía que esté cruzando la calzada.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="233.2692432" data-ancho="127.4511168" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="2755" src="/datos/imagenes/disp/2025/145/12199_15779007_10.png" width="1505"/>
+        </p>
+        <p class="parrafo_2">4.3 Semáforos cuadrados para vehículos o de carril.</p>
+        <p class="parrafo_2">Los semáforos de ocupación de carril afectan exclusivamente a los vehículos que circulen por el carril sobre el que están situados o en el que se indique en el panel de señalización variable.</p>
+        <p class="parrafo">El significado de sus luces es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja en forma de aspa determina la prohibición de ocupar el carril indicado. Los conductores de los vehículos que circulen por este carril deberán abandonarlo en el tiempo más breve posible.</p>
+        <p class="parrafo">b) Una luz verde en forma de flecha apuntada hacia abajo indica que está permitido circular por el carril correspondiente. Esta autorización de utilizar el carril no exime de la obligación de detenerse ante una luz roja circular o, por excepción a lo dispuesto sobre el orden de preeminencia en el artículo 133, de obedecer cualquier otra señal o marca vial que obligue a detenerse o a ceder el paso, o, en su ausencia, del cumplimiento de las normas generales sobre prioridad de paso.</p>
+        <p class="parrafo">c) Una luz blanca o amarilla en forma de flecha, intermitente o fija, apuntada hacia abajo en forma oblicua, indica a los usuarios del carril correspondiente la necesidad de irse incorporando en condiciones de seguridad al carril hacia el que apunta la flecha, toda vez que aquel por el que circula va a quedar cerrado en corto espacio.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="103.5340992" data-ancho="150.6554784" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="1223" src="/datos/imagenes/disp/2025/145/12199_15779007_11.png" width="1779"/>
+        </p>
+        <p class="parrafo_2">4.4 Semáforos reservados a determinados vehículos.</p>
+        <p class="parrafo_2">1. Cuando las luces de los semáforos presentan la silueta iluminada de un ciclo, sus indicaciones se refieren exclusivamente a ellos.</p>
+        <p class="parrafo">2. Cuando, excepcionalmente, el semáforo consista en una franja blanca iluminada sobre fondo circular negro, sus indicaciones se refieren exclusivamente a los tranvías y a los autobuses de líneas regulares, a no ser que exista un carril reservado para autobuses o para autobuses, taxis y otros vehículos; en tal caso, solo se refieren a los que circulen por él. El significado de estos semáforos es el siguiente:</p>
+        <p class="parrafo_2">a) Una franja blanca horizontal iluminada prohíbe el paso en las mismas condiciones que la luz roja no intermitente.</p>
+        <p class="parrafo">b) Una franja blanca vertical iluminada permite el paso de frente.</p>
+        <p class="parrafo">c) Una franja blanca oblicua, hacia la izquierda o hacia la derecha, iluminada, indica que está permitido el paso para girar a la izquierda o a la derecha, respectivamente.</p>
+        <p class="parrafo">d) Una franja blanca, vertical u oblicua, iluminada intermitentemente, indica que los citados vehículos deben detenerse en las mismas condiciones que si se tratara de una luz amarilla fija.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="56.9997792" data-ancho="96.0695568" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="673" src="/datos/imagenes/disp/2025/145/12199_15779007_12.png" width="1135"/>
+        </p>
+        <blockquote>
+          <p class="nota_pie">Se modifica por el art. único.17 del Real Decreto 465/2025, de 10 de junio. <a class="refPost">Ref. BOE-A-2025-12199</a></p>
+        </blockquote>
+      </version>
+      <version id_norma="BOE-A-2026-13889" fpub="" fecha_publicacion="20260626" fecha_vigencia="20261001">
+        <p class="titulo">4. Semáforos.</p>
+        <p class="parrafo_2">4.1 Semáforos reservados para peatones.</p>
+        <p class="parrafo_2">El significado de las luces de estos semáforos es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja no intermitente, en forma de peatón inmóvil, indica a los peatones que no deben comenzar a cruzar la calzada.</p>
+        <p class="parrafo">b) Una luz verde no intermitente, en forma de peatón en marcha, indica a los peatones que pueden comenzar a atravesar la calzada. Cuando dicha luz pase a intermitente, significa que el tiempo de que aún disponen para terminar de atravesar la calzada está a punto de finalizar y que se va a encender la luz roja.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="59.404464" data-ancho="119.4496128" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="702" src="/datos/imagenes/disp/2025/145/12199_15779007_9.png" width="1411"/>
+        </p>
+        <p class="parrafo_2">4.2 Semáforos circulares para vehículos.</p>
+        <p class="parrafo_2">El significado de sus luces y flechas es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja no intermitente prohíbe el paso.</p>
+        <p class="parrafo_2">Mientras permanece encendida, los vehículos no deben rebasar el semáforo ni, si existe, la línea de detención anterior más próxima a aquel. Si el semáforo estuviese dentro o al lado opuesto de una intersección, los vehículos no deben internarse en esta ni, si existe, rebasar la línea de detención situada antes de aquella.</p>
+        <p class="parrafo_2">b) Una luz roja intermitente, o dos luces rojas alternativamente intermitentes, prohíben temporalmente el paso a los vehículos antes de un paso a nivel, una entrada a un puente móvil o a un pontón transbordador, en las proximidades de una salida de vehículos de extinción de incendios o con motivo de la aproximación de una aeronave a escasa altura.</p>
+        <p class="parrafo">c) Una luz amarilla no intermitente significa que los vehículos deben detenerse en las mismas condiciones que si se tratara de una luz roja fija, a no ser que, cuando se encienda, el vehículo se encuentre tan cerca del lugar de detención que no pueda detenerse antes del semáforo en condiciones de seguridad suficientes.</p>
+        <p class="parrafo">d) Una luz amarilla intermitente o dos luces amarillas alternativamente intermitentes obligan a los conductores a extremar la precaución y, en su caso, ceder el paso. Además, no eximen del cumplimiento de otras señales que obliguen a detenerse.</p>
+        <p class="parrafo">Como norma general, en los pasos para peatones con semáforo reservado para peatones, la luz amarilla intermitente para vehículos no podrá coincidir con la luz verde no intermitente para peatones y deberá ir precedida de la luz roja no intermitente.</p>
+        <blockquote caduca="20261001" class="soloTexto">
+          <p class="parrafo">Téngase en cuenta que esta actualización de la letra d) del apartado 4.2, establecida por el art. único.26 del Real Decreto 518/2026, de 24 de junio, <a class="refPost">Ref. BOE-A-2026-13889</a>, entra en vigor el 1 de octubre de 2026, según determina su disposición final 3.</p>
+          <p class="cita_con_pleca">Redacción anterior:</p>
+          <p class="parrafo">"d) Una luz amarilla intermitente o dos luces amarillas alternativamente intermitentes obligan a los conductores a extremar la precaución y, en su caso, ceder el paso. Además, no eximen del cumplimiento de otras señales que obliguen a detenerse."</p>
+        </blockquote>
+        <p class="parrafo">e) Una luz verde no intermitente significa que está permitido el paso con prioridad, excepto en los supuestos a que se refiere el artículo 59.1.</p>
+        <p class="parrafo">f) Una flecha negra sobre una luz roja no intermitente o sobre una luz amarilla no cambia el significado de dichas luces, pero lo limita exclusivamente al movimiento indicado por la flecha.</p>
+        <p class="parrafo">g) Una flecha verde que se ilumina sobre un fondo circular negro significa que los vehículos pueden tomar la dirección y sentido indicados por aquella, cualquiera que sea la luz que esté simultáneamente encendida en el mismo semáforo o en otro contiguo.</p>
+        <p class="parrafo_2">Cualquier vehículo que, al encenderse la flecha verde, se encuentre en un carril reservado exclusivamente para la circulación en la dirección y sentidos indicados por la flecha o que, sin estar reservado, sea el que esta circulación tenga que utilizar, deberá avanzar en dicha dirección y sentido.</p>
+        <p class="parrafo">Los vehículos que avancen siguiendo la indicación de una flecha verde deben hacerlo con precaución, dejando pasar a los vehículos que circulen por el carril al que se incorporen y no poniendo en peligro a ningún usuario de la vía que esté cruzando la calzada.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="233.2692432" data-ancho="127.4511168" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="2755" src="/datos/imagenes/disp/2025/145/12199_15779007_10.png" width="1505"/>
+        </p>
+        <p class="parrafo_2">4.3 Semáforos cuadrados para vehículos o de carril.</p>
+        <p class="parrafo_2">Los semáforos de ocupación de carril afectan exclusivamente a los vehículos que circulen por el carril sobre el que están situados o en el que se indique en el panel de señalización variable.</p>
+        <p class="parrafo">El significado de sus luces es el siguiente:</p>
+        <p class="parrafo_2">a) Una luz roja en forma de aspa determina la prohibición de ocupar el carril indicado. Los conductores de los vehículos que circulen por este carril deberán abandonarlo en el tiempo más breve posible.</p>
+        <p class="parrafo">b) Una luz verde en forma de flecha apuntada hacia abajo indica que está permitido circular por el carril correspondiente. Esta autorización de utilizar el carril no exime de la obligación de detenerse ante una luz roja circular o, por excepción a lo dispuesto sobre el orden de preeminencia en el artículo 133, de obedecer cualquier otra señal o marca vial que obligue a detenerse o a ceder el paso, o, en su ausencia, del cumplimiento de las normas generales sobre prioridad de paso.</p>
+        <p class="parrafo">c) Una luz blanca o amarilla en forma de flecha, intermitente o fija, apuntada hacia abajo en forma oblicua, indica a los usuarios del carril correspondiente la necesidad de irse incorporando en condiciones de seguridad al carril hacia el que apunta la flecha, toda vez que aquel por el que circula va a quedar cerrado en corto espacio.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="103.5340992" data-ancho="150.6554784" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="1223" src="/datos/imagenes/disp/2025/145/12199_15779007_11.png" width="1779"/>
+        </p>
+        <p class="parrafo_2">4.4 Semáforos reservados a determinados vehículos.</p>
+        <p class="parrafo_2">1. Cuando las luces de los semáforos presentan la silueta iluminada de un ciclo, sus indicaciones se refieren exclusivamente a ellos.</p>
+        <p class="parrafo">2. Cuando, excepcionalmente, el semáforo consista en una franja blanca iluminada sobre fondo circular negro, sus indicaciones se refieren exclusivamente a los tranvías y a los autobuses de líneas regulares, a no ser que exista un carril reservado para autobuses o para autobuses, taxis y otros vehículos; en tal caso, solo se refieren a los que circulen por él. El significado de estos semáforos es el siguiente:</p>
+        <p class="parrafo_2">a) Una franja blanca horizontal iluminada prohíbe el paso en las mismas condiciones que la luz roja no intermitente.</p>
+        <p class="parrafo">b) Una franja blanca vertical iluminada permite el paso de frente.</p>
+        <p class="parrafo">c) Una franja blanca oblicua, hacia la izquierda o hacia la derecha, iluminada, indica que está permitido el paso para girar a la izquierda o a la derecha, respectivamente.</p>
+        <p class="parrafo">d) Una franja blanca, vertical u oblicua, iluminada intermitentemente, indica que los citados vehículos deben detenerse en las mismas condiciones que si se tratara de una luz amarilla fija.</p>
+        <p class="imagen">
+          <img class="frame" data-alto="56.9997792" data-ancho="96.0695568" data-pdf="1_RD_465-2025_IMGS_Revisado.pdf" height="673" src="/datos/imagenes/disp/2025/145/12199_15779007_12.png" width="1135"/>
+        </p>
+        <blockquote>
+          <p class="nota_pie">Se modifica la letra d) del apartado 4.2, con efectos de 1 de octubre de 2026, por el art. único.26 del Real Decreto 518/2026, de 24 de junio. <a class="refPost">Ref. BOE-A-2026-13889</a></p>
+          <p class="nota_pie">Se modifica por el art. único.17 del Real Decreto 465/2025, de 10 de junio. <a class="refPost">Ref. BOE-A-2025-12199</a></p>
+        </blockquote>
+      </version>
+    </bloque>
+  </data>
+</response>

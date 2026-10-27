@@ -1,0 +1,34 @@
+{
+  "latencyMs": 6687,
+  "calls": {
+    "sparkModel": "muse-spark-1.3-contributor",
+    "00f5e96fc8aff2ca21a5261ea0fb9efeb845422ba89c40134d4dec9c5fe8ac56": {
+      "json": {
+        "crossRoadPaved": null,
+        "egoRoadPaved": true,
+        "inScope": false,
+        "junction": "none",
+        "lights": [],
+        "markings": [],
+        "outOfScopeReason": "no_junction",
+        "roadUsers": [],
+        "signs": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 678,
+              "x2": 726,
+              "y1": 408,
+              "y2": 472
+            },
+            "confidence": 0.85,
+            "id": "s1",
+            "kind": "other"
+          }
+        ],
+        "unknowns": []
+      },
+      "costUsd": 0.000460986
+    }
+  }
+}
