@@ -21,29 +21,78 @@ export const COPY = {
     },
   },
   page: {
-    // The product name, the same in every language.
-    name: { es: "RoadSense", en: "RoadSense", fr: "RoadSense", ar: "RoadSense" },
+    eyebrow: { es: "RoadSense · nuevo", en: "RoadSense · new", fr: "RoadSense · nouveau", ar: "RoadSense · جديد" },
     title: {
-      es: "¿Quién pasa primero?",
-      en: "Who goes first?",
-      fr: "Qui passe en premier ?",
-      ar: "من يمرّ أولًا؟",
+      es: "Haz una foto de un cruce. Descubre quién pasa primero.",
+      en: "Photograph a junction. Find out who goes first.",
+      fr: "Photographiez une intersection. Découvrez qui passe en premier.",
+      ar: "صوِّر تقاطعًا واعرف من يمرّ أولًا.",
     },
     lead: {
-      es: "Elige una escena o sube una foto de un cruce. RoadSense te dice qué debes hacer, con el artículo exacto del Reglamento General de Circulación, y solo marca la respuesta como comprobada cuando el motor de reglas y la IA coinciden.",
-      en: "Pick a scene or upload a photo of a junction. RoadSense tells you what to do, with the exact article of Spain's traffic rules (Reglamento General de Circulación), and only marks the answer as checked when its rule engine and the AI agree.",
-      fr: "Choisissez une scène ou envoyez la photo d'une intersection. RoadSense vous dit quoi faire, avec l'article exact du code de la route espagnol (Reglamento General de Circulación), et ne marque la réponse comme contrôlée que si le moteur de règles et l'IA sont d'accord.",
-      ar: "اختر مشهدًا أو ارفع صورة تقاطع. يخبرك RoadSense بما يجب عليك فعله، مع المادة الدقيقة من لائحة المرور الإسبانية (Reglamento General de Circulación)، ولا يعلّم الإجابة كمُدقَّقة إلا عندما يتفق محرّك القواعد والذكاء الاصطناعي.",
-    },
-    poweredBy: {
-      es: "Con Muse Spark, SAM 3.1 y Muse Image de Meta",
-      en: "With Meta's Muse Spark, SAM 3.1 and Muse Image",
-      fr: "Avec Muse Spark, SAM 3.1 et Muse Image de Meta",
-      ar: "باستخدام Muse Spark وSAM 3.1 وMuse Image من Meta",
+      es: "Haz la foto desde el asiento del conductor. RoadSense te dice qué debes hacer según las normas de tráfico, marca la señal o el vehículo que lo decide y cita la ley.",
+      en: "Take a photo from the driver's seat. RoadSense tells you what you must do under Spain's traffic rules, outlines the sign or vehicle that decides it, and quotes the law.",
+      fr: "Prenez la photo depuis le siège du conducteur. RoadSense vous dit ce que vous devez faire selon le code de la route espagnol, entoure le panneau ou le véhicule qui en décide et cite la loi.",
+      ar: "التقط الصورة من مقعد السائق. يخبرك RoadSense بما يجب عليك فعله وفق قواعد المرور الإسبانية، ويحدّد الإشارة أو المركبة التي تحسم الأمر، ويستشهد بنص القانون.",
     },
   },
+  hero: {
+    upload: { es: "Subir una foto", en: "Upload a photo", fr: "Envoyer une photo", ar: "ارفع صورة" },
+    tryExample: { es: "Probar un ejemplo", en: "Try an example", fr: "Essayer un exemple", ar: "جرّب مثالًا" },
+    trust: {
+      es: "Gratis para probar · No guardamos tu foto · Cruces y pasos de peatones en España",
+      en: "Free to try · We don't keep your photo · Junctions and pedestrian crossings in Spain",
+      fr: "Gratuit pour essayer · Nous ne gardons pas votre photo · Intersections et passages piétons en Espagne",
+      ar: "مجاني للتجربة · لا نحتفظ بصورتك · التقاطعات وممرات المشاة في إسبانيا",
+    },
+    exampleTag: { es: "Ejemplo", en: "Example", fr: "Exemple", ar: "مثال" },
+    // The rule as the BOE names it, in Spanish in every language, e.g. "RGC art. 56.1 · Intersecciones señalizadas".
+    citation: { es: "{article} · {title}", en: "{article} · {title}", fr: "{article} · {title}", ar: "{article} · {title}" },
+  },
+  steps: {
+    snap: {
+      title: { es: "Fotografía el cruce", en: "Snap the junction", fr: "Photographiez l'intersection", ar: "صوِّر التقاطع" },
+      body: {
+        es: "Desde el asiento del conductor, mirando al frente.",
+        en: "From the driver's seat, looking ahead.",
+        fr: "Depuis le siège du conducteur, en regardant devant vous.",
+        ar: "من مقعد السائق، باتجاه الأمام.",
+      },
+    },
+    answer: {
+      title: { es: "Recibe la respuesta", en: "Get the answer", fr: "Obtenez la réponse", ar: "احصل على الإجابة" },
+      body: {
+        es: "Qué debes hacer, en qué se basa y el artículo exacto.",
+        en: "What you must do, what it's based on, and the exact article.",
+        fr: "Ce que vous devez faire, sur quoi cela repose et l'article exact.",
+        ar: "ما يجب عليك فعله، وعلى ماذا يستند، والمادة القانونية بدقة.",
+      },
+    },
+    ask: {
+      title: { es: "Pregunta «¿y si…?»", en: "Ask \"what if…?\"", fr: "Demandez « et si… ? »", ar: "اسأل «ماذا لو…؟»" },
+      body: {
+        es: "Escribe un cambio, como un peatón que cruza, y mira cómo cambia la respuesta.",
+        en: "Type a change, like a person stepping out, and see how the answer changes.",
+        fr: "Écrivez un changement, comme un piéton qui traverse, et voyez comment la réponse change.",
+        ar: "اكتب تغييرًا، مثل أحد المشاة يعبر، وشاهد كيف تتغيّر الإجابة.",
+      },
+    },
+  },
+  examples: {
+    heading: { es: "O empieza con un ejemplo", en: "Or start with an example", fr: "Ou commencez par un exemple", ar: "أو ابدأ بمثال" },
+    seeAll: { es: "Ver todos", en: "See all", fr: "Tout voir", ar: "عرض الكل" },
+    showFewer: { es: "Ver menos", en: "Show fewer", fr: "Voir moins", ar: "عرض أقل" },
+  },
+  howItChecks: {
+    heading: { es: "Cómo se comprueba a sí mismo", en: "How it checks itself", fr: "Comment il se contrôle lui-même", ar: "كيف يدقّق في نفسه" },
+    body: {
+      es: "Muse Spark lee la foto → un motor de reglas aplica el Reglamento → SAM 3.1 encuentra en la foto la señal o el coche → si no coinciden todos, dice «no estamos seguros» en vez de adivinar. Muse Image dibuja tus «¿y si…?».",
+      en: "Muse Spark reads the photo → a rule engine applies the Reglamento → SAM 3.1 finds the sign or car in the photo → if they don't all agree, it says \"not sure\" instead of guessing. Muse Image draws your what-ifs.",
+      fr: "Muse Spark lit la photo → un moteur de règles applique le Reglamento → SAM 3.1 retrouve le panneau ou la voiture sur la photo → s'ils ne sont pas tous d'accord, il dit « pas sûr » au lieu de deviner. Muse Image dessine vos « et si… ? ».",
+      ar: "يقرأ Muse Spark الصورة ← يطبّق محرّك القواعد اللائحة (Reglamento) ← يعثر SAM 3.1 على الإشارة أو السيارة في الصورة ← إذا لم تتفق كلها، يقول «غير متأكدين» بدلًا من التخمين. ويرسم Muse Image تغييرات «ماذا لو…؟».",
+    },
+    sourceCode: { es: "Código fuente", en: "Source code", fr: "Code source", ar: "الشيفرة المصدرية" },
+  },
   scenes: {
-    heading: { es: "Escenas de ejemplo", en: "Example scenes", fr: "Scènes d'exemple", ar: "مشاهد نموذجية" },
     aiGenerated: {
       es: "Imagen generada por IA",
       en: "AI-generated image",
@@ -59,9 +108,8 @@ export const COPY = {
   },
   upload: {
     heading: { es: "Tu foto", en: "Your photo", fr: "Votre photo", ar: "صورتك" },
-    choose: { es: "Elegir una foto", en: "Choose a photo", fr: "Choisir une photo", ar: "اختر صورة" },
     change: { es: "Cambiar la foto", en: "Change photo", fr: "Changer de photo", ar: "غيّر الصورة" },
-    analyse: { es: "Analizar", en: "Analyse", fr: "Analyser", ar: "حلّل" },
+    analyse: { es: "Analizar esta foto", en: "Analyse this photo", fr: "Analyser cette photo", ar: "حلّل هذه الصورة" },
     tip: {
       es: "Funciona mejor con una foto desde el asiento del conductor, mirando al cruce.",
       en: "Works best with a photo from the driver's seat, looking at the junction.",
@@ -98,10 +146,11 @@ export const COPY = {
     },
     decide: { es: "Redactando la explicación…", en: "Writing the explanation…", fr: "Rédaction de l'explication…", ar: "جارٍ كتابة الشرح…" },
     edit: { es: "Cambiando la escena…", en: "Changing the scene…", fr: "Modification de la scène…", ar: "جارٍ تعديل المشهد…" },
+    understand: { es: "Entendiendo tu pregunta…", en: "Understanding your question…", fr: "Compréhension de votre question…", ar: "جارٍ فهم سؤالك…" },
   },
   certainty: {
     checked: {
-      label: { es: "Comprobada", en: "Checked", fr: "Contrôlée", ar: "مُدقَّقة" },
+      label: { es: "Doble comprobación", en: "Double-checked", fr: "Double contrôle", ar: "تدقيق مزدوج" },
       explain: {
         es: "El motor de reglas y la IA llegan a la misma respuesta, SAM 3.1 encuentra en la foto cada señal o vehículo del que depende, y la respuesta cita el texto oficial del BOE. No es una garantía: mira siempre la situación real.",
         en: "The rule engine and the AI reach the same answer, SAM 3.1 finds every sign or vehicle it depends on in the photo, and the answer cites the official BOE text. It isn't a guarantee: always look at the real situation.",
@@ -110,7 +159,12 @@ export const COPY = {
       },
     },
     disagree: {
-      label: { es: "Respuestas distintas", en: "Answers differ", fr: "Réponses différentes", ar: "إجابتان مختلفتان" },
+      label: {
+        es: "Nuestras dos comprobaciones no coinciden",
+        en: "Our two checks disagree",
+        fr: "Nos deux contrôles ne concordent pas",
+        ar: "فحصانا لا يتفقان",
+      },
       explain: {
         es: "El motor de reglas y la IA no coinciden, así que te mostramos las dos respuestas y ninguna lleva la marca de comprobada.",
         en: "The rule engine and the AI disagree, so you see both answers and neither is marked as checked.",
@@ -120,6 +174,7 @@ export const COPY = {
     },
     not_sure: {
       label: { es: "No estamos seguros", en: "Not sure", fr: "Pas sûr", ar: "غير متأكدين" },
+      note: { es: "RoadSense no adivina", en: "RoadSense won't guess", fr: "RoadSense ne devine pas", ar: "لا يخمّن RoadSense" },
       explain: {
         es: "Falta algo para responder con seguridad: abajo te decimos qué. Prueba con otra foto.",
         en: "Something needed for a safe answer is missing; we say what below. Try another photo.",
@@ -128,7 +183,12 @@ export const COPY = {
       },
     },
     outside_scope: {
-      label: { es: "Fuera de alcance", en: "Out of scope", fr: "Hors champ", ar: "خارج النطاق" },
+      label: {
+        es: "No podemos responder con esta foto",
+        en: "Can't answer this photo",
+        fr: "Impossible de répondre avec cette photo",
+        ar: "لا يمكننا الإجابة عن هذه الصورة",
+      },
       explain: {
         es: "RoadSense solo analiza cruces y pasos de peatones en España.",
         en: "RoadSense only analyses junctions and pedestrian crossings in Spain.",
@@ -219,15 +279,6 @@ export const COPY = {
     },
   },
   result: {
-    answer: { es: "Qué debes hacer", en: "What to do", fr: "Ce que vous devez faire", ar: "ما يجب عليك فعله" },
-    why: { es: "Por qué", en: "Why", fr: "Pourquoi", ar: "لماذا" },
-    tempting: {
-      es: "La respuesta trampa",
-      en: "The tempting wrong answer",
-      fr: "La fausse bonne réponse",
-      ar: "الإجابة الخاطئة المغرية",
-    },
-    rules: { es: "Lo que dice la ley", en: "What the law says", fr: "Ce que dit la loi", ar: "ما ينص عليه القانون" },
     plainWords: { es: "En pocas palabras", en: "In plain words", fr: "En quelques mots", ar: "باختصار" },
     source: {
       es: "BOE, texto consolidado del Reglamento General de Circulación",
@@ -245,10 +296,10 @@ export const COPY = {
     model: { es: "IA (Muse Spark)", en: "AI (Muse Spark)", fr: "IA (Muse Spark)", ar: "الذكاء الاصطناعي (Muse Spark)" },
     missing: { es: "Qué falta", en: "What's missing", fr: "Ce qui manque", ar: "ما الذي ينقص" },
     unsettled: {
-      es: "Las reglas que citamos no bastan para decidir este caso con seguridad.",
-      en: "The rules we cite aren't enough to settle this case safely.",
-      fr: "Les règles que nous citons ne suffisent pas à trancher ce cas avec certitude.",
-      ar: "القواعد التي نستشهد بها لا تكفي لحسم هذه الحالة بشكل مؤكد.",
+      es: "Las normas que comprueba RoadSense no resuelven este caso, así que no adivina.",
+      en: "The rules RoadSense checks don't settle this case, so it won't guess.",
+      fr: "Les règles que RoadSense contrôle ne tranchent pas ce cas, donc il ne devine pas.",
+      ar: "القواعد التي يدقّق فيها RoadSense لا تحسم هذه الحالة، لذلك لا يخمّن.",
     },
     amberException: {
       es: "Con el ámbar fijo debes detenerte, salvo que estés tan cerca que no puedas hacerlo con seguridad.",
@@ -264,11 +315,13 @@ export const COPY = {
     },
     models: { es: "Modelos", en: "Models", fr: "Modèles", ar: "النماذج" },
     badgeHelp: {
-      es: "¿Qué significa?",
-      en: "What does this mean?",
-      fr: "Qu'est-ce que cela signifie ?",
-      ar: "ماذا يعني هذا؟",
+      es: "¿Qué significa «Doble comprobación»?",
+      en: "What does Double-checked mean?",
+      fr: "Que signifie « Double contrôle » ?",
+      ar: "ماذا يعني «تدقيق مزدوج»؟",
     },
+    whyWrongFold: { es: "Por qué la gente se equivoca", en: "Why people get this wrong", fr: "Pourquoi on se trompe souvent", ar: "لماذا يخطئ كثيرون" },
+    lawFold: { es: "Leer la ley", en: "Read the law", fr: "Lire la loi", ar: "اقرأ نص القانون" },
     loading: { es: "Cargando…", en: "Loading…", fr: "Chargement…", ar: "جارٍ التحميل…" },
     // {scenes}, {right}, {answerable} and {wrong} come from docs/roadsense/eval-results.json.
     evaluation: {
@@ -316,44 +369,20 @@ export const COPY = {
   },
   whatIf: {
     heading: { es: "¿Y si…?", en: "What if…?", fr: "Et si… ?", ar: "ماذا لو…؟" },
-    swap_to_stop: {
-      es: "…la señal fuera un STOP",
-      en: "…the sign were a STOP",
-      fr: "…le panneau était un STOP",
-      ar: "…كانت الإشارة STOP",
-    },
+    // Suggestion chips, in the learner's words.
+    swap_to_stop: { es: "es un STOP", en: "it's a STOP sign", fr: "c'est un panneau STOP", ar: "الإشارة STOP" },
     swap_to_yield: {
-      es: "…la señal fuera un ceda el paso",
-      en: "…the sign were a yield sign",
-      fr: "…le panneau était un cédez-le-passage (ceda el paso)",
-      ar: "…كانت الإشارة إفساح الطريق (ceda el paso)",
+      es: "es un ceda el paso",
+      en: "it's a yield sign",
+      fr: "c'est un cédez-le-passage (ceda el paso)",
+      ar: "الإشارة أفسح الطريق (ceda el paso)",
     },
-    remove_sign: { es: "…no hubiera señal", en: "…there were no sign", fr: "…il n'y avait pas de panneau", ar: "…لم تكن هناك إشارة" },
-    light_red: {
-      es: "…el semáforo estuviera en rojo",
-      en: "…the light were red",
-      fr: "…le feu était rouge",
-      ar: "…كانت الإشارة الضوئية حمراء",
-    },
-    light_green: {
-      es: "…el semáforo estuviera en verde",
-      en: "…the light were green",
-      fr: "…le feu était vert",
-      ar: "…كانت الإشارة الضوئية خضراء",
-    },
-    add_emergency_vehicle: {
-      es: "…llegara una ambulancia con las luces encendidas",
-      en: "…an ambulance came with its lights on",
-      fr: "…une ambulance arrivait gyrophares allumés",
-      ar: "…جاءت سيارة إسعاف بأضوائها المضاءة",
-    },
-    add_pedestrian_on_crossing: {
-      es: "…hubiera un peatón cruzando",
-      en: "…a pedestrian were crossing",
-      fr: "…un piéton traversait",
-      ar: "…كان أحد المشاة يعبر",
-    },
-    original: { es: "Escena original", en: "Original scene", fr: "Scène d'origine", ar: "المشهد الأصلي" },
+    remove_sign: { es: "desaparece la señal", en: "the sign disappears", fr: "le panneau disparaît", ar: "تختفي الإشارة" },
+    light_red: { es: "el semáforo se pone en rojo", en: "the light turns red", fr: "le feu passe au rouge", ar: "تصبح الإشارة الضوئية حمراء" },
+    light_green: { es: "el semáforo se pone en verde", en: "the light turns green", fr: "le feu passe au vert", ar: "تصبح الإشارة الضوئية خضراء" },
+    add_emergency_vehicle: { es: "llega una ambulancia", en: "an ambulance comes", fr: "une ambulance arrive", ar: "تصل سيارة إسعاف" },
+    add_pedestrian_on_crossing: { es: "cruza un peatón delante", en: "a person crosses in front", fr: "un piéton traverse devant", ar: "يعبر أحد المشاة أمامك" },
+    original: { es: "Ejemplo original", en: "Original example", fr: "Exemple d'origine", ar: "المثال الأصلي" },
     notApplied: {
       es: "No hemos podido hacer ese cambio con fiabilidad en esta foto.",
       en: "We couldn't make that change reliably on this photo.",
@@ -367,6 +396,132 @@ export const COPY = {
       fr: "Chaque modification de votre photo compte comme une analyse.",
       ar: "كل تعديل على صورتك يُحتسب تحليلًا واحدًا.",
     },
+    // Typed what-ifs.
+    placeholder: { es: "p. ej. cruza un peatón delante", en: "e.g. a person crosses in front", fr: "p. ex. un piéton traverse devant", ar: "مثلًا: يعبر أحد المشاة أمامك" },
+    ask: { es: "Preguntar", en: "Ask", fr: "Demander", ar: "اسأل" },
+    hint: {
+      es: "Lo que escribes se envía a Meta para entenderlo. No lo guardamos.",
+      en: "What you type is sent to Meta to understand it. We don't keep it.",
+      fr: "Ce que vous écrivez est envoyé à Meta pour le comprendre. Nous ne le conservons pas.",
+      ar: "يُرسَل ما تكتبه إلى Meta لفهمه. لا نحتفظ به.",
+    },
+    yourPhoto: { es: "Tu foto", en: "Your photo", fr: "Votre photo", ar: "صورتك" },
+    readAs: { es: "Entendido como:", en: "Read as:", fr: "Compris comme :", ar: "فهمناه هكذا:" },
+    readAsLabels: {
+      swap_to_stop: { es: "tu señal pasa a ser un STOP", en: "your sign becomes a STOP", fr: "votre panneau devient un STOP", ar: "تصبح إشارتك STOP" },
+      swap_to_yield: {
+        es: "tu señal pasa a ser un ceda el paso",
+        en: "your sign becomes a yield sign",
+        fr: "votre panneau devient un cédez-le-passage (ceda el paso)",
+        ar: "تصبح إشارتك أفسح الطريق (ceda el paso)",
+      },
+      remove_sign: { es: "tu señal desaparece", en: "your sign is gone", fr: "votre panneau disparaît", ar: "تختفي إشارتك" },
+      light_red: { es: "tu semáforo se pone en rojo", en: "your traffic light turns red", fr: "votre feu passe au rouge", ar: "تصبح إشارتك الضوئية حمراء" },
+      light_green: { es: "tu semáforo se pone en verde", en: "your traffic light turns green", fr: "votre feu passe au vert", ar: "تصبح إشارتك الضوئية خضراء" },
+      add_pedestrian_on_crossing: {
+        es: "un peatón en el paso de cebra delante de ti",
+        en: "a person on the zebra crossing in front of you",
+        fr: "un piéton sur le passage piéton devant vous",
+        ar: "أحد المشاة على ممر المشاة أمامك",
+      },
+      add_emergency_vehicle: {
+        es: "llega una ambulancia con las luces encendidas",
+        en: "an ambulance arrives with its lights on",
+        fr: "une ambulance arrive gyrophares allumés",
+        ar: "تصل سيارة إسعاف بأضوائها المضاءة",
+      },
+    },
+    confirm: {
+      es: "¿Lo pruebo? Cuenta como un análisis.",
+      en: "Run it? It counts as one analysis.",
+      fr: "Le lancer ? Cela compte comme une analyse.",
+      ar: "هل نجرّبه؟ يُحتسب تحليلًا واحدًا.",
+    },
+    run: { es: "Probarlo", en: "Run it", fr: "Lancer", ar: "جرّبه" },
+    notPossible: {
+      no_light: {
+        es: "En esta foto no hay un semáforo para ti.",
+        en: "There's no traffic light for you in this photo.",
+        fr: "Il n'y a pas de feu pour vous sur cette photo.",
+        ar: "لا توجد في هذه الصورة إشارة ضوئية خاصة بك.",
+      },
+      no_sign: {
+        es: "En esta foto no hay un STOP ni un ceda el paso para ti.",
+        en: "There's no STOP or yield sign of yours in this photo.",
+        fr: "Il n'y a pas de STOP ni de cédez-le-passage (ceda el paso) pour vous sur cette photo.",
+        ar: "لا توجد في هذه الصورة إشارة STOP أو أفسح الطريق (ceda el paso) خاصة بك.",
+      },
+      no_zebra: {
+        es: "No hay un paso de cebra delante donde poner un peatón.",
+        en: "There's no zebra crossing ahead to put a person on.",
+        fr: "Il n'y a pas de passage piéton devant vous où placer un piéton.",
+        ar: "لا يوجد ممر مشاة أمامك لوضع أحد المشاة عليه.",
+      },
+      light_already_red: { es: "Tu semáforo ya está en rojo.", en: "Your light is already red.", fr: "Votre feu est déjà rouge.", ar: "إشارتك الضوئية حمراء بالفعل." },
+      light_already_green: { es: "Tu semáforo ya está en verde.", en: "Your light is already green.", fr: "Votre feu est déjà vert.", ar: "إشارتك الضوئية خضراء بالفعل." },
+      sign_already_stop: { es: "Tu señal ya es un STOP.", en: "Your sign is already a STOP.", fr: "Votre panneau est déjà un STOP.", ar: "إشارتك STOP بالفعل." },
+      sign_already_yield: {
+        es: "Tu señal ya es un ceda el paso.",
+        en: "Your sign is already a yield sign.",
+        fr: "Votre panneau est déjà un cédez-le-passage (ceda el paso).",
+        ar: "إشارتك أفسح الطريق (ceda el paso) بالفعل.",
+      },
+      pedestrian_already: {
+        es: "Ya hay un peatón en el paso.",
+        en: "There's already a person on the crossing.",
+        fr: "Il y a déjà un piéton sur le passage.",
+        ar: "يوجد بالفعل أحد المشاة على الممر.",
+      },
+      emergency_already: {
+        es: "Ya hay un vehículo de emergencia en esta foto.",
+        en: "There's already an emergency vehicle in this photo.",
+        fr: "Il y a déjà un véhicule d'urgence sur cette photo.",
+        ar: "توجد بالفعل مركبة طوارئ في هذه الصورة.",
+      },
+      cant_change: {
+        es: "Solo puedo cambiar un semáforo entre rojo y verde, o una señal entre STOP y ceda el paso.",
+        en: "I can only switch a light between red and green, or a sign between STOP and yield.",
+        fr: "Je peux seulement faire passer un feu du rouge au vert ou l'inverse, ou un panneau entre STOP et cédez-le-passage (ceda el paso).",
+        ar: "لا يمكنني إلا تبديل الإشارة الضوئية بين الأحمر والأخضر، أو الإشارة بين STOP وأفسح الطريق (ceda el paso).",
+      },
+    },
+    notOnExample: {
+      es: "Este ejemplo no tiene ese cambio preparado. Pruébalo con tu propia foto.",
+      en: "This example doesn't have that change ready. Try it on your own photo.",
+      fr: "Cet exemple n'a pas ce changement prêt. Essayez-le sur votre propre photo.",
+      ar: "هذا المثال لا يتضمّن هذا التغيير جاهزًا. جرّبه على صورتك.",
+    },
+    none: {
+      es: "Eso todavía no lo puedo probar. Puedo cambiar el semáforo o la señal, poner un peatón en el paso o traer un vehículo de emergencia.",
+      en: "I can't test that one yet. I can change the traffic light or the sign, put a person on the crossing, or bring in an emergency vehicle.",
+      fr: "Je ne peux pas encore tester cela. Je peux changer le feu ou le panneau, placer un piéton sur le passage ou faire venir un véhicule d'urgence.",
+      ar: "لا يمكنني اختبار ذلك بعد. يمكنني تغيير الإشارة الضوئية أو الإشارة، أو وضع أحد المشاة على الممر، أو إحضار مركبة طوارئ.",
+    },
+    notCounted: {
+      es: "No ha contado en tus análisis del día.",
+      en: "This didn't count towards your daily analyses.",
+      fr: "Cela n'a pas compté dans vos analyses du jour.",
+      ar: "لم يُحتسب ذلك ضمن تحليلاتك اليومية.",
+    },
+    paused: {
+      es: "Las preguntas escritas están en pausa ahora mismo. Las sugerencias de abajo siguen funcionando.",
+      en: "Typed questions are paused right now. The suggestions below still work.",
+      fr: "Les questions écrites sont en pause pour le moment. Les suggestions ci-dessous fonctionnent toujours.",
+      ar: "الأسئلة المكتوبة متوقفة مؤقتًا الآن. ما زالت الاقتراحات أدناه تعمل.",
+    },
+    error: {
+      es: "No he podido leer tu pregunta ahora mismo. Inténtalo de nuevo o elige una sugerencia.",
+      en: "I couldn't read your question just now. Try again, or pick a suggestion.",
+      fr: "Je n'ai pas pu lire votre question pour le moment. Réessayez ou choisissez une suggestion.",
+      ar: "تعذّرت عليّ قراءة سؤالك الآن. حاول مرة أخرى أو اختر أحد الاقتراحات.",
+    },
+    before: {
+      es: "Antes: {before} → ahora: {after}",
+      en: "Before: {before} → now: {after}",
+      fr: "Avant : {before} → maintenant : {after}",
+      ar: "قبل: {before} ← الآن: {after}",
+    },
+    same: { es: "La misma respuesta que antes", en: "Same answer as before", fr: "La même réponse qu'avant", ar: "الإجابة نفسها كما كانت" },
   },
   errors: {
     timeout: {

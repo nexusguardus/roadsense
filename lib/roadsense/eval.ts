@@ -1,4 +1,4 @@
-import type { AnalysisResult, CuratedScene } from "./types";
+import type { AnalysisResult, CuratedScene, WhatIfMatch } from "./types";
 
 // Scores one run of the pipeline over the curated scenes against their ground
 // truth. An answerable scene counts as right only when it is "checked" with the
@@ -138,4 +138,29 @@ export function renderEvalMarkdown(report: EvalReport, meta: { mode: "live" | "r
     ...(report.failures.length > 0 ? report.failures.map((failure) => `- ${failure}`) : ["None."]),
     "",
   ].join("\n");
+}
+
+/**
+ * How well typed what-ifs were understood. A match has the expected kind, and the expected
+ * direction when the phrase names one. A wrong reading names another kind or direction, or
+ * leaves out a named direction (the page could then run the opposite edit); it counts apart
+ * from a miss, a phrase read as "none", which only tells the learner it can't be tested.
+ */
+export function scoreUnderstanding(cases: readonly { expected: WhatIfMatch; got: WhatIfMatch }[]): {
+  total: number;
+  matched: number;
+  wrong: number;
+  missed: number;
+} {
+  const to = (match: WhatIfMatch): string | undefined => ("to" in match ? match.to : undefined);
+  let matched = 0;
+  let wrong = 0;
+  let missed = 0;
+  for (const { expected, got } of cases) {
+    const named = to(expected);
+    if (got.kind === expected.kind && (named === undefined || to(got) === named)) matched += 1;
+    else if (got.kind === "none") missed += 1;
+    else wrong += 1;
+  }
+  return { total: cases.length, matched, wrong, missed };
 }

@@ -1,5 +1,7 @@
+import { editKey, matchesEdit, offerableEdits, whyNotOffered, type NotOfferedCause } from "../../lib/roadsense/edits";
 import { factById } from "../../lib/roadsense/facts";
-import type { AnalysisResult, Box, RuleRecord, UnknownCode, WhatIfEdit } from "../../lib/roadsense/types";
+import type { AnalysisResult, Box, Obligation, RuleRecord, SceneFacts, UnknownCode, WhatIfEdit, WhatIfMatch } from "../../lib/roadsense/types";
+import type { AnalysisError } from "./useAnalysisStream";
 import { MIN_FACT_CONFIDENCE } from "../../lib/roadsense/vocabulary";
 
 // Pure helpers for the /roadsense page. The certainty rules themselves live in
@@ -121,7 +123,7 @@ export type StreamStage = (typeof STAGES)[number];
 export type StreamErrorCode = (typeof ERROR_CODES)[number];
 export type StreamLine =
   | { type: "stage"; stage: StreamStage }
-  | { type: "result"; result: AnalysisResult | null; applied?: boolean; imageDataUrl?: string | null }
+  | { type: "result"; result: AnalysisResult | null; applied?: boolean; imageDataUrl?: string | null; refunded?: boolean }
   | { type: "error"; code: StreamErrorCode; refunded?: boolean };
 
 /** One line of a live route's NDJSON stream, or null for anything this page doesn't know. */
@@ -164,4 +166,136 @@ export function splitSpanishTerms(text: string): { text: string; spanish: boolea
 /** Replaces each {name} in a copy template with its value. */
 export function fillTemplate(template: string, values: Record<string, string | number>): string {
   return template.replace(/\{(\w+)\}/g, (match, name: string) => (name in values ? String(values[name]) : match));
+}
+
+// Typed what-ifs (2026-10-27 redesign). A learner's question, once read as a match
+// (/api/roadsense/whatif/understand), runs only an edit the photo offers. Each question and
+// its reply is a thread entry; a reply that arrives after another photo opened is dropped.
+
+/** A what-if the page can run: its key and its edit. */
+export interface WhatIfChip {
+  key: string;
+  edit: WhatIfEdit;
+}
+
+export type TypedResolution =
+  | { outcome: "run"; chip: WhatIfChip }
+  | { outcome: "not_possible"; cause: NotOfferedCause }
+  | { outcome: "not_on_example" }
+  | { outcome: "none" };
+
+/**
+ * What a typed what-if does on this photo. `ready` is an example's pre-generated what-ifs, matched by
+ * kind and direction (their fact ids come from another reading of the photo), or null for the
+ * learner's own photo, where any edit the photo offers can run live.
+ */
+export function resolveTypedWhatIf(match: WhatIfMatch, facts: SceneFacts, ready: readonly WhatIfChip[] | null): TypedResolution {
+  if (match.kind === "none") return { outcome: "none" };
+  const cause = whyNotOffered(match, facts);
+  if (cause) return { outcome: "not_possible", cause };
+  if (ready) {
+    const chip = ready.find((candidate) => matchesEdit(match, candidate.edit));
+    return chip ? { outcome: "run", chip } : { outcome: "not_on_example" };
+  }
+  const edit = offerableEdits(facts).find((candidate) => matchesEdit(match, candidate));
+  return edit ? { outcome: "run", chip: { key: editKey(edit), edit } } : { outcome: "none" };
+}
+
+/** "Read as" for a typed what-if that can't run here: its label, when the match names enough to have one. */
+export function matchLabelKey(match: WhatIfMatch): WhatIfLabelKey | null {
+  switch (match.kind) {
+    case "swap_sign":
+      return match.to ? (match.to === "stop" ? "swap_to_stop" : "swap_to_yield") : null;
+    case "set_light":
+      return match.to ? (match.to === "red" ? "light_red" : "light_green") : null;
+    case "none":
+      return null;
+    default:
+      return match.kind;
+  }
+}
+
+/** What an answer amounts to, for "Before → now": the duty when it is checked, else the certainty. */
+export type AnswerKey = Obligation | "not_sure" | "outside_scope" | "disagree";
+
+export function answerKey(result: AnalysisResult): AnswerKey {
+  if (result.certainty === "checked") return result.engine.obligation ?? "not_sure";
+  return result.certainty;
+}
+
+export function answerChange(before: AnalysisResult, after: AnalysisResult): { changed: false } | { changed: true; before: AnswerKey; after: AnswerKey } {
+  const from = answerKey(before);
+  const to = answerKey(after);
+  return from === to ? { changed: false } : { changed: true, before: from, after: to };
+}
+
+export type ThreadReply =
+  | { kind: "answer"; chip: WhatIfChip; imageSrc: string; result: AnalysisResult }
+  | { kind: "confirm"; chip: WhatIfChip }
+  | { kind: "not_possible"; cause: NotOfferedCause }
+  | { kind: "not_on_example" }
+  | { kind: "none" }
+  | { kind: "not_applied"; refunded: boolean | null }
+  | { kind: "paused" }
+  | { kind: "limited"; message: string }
+  | { kind: "error"; error: AnalysisError | null };
+
+/** One question in the thread: the learner's words, how RoadSense read them, and its reply (null while it works). */
+export interface ThreadEntry {
+  id: number;
+  words: string;
+  readAs: WhatIfLabelKey | null;
+  reply: ThreadReply | null;
+}
+
+export interface ThreadState {
+  /** Bumped when another scene or photo opens, so replies to the old one are dropped. */
+  generation: number;
+  entries: ThreadEntry[];
+  /** The entry whose photo is on screen, or null for the original. */
+  selectedId: number | null;
+  nextId: number;
+}
+
+export type ThreadAction =
+  | { type: "reset" }
+  | { type: "submit"; words: string }
+  | { type: "select"; id: number | null }
+  | { type: "read"; generation: number; id: number; readAs: WhatIfLabelKey | null }
+  | { type: "reply"; generation: number; id: number; reply: ThreadReply }
+  | { type: "run"; generation: number; id: number };
+
+export const EMPTY_THREAD: ThreadState = { generation: 0, entries: [], selectedId: null, nextId: 1 };
+
+/** Whether a question is still being worked on: the box and the chips wait for it. */
+export function threadBusy(state: ThreadState): boolean {
+  return state.entries.some((entry) => entry.reply === null);
+}
+
+export function threadReducer(state: ThreadState, action: ThreadAction): ThreadState {
+  switch (action.type) {
+    case "reset":
+      return { ...state, generation: state.generation + 1, entries: [], selectedId: null };
+    case "submit": {
+      if (threadBusy(state)) return state;
+      const entry: ThreadEntry = { id: state.nextId, words: action.words, readAs: null, reply: null };
+      return { ...state, entries: [...state.entries, entry], selectedId: entry.id, nextId: state.nextId + 1 };
+    }
+    case "select":
+      return { ...state, selectedId: action.id };
+    case "read":
+    case "reply":
+    case "run": {
+      if (action.generation !== state.generation) return state;
+      const index = state.entries.findIndex((entry) => entry.id === action.id);
+      if (index === -1) return state;
+      const entry = state.entries[index];
+      let next: ThreadEntry;
+      if (action.type === "read") next = { ...entry, readAs: action.readAs };
+      else if (action.type === "reply") next = { ...entry, reply: action.reply };
+      else if (index === state.entries.length - 1 && entry.reply?.kind === "confirm") next = { ...entry, reply: null };
+      else return state;
+      return { ...state, entries: state.entries.map((current, i) => (i === index ? next : current)) };
+    }
+  }
 }

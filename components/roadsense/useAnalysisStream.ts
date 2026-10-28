@@ -16,6 +16,8 @@ export interface AnalysisOutcome {
   imageDataUrl?: string | null;
   /** Curated what-ifs only: the pre-generated edited photo. */
   imagePath?: string;
+  /** Live what-ifs that didn't apply: whether the analysis was given back. */
+  refunded?: boolean;
 }
 
 /** A failure the page explains with its own copy, or with the server's localized message. */
@@ -53,7 +55,8 @@ export async function readAnalysisStream(response: Response, onStage: (stage: St
       finished = { status: "error", error: line.refunded === undefined ? { code: line.code } : { code: line.code, refunded: line.refunded } };
     }
     else if (line?.type === "result") {
-      finished = { status: "done", outcome: { result: line.result, applied: line.applied, imageDataUrl: line.imageDataUrl } };
+      const outcome: AnalysisOutcome = { result: line.result, applied: line.applied, imageDataUrl: line.imageDataUrl };
+      finished = { status: "done", outcome: typeof line.refunded === "boolean" ? { ...outcome, refunded: line.refunded } : outcome };
     }
   };
   for (;;) {

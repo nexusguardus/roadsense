@@ -38,7 +38,13 @@ RoadSense answers one question about a photo taken from the driver's seat: what 
 
 ## What-if edits
 
-`proposeEdits(facts)` (`edits.ts`) offers up to four edits from a closed list: swap the learner's STOP and yield signs, remove the sign, switch the light between red and green, add a pedestrian on the crossing, or add an ambulance with its lights on.
+`offerableEdits(facts)` (`edits.ts`) lists every edit a photo allows, from a closed list: swap the learner's STOP and yield signs, remove the sign, switch the light between red and green, add a pedestrian on the crossing, or add an ambulance with its lights on. `proposeEdits` keeps the first four as the page's suggestion chips.
+
+Learners can also type a what-if in their own words:
+- **Understanding.** `understandWhatIf` (`understand.ts`) makes one text-only Muse Spark call in Standard mode. Its structured output can only be one of the five edit kinds, with a direction for a sign or a light, or "none". The words travel as data in the user message, so they can't choose an edit or reach an image prompt.
+- **Resolving.** The page checks the reading against the photo's facts (`resolveTypedWhatIf`, `whyNotOffered`) and runs an offered edit. When it can't, it says why: there's no light, the light is already red, an amber light can't be switched, and so on.
+- **Asking first.** On the learner's own photo it asks before running, since a live what-if counts as one analysis.
+- **Evaluation.** `scripts/roadsense/eval-understand.ts` scores the reading on 59 phrases in four languages (`eval-understand.md`).
 
 `runWhatIf` (`whatif.ts`) then works in three steps:
 1. Muse Image makes the edit.
@@ -70,12 +76,15 @@ The curated scenes ship with pre-generated what-ifs, each checked by an AI revie
 
 | File | What it does |
 |---|---|
-| `RoadSenseApp` | holds the state |
-| `ScenePicker` | the grid of curated scenes |
-| `UploadPanel` | the photo upload, with the privacy notice before the button |
+| `RoadSenseApp` | holds the state; nothing loads until the learner picks an example or a photo |
+| `Hero` | the first screen (what RoadSense does, the upload button with its notice, one example answer), the three steps, and how RoadSense checks itself |
+| `ScenePicker` | the curated scenes: a grid, or a scrolling row on phones |
+| `UploadPanel` | a picked photo waiting for "Analyse this photo", with the privacy notice before the button |
 | `EvidenceImage` | solid outlines where SAM 3.1 confirmed a fact, dashed where it didn't |
 | `ResultCard` | the badge with its explanation, the answer, the BOE excerpt and the explanation |
-| `WhatIfBar` | the what-if chips |
+| `WhatIfBox` | the typed "What if…?" box, with the photo's own what-ifs as suggestions |
+| `WhatIfThread`, `useWhatIfThread` | each question, how RoadSense read it and its answer; replies meant for a photo no longer on screen are dropped |
+| `understand-client` | asks the server to read a typed question |
 | `useAnalysisStream` | reads the streamed stages and the result |
 | `resizeImage` | redraws a photo at 1920 px as JPEG, which drops its EXIF data |
 
@@ -86,6 +95,7 @@ The copy for es, en, fr and ar is in `copy-table.ts`.
 These parts run in DriveIQ and are not in this repository:
 
 - **The page itself.** It is off until switched on, and offers the shortest exam pass that covers the learner's exam date.
+- **`POST /api/roadsense/whatif/understand`.** Reads a typed what-if with its own burst limit and a daily cap per client. It sits behind the same kill switch and spend caps as live analyses, and never stores or logs the words.
 - **`POST /api/roadsense/analyze` and `/whatif`.** Curated scenes answer with their precomputed results, free. Live analyses stream NDJSON and go through these checks, in order:
   1. a burst limit;
   2. a daily quota by plan;

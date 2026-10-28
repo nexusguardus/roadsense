@@ -1,0 +1,402 @@
+{
+  "sparkModel": "muse-spark-1.3",
+  "5a26fec17f11463b98815b9c81b9529aa4a87cccc2a250469ef3c2c167a6c27b": {
+    "json": {
+      "kind": "set_light",
+      "to": "red"
+    },
+    "costUsd": 0.0015005
+  },
+  "56fb3f21e25c64086f5db1124c9d71cc3cbe0eef989d26c0ad56c6492751ecb0": {
+    "json": {
+      "kind": "set_light",
+      "to": "red"
+    },
+    "costUsd": 0.0018845
+  },
+  "88880cca6772cd63d99462c680da27a2ee49673f75c35323a2c88aa1cbabcd0a": {
+    "json": {
+      "kind": "set_light",
+      "to": "red"
+    },
+    "costUsd": 0.00170525
+  },
+  "5159ee84fe8085b5a3a8f92e1c867b4eeef93a8a061a7b66098e8028b9ed71f1": {
+    "json": {
+      "kind": "set_light",
+      "to": "red"
+    },
+    "costUsd": 0.001563
+  },
+  "7467353a87f785d6e5201ff6c981ba6ce42a2714859d3cafdfeca4314e1291bc": {
+    "json": {
+      "kind": "set_light",
+      "to": "green"
+    },
+    "costUsd": 0.0023195
+  },
+  "a2f07d5fbf2192cf913175cdf0a5c9d59f41544d6dd63b70537ac6b8b91d1903": {
+    "json": {
+      "kind": "set_light",
+      "to": "green"
+    },
+    "costUsd": 0.00170825
+  },
+  "a57ed1bb10992b92af7b8181b62a1cb52d1afb87f2748d36de82161c6822bf5f": {
+    "json": {
+      "kind": "set_light",
+      "to": "green"
+    },
+    "costUsd": 0.00151625
+  },
+  "c3387e7b3ef633fcf400d1ca456bcba287a5e5fc5fbb560887cf7d17c0c4ab4b": {
+    "json": {
+      "kind": "set_light",
+      "to": "green"
+    },
+    "costUsd": 0.00187775
+  },
+  "734bac582ac971428843d7f7a8fb4459b0fd72bd77b5361d32ae3b6f0fc4e39f": {
+    "json": {
+      "kind": "swap_sign",
+      "to": "stop"
+    },
+    "costUsd": 0.00176825
+  },
+  "a4dcfe0b8ff0bc5f022ad30c3fe497826f42dd82437ab4a335aee3dab28916ee": {
+    "json": {
+      "kind": "swap_sign",
+      "to": "stop"
+    },
+    "costUsd": 0.00229825
+  },
+  "2cf821a292be1d4296da9b2dfa1ed019d2e70a5591ced4367f18ed65a4cedb3d": {
+    "json": {
+      "kind": "swap_sign",
+      "to": "stop"
+    },
+    "costUsd": 0.00191275
+  },
+  "68bbb4d500e54fe425d10d2a68773801e11425dc665563a62d14d9815f1e10d1": {
+    "json": {
+      "kind": "swap_sign",
+      "to": "yield"
+    },
+    "costUsd": 0.002268
+  },
+  "1c13a998228ea7e8b8014982977e183893359a27c114245cf986efe971ddc962": {
+    "json": {
+      "kind": "swap_sign",
+      "to": "yield"
+    },
+    "costUsd": 0.00177625
+  },
+  "dc69220e7a33f80b85d8febd0cdbc537968279ccdd26fa31be8c8ebecd675f2f": {
+    "json": {
+      "kind": "remove_sign",
+      "to": null
+    },
+    "costUsd": 0.00156725
+  },
+  "00de8803d610ed2c2a825a46859e7cea6436168b6bbbaf3eb4dc1e2f39128370": {
+    "json": {
+      "kind": "swap_sign",
+      "to": "yield"
+    },
+    "costUsd": 0.00215725
+  },
+  "2703f8ea8277a1891b1fd86de5f2979272cd44a3a6c24f62eb37ca0da5a3a96d": {
+    "json": {
+      "kind": "remove_sign",
+      "to": null
+    },
+    "costUsd": 0.00184475
+  },
+  "a00f74d0c3195ffc533c025f189ecdd51741eb4c3e75357ab619969328e08cac": {
+    "json": {
+      "kind": "remove_sign",
+      "to": null
+    },
+    "costUsd": 0.0011688
+  },
+  "30c2919ca1deed7c9b77cd4571870602189cd0a70878b675e748007e222c8a14": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.0011875499999999999
+  },
+  "1520d523b00e797c5eb060d720a106e553bd261c66d7b5583b3cff9660d7781f": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.00172825
+  },
+  "6a28e5e5e73e2fd437fa556604790115e7e3325590125684ea611dbb032fb856": {
+    "json": {
+      "kind": "remove_sign",
+      "to": null
+    },
+    "costUsd": 0.00251875
+  },
+  "add46ae87680dfcaafeaab7b824440748e7be54cad26602b7f250f9cf46d0c9b": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.00207425
+  },
+  "9dd47a06e1d113a245a7b5b751b0f2e904805a979552662b26c002b1352b8b80": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.00164625
+  },
+  "696e876824e48ea4983fb770dfd4114ecdc67d39e2dbae4ddc72e82849cb1144": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.001877
+  },
+  "4bc156935cf6b55a74192e701e929a89094cdcaa75bcfcae47fc42b5cd342ed3": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.00206225
+  },
+  "67353c12ee7f3f3460bfb8fd28edaecc7b6a5e480f5042f355933fc75ff4fa4a": {
+    "json": {
+      "kind": "add_pedestrian_on_crossing",
+      "to": null
+    },
+    "costUsd": 0.00128355
+  },
+  "37ab4f08dfc76ad2136aaaea0fd7d6fbf37e8a1493fee621ccc43e7f775878d6": {
+    "json": {
+      "kind": "add_emergency_vehicle",
+      "to": null
+    },
+    "costUsd": 0.00115105
+  },
+  "03e397096e69f2f04ee4899a6d55fbb9222c922938bc744767f0392601dc3b69": {
+    "json": {
+      "kind": "add_emergency_vehicle",
+      "to": null
+    },
+    "costUsd": 0.00205375
+  },
+  "7b572c19c4df486e53f8cd59386b5a7950022477f43ca67a9652dc3cbfb73b07": {
+    "json": {
+      "kind": "add_emergency_vehicle",
+      "to": null
+    },
+    "costUsd": 0.00153805
+  },
+  "ac2b7e98654e839d9590d3745121b905cdfa45b5c0d66dc5b5be2e3eff167c80": {
+    "json": {
+      "kind": "add_emergency_vehicle",
+      "to": null
+    },
+    "costUsd": 0.0016495
+  },
+  "42c667a0ebe1190c966a3e804adc6a08e9ee5f7ce68b39a72789d9a43d9f9210": {
+    "json": {
+      "kind": "add_emergency_vehicle",
+      "to": null
+    },
+    "costUsd": 0.0009630499999999999
+  },
+  "22a9f72178bb38a714a8e89404f87ec3586d0f4b0e43da61e810afd3788d2ba0": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0010393
+  },
+  "b5a978b9eca5041a4a46cd42ec30117d01330aa4ea252c7a7acc58144b970ab2": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00137755
+  },
+  "3558f999c7c06701cd710de7def6e0ddb6e2f26c2ea456f3eb6ee6eb7376992b": {
+    "json": {
+      "kind": "add_emergency_vehicle",
+      "to": null
+    },
+    "costUsd": 0.00216475
+  },
+  "2d68748ccd3ac679a98aa29ca5c77524bcf6f1a778ee65178e6ea89b62222d17": {
+    "json": {
+      "kind": "set_light",
+      "to": "red"
+    },
+    "costUsd": 0.0019852999999999997
+  },
+  "2259aa1be1c56d63bbc747e34117dfe53467ac06aea6850db076eb1d787ce62c": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00104055
+  },
+  "5a9c241fad9291d043c90839ae8cab8ebe2809c7823791fef04e97a2d57bc90f": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0009295499999999999
+  },
+  "3601dc246c95d652248014a9704215e8c4b3415a99550508458c41291e02fd76": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00186725
+  },
+  "0715233a466975d78c1d7b9ad3e96a8668df4c27d3b06a9a7cd2bd8ff5d8f149": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00216475
+  },
+  "fb5cbdd14547ef1ac08f8e508a617f46480ecd695531bb02748b2448aaf6cecc": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0011237999999999999
+  },
+  "97e0ca13d50eca6c8554b46101718ef3a098055b006236dfb34beccc47e4323e": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.001677
+  },
+  "63e22c1052d94caab1a936a340f2ebda7ebdb8cc082fc39d10167311932d5795": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0019875
+  },
+  "37dbdc584aab97373d7a9914ddc74d20e666451332b685ffd172bce8028af32c": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00117305
+  },
+  "d2ec337d264d70a125ea863d65fdb638b74c6b0d5f62901a666f007f3cbf090e": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0014292999999999999
+  },
+  "88fd4d9b7acf26602d9a4264c98f039ecbe3b86e80c650dc433dc4e77909128f": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00198075
+  },
+  "21f71dad03645ff6c2f559a8dd3681aa2c058d7c6ec901df05658d32371c2e20": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00173375
+  },
+  "cc05392e1ca34b4cef11521552dbf25e156233fb7e618bda2029ec4a04a9fda2": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00139705
+  },
+  "1739de12394a5f903b464417d138fbe3a0e4bcc184389f0ebc39b25302c5cc61": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0011488
+  },
+  "cb5bdb5f65aec3b118011c7b669d8bd232c634457b2314547ff747f55fc8a456": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0018655
+  },
+  "13532f18c65817fb2ffca2030e52ba45f344a43810198b391a422857a2dad78f": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00153925
+  },
+  "538fc0333cfeadad8da92c3c763744c7355d3641cbe8e96baadb570ccde46775": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00161575
+  },
+  "eb3fdd5d19619283245455671013472834834fafcab17f2a562c80e3acaaa727": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00160705
+  },
+  "90fa6275cc8c518641b3aa46181a7e1f73fc1aa7dea37946d19c0db00f4f7a9c": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.001849
+  },
+  "5b223e907dd15f7f005ffd6e866b12a8a5ea2156b7a015cc580d18d597056d11": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0012683
+  },
+  "775cfa907f98b8cef84a3ef224042c24bd40ac09b101fe4fb7a80beee4cd495e": {
+    "json": {
+      "kind": "remove_sign",
+      "to": null
+    },
+    "costUsd": 0.00395805
+  },
+  "4250f7dc5075cd276f854b5d8bc22ad271ada01c37568df6a81435cabcf4bce2": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0014918
+  },
+  "ec7641944b6b5bcb1246f2b1eec262179fdd384faf8594ce345f1de6a08ac4ab": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.0037418
+  },
+  "ec6ea5c036c31eeffb534b46bc471a4ea387d288f5027e50661a9d80b7f01688": {
+    "json": {
+      "kind": "none",
+      "to": null
+    },
+    "costUsd": 0.00179405
+  }
+}

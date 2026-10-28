@@ -11,7 +11,7 @@ import type { AnalysisResult, Box, JunctionType, RoadsenseLocale, SceneFact, Sce
 // moved: in the Task 1 spike, the STOP edit also removed the car from the right.
 
 // Which edits a scene offers lives in edits.ts, which the page can import without the model client.
-export { editKey, proposeEdits } from "./edits";
+export { editKey, matchesEdit, offerableEdits, proposeEdits, whyNotOffered } from "./edits";
 
 /** Where a box sits across the photo, in words the image model can act on. */
 function whereIn(box: Box): string {

@@ -144,6 +144,13 @@ export type WhatIfEdit =
   | { kind: "add_emergency_vehicle" }
   | { kind: "add_pedestrian_on_crossing" };
 
+/** What a learner's typed what-if asks for: one of the edits, maybe without a direction, or nothing RoadSense can test. */
+export type WhatIfMatch =
+  | { kind: "swap_sign"; to?: "stop" | "yield" }
+  | { kind: "set_light"; to?: "red" | "green" }
+  | { kind: "remove_sign" | "add_pedestrian_on_crossing" | "add_emergency_vehicle" }
+  | { kind: "none" };
+
 export interface CuratedScene {
   id: string;
   family: string;

@@ -111,3 +111,22 @@ test("every shown scene has a small thumbnail for the picker", () => {
     assert.ok(readFileSync(file).length < 60_000, `${scene.id}: thumbnail over 60 KB`);
   }
 });
+
+// Typed what-ifs (2026-10-27 redesign): every answerable example offers the what-ifs its facts
+// allow, generated from the facts its answer was read with, minus the ones review dropped.
+const { DROPPED_WHATIFS } = await import("../lib/roadsense/scenes.ts");
+const { proposeEdits, editKey } = await import("../lib/roadsense/edits.ts");
+
+test("no dropped what-if is in the index", () => {
+  assert.ok(DROPPED_WHATIFS.includes("conflict-2|set_light:l1:red") && DROPPED_WHATIFS.includes("conflict-1|remove_sign:s1"));
+  for (const scene of scenes) {
+    for (const whatIf of scene.whatIfs) assert.ok(!DROPPED_WHATIFS.includes(`${scene.id}|${whatIf.key}`), `${scene.id} ${whatIf.key}`);
+  }
+});
+
+test("every shown scene's what-ifs are edits its facts offer", () => {
+  for (const scene of scenes.filter((s) => s.shown)) {
+    const offered = proposeEdits(scene.precomputed.es.facts).map(editKey);
+    for (const whatIf of scene.whatIfs) assert.ok(offered.includes(whatIf.key), `${scene.id}: ${whatIf.key} is not in ${offered.join(", ")}`);
+  }
+});

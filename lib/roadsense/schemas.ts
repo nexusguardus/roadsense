@@ -73,3 +73,9 @@ export function decisionSchema(ruleIds: readonly string[]): Schema {
     ruleIds: array(choice(ruleIds)),
   });
 }
+
+/** A typed what-if as one of the edits RoadSense can verify, or none; `to` only for a sign or a light. */
+export const UNDERSTAND_SCHEMA: Schema = object({
+  kind: choice(["swap_sign", "remove_sign", "set_light", "add_pedestrian_on_crossing", "add_emergency_vehicle", "none"]),
+  to: nullable(choice(["stop", "yield", "red", "green"])),
+});

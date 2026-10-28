@@ -11,6 +11,7 @@
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "typecheck": "tsc -p .",
     "eval:replay": "tsx scripts/roadsense/eval.ts --mode replay --effort low",
+    "eval:understand": "tsx scripts/roadsense/eval-understand.ts --mode replay",
     "analyze": "tsx scripts/roadsense/analyze.ts"
   },
   "devDependencies": {

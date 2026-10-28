@@ -117,3 +117,12 @@ export function scenesFrom(data: unknown): CuratedScene[] {
   if (duplicate !== undefined) fail("scenes", `duplicate scene id ${duplicate}`);
   return scenes;
 }
+
+/**
+ * What-ifs review dropped ("<scene id>|<edit key>"), never generated again. conflict-2's red light
+ * recoloured the bottom lamp, and Spanish heads have red on top; conflict-1's removed sign was read
+ * as hidden signage the picture doesn't show (Task 13 of the build plan, 2026-10-26). crossing-1's
+ * ambulance came out far ahead while a pedestrian crosses right in front, so "let the emergency
+ * vehicle through" taught the wrong priority for that picture (redesign review, 2026-10-27).
+ */
+export const DROPPED_WHATIFS: readonly string[] = ["conflict-2|set_light:l1:red", "conflict-1|remove_sign:s1", "crossing-1|add_emergency_vehicle"];

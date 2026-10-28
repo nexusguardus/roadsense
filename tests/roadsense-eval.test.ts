@@ -185,3 +185,31 @@ test("the report's wrong-checked row counts every kind of scene", () => {
   const markdown = renderEvalMarkdown(report, { mode: "replay", date: "2026-10-27", modelIds: ["muse-spark-1.3"] });
   assert.match(markdown, /Wrong answers marked checked \| 1 \|/);
 });
+
+// Typed what-ifs (2026-10-27 redesign): how well learners' words are understood. A wrong
+// reading could run the wrong edit, so it counts apart from a miss, which only says "none".
+const { scoreUnderstanding } = await import("../lib/roadsense/eval.ts");
+
+test("scoreUnderstanding counts matched, wrong and missed", () => {
+  assert.deepEqual(
+    scoreUnderstanding([
+      { expected: { kind: "set_light", to: "red" }, got: { kind: "set_light", to: "red" } },
+      { expected: { kind: "set_light", to: "red" }, got: { kind: "set_light" } },
+      { expected: { kind: "none" }, got: { kind: "add_emergency_vehicle" } },
+      { expected: { kind: "remove_sign" }, got: { kind: "none" } },
+      { expected: { kind: "none" }, got: { kind: "none" } },
+    ]),
+    { total: 5, matched: 2, wrong: 2, missed: 1 },
+  );
+});
+
+test("a direction the phrase doesn't name may be given or left out", () => {
+  assert.deepEqual(
+    scoreUnderstanding([
+      { expected: { kind: "swap_sign" }, got: { kind: "swap_sign", to: "yield" } },
+      { expected: { kind: "swap_sign" }, got: { kind: "swap_sign" } },
+      { expected: { kind: "swap_sign", to: "stop" }, got: { kind: "swap_sign", to: "yield" } },
+    ]),
+    { total: 3, matched: 2, wrong: 1, missed: 0 },
+  );
+});
