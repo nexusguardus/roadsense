@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import type { AnalysisResult, Certainty, RoadsenseLocale as Locale, RuleRecord } from "../../lib/roadsense/types";
+import type { AnalysisResult, Certainty, RoadsenseLocale as Locale, RuleRecord, SceneFacts } from "../../lib/roadsense/types";
 import type { RoadsenseCopy } from "./copy-table";
 import Explained from "./Explained";
-import { disagreement, notSureReasons, rulesToShow, showsAmberException, type NotSureReason } from "./view";
+import { disagreement, notSureReasons, rulesToShow, showsAmberException, withoutFactIds, type NotSureReason } from "./view";
 
 interface ResultCardProps {
   copy: RoadsenseCopy;
@@ -103,6 +103,11 @@ function Rule({ copy, locale, rule }: { copy: RoadsenseCopy; locale: Locale; rul
   );
 }
 
+/** What Muse Spark wrote, without the fact ids it was given ("Une voiture (u1) arrive"). */
+function ModelText({ copy, locale, facts, text }: { copy: RoadsenseCopy; locale: Locale; facts: SceneFacts; text: string }) {
+  return <Explained text={withoutFactIds(text, facts, copy.factNames, locale)} locale={locale} />;
+}
+
 /** The verdict and its badge: the duty when checked, otherwise the certainty in plain words. */
 function Verdict({ copy, locale, result, compact }: { copy: RoadsenseCopy; locale: Locale; result: AnalysisResult; compact: boolean }) {
   const { certainty, engine } = result;
@@ -126,7 +131,7 @@ function Body({ copy, locale, result }: { copy: RoadsenseCopy; locale: Locale; r
   if (result.certainty === "checked" && engine.obligation && model) {
     return (
       <p className="leading-relaxed text-on-surface">
-        <Explained text={model.rationale} locale={locale} />
+        <ModelText copy={copy} locale={locale} facts={result.facts} text={model.rationale} />
       </p>
     );
   }
@@ -198,10 +203,10 @@ export default function ResultCard({ copy, locale, result, evaluation, cta, prac
           {checked && model && (
             <Fold summary={copy.result.whyWrongFold}>
               <p className="font-semibold text-on-surface">
-                <Explained text={model.temptingWrongAnswer} locale={locale} />
+                <ModelText copy={copy} locale={locale} facts={result.facts} text={model.temptingWrongAnswer} />
               </p>
               <p className="text-sm leading-relaxed text-on-surface-variant">
-                <Explained text={model.whyWrong} locale={locale} />
+                <ModelText copy={copy} locale={locale} facts={result.facts} text={model.whyWrong} />
               </p>
             </Fold>
           )}

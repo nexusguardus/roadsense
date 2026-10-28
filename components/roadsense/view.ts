@@ -1,6 +1,17 @@
 import { editKey, matchesEdit, offerableEdits, whyNotOffered, type NotOfferedCause } from "../../lib/roadsense/edits";
 import { factById } from "../../lib/roadsense/facts";
-import type { AnalysisResult, Box, Obligation, RuleRecord, SceneFacts, UnknownCode, WhatIfEdit, WhatIfMatch } from "../../lib/roadsense/types";
+import type {
+  AnalysisResult,
+  Box,
+  Obligation,
+  RoadsenseLocale,
+  RoadUserKind,
+  RuleRecord,
+  SceneFacts,
+  UnknownCode,
+  WhatIfEdit,
+  WhatIfMatch,
+} from "../../lib/roadsense/types";
 import type { AnalysisError } from "./useAnalysisStream";
 import { MIN_FACT_CONFIDENCE } from "../../lib/roadsense/vocabulary";
 
@@ -167,6 +178,171 @@ export function splitSpanishTerms(text: string): { text: string; spanish: boolea
 /** Replaces each {name} in a copy template with its value. */
 export function fillTemplate(template: string, values: Record<string, string | number>): string {
   return template.replace(/\{(\w+)\}/g, (match, name: string) => (name in values ? String(values[name]) : match));
+}
+
+// Fact ids in explanations (2026-10-28). Muse Spark is given the facts with their ids (s1 a sign,
+// l1 a light, m1 a marking, u1 a road user) and sometimes writes them. The page hides them, since
+// changing the decision prompt would set aside the eval recordings and every stored answer.
+
+/** What an explanation calls a fact it wrote only as its id: by road-user kind, or by what the fact is. */
+export type FactNames = Record<RoadUserKind | "sign" | "light" | "marking", string>;
+
+/**
+ * A fact id on its own ("u1") or ids in brackets ("(u1)", "(s1, m1)", "[l1]"). Ids are lower case, but a
+ * sentence can start with one. Never part of a word, of a code such as M-4.3 or of a quantity ("50 m2").
+ */
+const FACT_IDS =
+  /[(\[]\s*(?<inBrackets>[slmu]\d{1,2}(?:\s*[,/]\s*[slmu]\d{1,2})*)\s*[)\]]|(?<![\p{L}\p{N}_.-]|\d\s)[slmu]\d{1,2}(?![\p{L}\p{N}_]|[.,-]\d)/giu;
+const WORD_CHAR = /[\p{L}\p{N}]/u;
+/** Text that ends where a sentence starts: nothing yet, or a full stop and a space, then perhaps "¿" or "«". */
+const SENTENCE_START = /(?:^|[.!?…]\s+)[¿¡«“"]?$/u;
+
+interface Grammar {
+  /** Words an id after them only labels: the fact's own noun, as in "la voiture u1". */
+  labels: RegExp;
+  /** Words the id takes with it: Arabic "وهي u1" (and it is u1). */
+  drops?: RegExp;
+  /** Articles the name replaces with its own: "le u2" → "le véhicule d'urgence". */
+  articles?: RegExp;
+  /** Words a noun follows (articles, prepositions, conjunctions): an id in brackets after one stands for its fact. */
+  nounNext: RegExp;
+  /** The word before the name merged with it, as "à" + "le tram" → "au tram"; null when they stay apart. */
+  join: (word: string, name: string) => string | null;
+}
+
+/** French and Spanish prepositions, alone or already merged with an article ("au" is "à le"). */
+function contractions(merges: Record<string, Record<string, string>>, merged: Record<string, string>): Grammar["join"] {
+  return (word, name) => {
+    const preposition = merged[word] ?? word;
+    const rule = merges[preposition];
+    if (!rule) return null;
+    const article = Object.keys(rule).find((prefix) => name.startsWith(prefix));
+    return article === undefined ? `${preposition} ${name}` : rule[article] + name.slice(article.length);
+  };
+}
+
+const GRAMMAR: Record<RoadsenseLocale, Grammar> = {
+  es: {
+    labels:
+      /^(coche|vehículo|turismo|automóvil|auto|camión|autobús|bus|furgoneta|taxi|moto|motocicleta|bicicleta|ciclista|peatón|peatones|persona|niño|niña|tranvía|ambulancia|señal|señales|stop|ceda|paso|prioridad|preferente|semáforo|luz|línea|detención|marca|cebra|triángulo|usuario|prioritario|emergencia|urgencia|rojo|roja|verde|ámbar)s?$/u,
+    articles: /^(el|la|los|las|un|una|este|esta|ese|esa)$/u,
+    nounNext: /^(el|la|los|las|un|una|este|esta|ese|esa|a|al|de|del|con|para|por|ante|tras|hacia|hasta|sin|sobre|entre|como|y|e|o|u|ni|que)$/u,
+    join: contractions({ a: { "el ": "al " }, de: { "el ": "del " } }, { al: "a", del: "de" }),
+  },
+  en: {
+    labels:
+      /^(car|vehicle|truck|lorry|bus|van|taxi|motorcycle|motorbike|bike|bicycle|cyclist|pedestrian|person|child|tram|ambulance|sign|stop|light|signal|line|marking|crossing|zebra|triangle|user)s?$/u,
+    articles: /^(the|a|an|this|these)$/u,
+    nounNext: /^(the|a|an|this|these|to|for|of|from|with|by|before|after|behind|than|and|or|nor|like|as|at|past|toward|towards|until)$/u,
+    join: () => null,
+  },
+  fr: {
+    labels:
+      /^(voiture|véhicule|auto|camion|camionnette|bus|autobus|taxi|moto|motocyclette|vélo|bicyclette|cycliste|piéton|piétonne|personne|enfant|tram|tramway|ambulance|panneau|signal|stop|cédez-le-passage|passage|priorité|feu|ligne|arrêt|sol|marquage|triangle|usager|prioritaire|urgence|rouge|vert|verte|orange)[sx]?$/u,
+    articles: /^(le|la|les|un|une|ce|cet|cette)$/u,
+    nounNext: /^(le|la|les|un|une|ce|cet|cette|à|au|aux|de|du|des|avec|pour|par|avant|après|devant|derrière|vers|sans|sur|entre|comme|et|ou|ni|que)$/u,
+    join: contractions({ à: { "le ": "au ", "les ": "aux " }, de: { "le ": "du ", "les ": "des " } }, { au: "à", aux: "à", du: "de", des: "de" }),
+  },
+  ar: {
+    // Arabic words carry prefixes (ال، و، ل), so a label is how the word ends.
+    labels: /(سيارة|مركبة|دراجة|مشاة|ماشي|ترام|[إا]سعاف|طوارئ|لافتة|[إا]شارة|ضوئية|حمراء|خضراء|قف|[أا]ولوية|خط|علامة|ممر|معبر|مثلث|شخص|شاحنة|حافلة|عربة|طفل|طريق|مرور)$/u,
+    drops: /^و?(هي|هو)$/u,
+    nounNext: /^(ل|ب|ك|و|ف|من|[إا]لى|على|عن|في|مثل|[أا]و|ثم|حتى|بعد|قبل|[أا]مام|خلف)$/u,
+    // A one-letter word written apart from a Latin id joins the name: لـ + السيارة → للسيارة.
+    join: (word, name) => {
+      if (!/^[لبكوف]$/u.test(word)) return null;
+      return word === "ل" && name.startsWith("ال") ? `لل${name.slice(2)}` : word + name;
+    },
+  },
+};
+
+const capitalized = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
+/** A replacement in the case of the word it replaces: "À" + "le tram" → "Au tram". */
+const sameCase = (word: string, text: string): string => (/^\p{Lu}/u.test(word) ? capitalized(text) : text);
+
+/** What this answer's fact is called, or null when the answer has no fact with that id. */
+function factName(facts: SceneFacts, id: string, names: FactNames): string | null {
+  const roadUser = facts.roadUsers.find((fact) => fact.id === id);
+  if (roadUser) return names[roadUser.kind];
+  if (facts.signs.some((fact) => fact.id === id)) return names.sign;
+  if (facts.lights.some((fact) => fact.id === id)) return names.light;
+  if (facts.markings.some((fact) => fact.id === id)) return names.marking;
+  return null;
+}
+
+/** The word before an id when a space separates them: the text before that word, the word as written and as compared. */
+function wordBefore(text: string): { rest: string; raw: string; word: string } | null {
+  const previous = /(\S+)\s+$/u.exec(text);
+  if (!previous) return null;
+  // Compared without case, Arabic vowel marks, the tatweel in "لـ" or a French elision ("d'urgence").
+  const word = previous[1].normalize("NFC").toLowerCase().replace(/[\p{Mn}ـ]/gu, "").replace(/^(?:[dl]|qu)['’]/u, "");
+  return { rest: text.slice(0, previous.index), raw: previous[1], word };
+}
+
+/** The text before an id that only labels the word before it ("la voiture u1"), without the id; null when it stands for its fact. */
+function withoutLabel(before: string, grammar: Grammar): string | null {
+  const previous = wordBefore(before);
+  if (!previous) return null;
+  if (/[)\]]$/u.test(previous.word) || grammar.labels.test(previous.word)) return previous.rest + previous.raw;
+  if (grammar.drops?.test(previous.word)) return previous.rest.trimEnd();
+  return null;
+}
+
+/** Text, then a name, merged with the word before it where the language merges them: "à" + "le tram" → "au tram". */
+function joined(text: string, name: string, grammar: Grammar): string {
+  const previous = wordBefore(text);
+  const merged = previous ? grammar.join(previous.word, name) : null;
+  return previous && merged !== null ? previous.rest + sameCase(previous.raw, merged) : text + name;
+}
+
+/** The text before an id that stands for its fact, then the fact's name in the id's place. */
+function withName(before: string, name: string, grammar: Grammar, sentenceStart: boolean): string {
+  // French elides before u1: "l'u1" is "le u1", "d'u1" is "de u1".
+  const elided = /(?<!\p{L})(l|d|qu)['’]$/iu.exec(before);
+  if (elided) {
+    const rest = before.slice(0, elided.index);
+    const letter = elided[1];
+    if (letter.toLowerCase() === "l") return joined(rest, sameCase(letter, name), grammar);
+    return joined(`${rest}${sameCase(letter, letter.toLowerCase() === "d" ? "de" : "que")} `, name, grammar);
+  }
+  const previous = wordBefore(before);
+  if (previous && grammar.articles?.test(previous.word)) return joined(previous.rest, sameCase(previous.raw, name), grammar);
+  return joined(before, sentenceStart ? capitalized(name) : name, grammar);
+}
+
+/**
+ * Model text as the learner should read it, without the fact ids Muse Spark was given. Brackets
+ * label the word before them and go ("Une voiture (u1) arrive"), as does an id right after the fact
+ * it labels ("La voiture u1"). An id that stands for its fact becomes the fact's name ("donc u1
+ * passe" → "donc la voiture passe"), as does one in brackets where a noun belongs ("a (u1)" → "al
+ * coche"). Only this answer's own facts are named, so "u", R-1 or M-4.3 stay as written.
+ */
+export function withoutFactIds(text: string, facts: SceneFacts, names: FactNames, locale: RoadsenseLocale): string {
+  const grammar = GRAMMAR[locale];
+  let shown = "";
+  let cursor = 0;
+  for (const match of text.matchAll(FACT_IDS)) {
+    const before = text.slice(cursor, match.index);
+    const inBrackets = match.groups?.inBrackets;
+    const ids = inBrackets?.split(/\s*[,/]\s*/u) ?? [match[0]];
+    const name = ids.length === 1 ? factName(facts, ids[0].toLowerCase(), names) : null;
+    const sentenceStart = SENTENCE_START.test(shown + before);
+    let end = match.index + match[0].length;
+    if (inBrackets === undefined) {
+      // An id on its own is changed only when it is this answer's fact.
+      if (name === null) continue;
+      shown += withoutLabel(before, grammar) ?? withName(before, name, grammar, sentenceStart);
+    } else if (name !== null && (sentenceStart || grammar.nounNext.test(wordBefore(before)?.word ?? ""))) {
+      shown += withName(before, name, grammar, sentenceStart);
+    } else {
+      // The brackets go with the space before them; at the very start, with the space after.
+      const kept = before.replace(/[^\S\n]+$/u, "");
+      if (shown + kept === "") end += /^\s*/u.exec(text.slice(end))?.[0].length ?? 0;
+      shown += kept + (WORD_CHAR.test(kept.slice(-1)) && WORD_CHAR.test(text.charAt(end)) ? " " : "");
+    }
+    cursor = end;
+  }
+  return shown + text.slice(cursor);
 }
 
 // Typed what-ifs (2026-10-27 redesign). A learner's question, once read as a match

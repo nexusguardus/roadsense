@@ -373,6 +373,19 @@ export const COPY = {
       ar: "النص الرسمي (بالإسبانية)",
     },
   },
+  // What an explanation calls a fact Muse Spark wrote only as its id ("donc u1 passe" → "donc la
+  // voiture passe"), with the article it takes mid-sentence. See withoutFactIds in view.ts.
+  factNames: {
+    car: { es: "el coche", en: "the car", fr: "la voiture", ar: "السيارة" },
+    motorcycle: { es: "la moto", en: "the motorcycle", fr: "la moto", ar: "الدراجة النارية" },
+    bicycle: { es: "el ciclista", en: "the cyclist", fr: "le cycliste", ar: "راكب الدراجة" },
+    pedestrian: { es: "el peatón", en: "the pedestrian", fr: "le piéton", ar: "أحد المشاة" },
+    tram: { es: "el tranvía", en: "the tram", fr: "le tram", ar: "الترام" },
+    emergency_vehicle: { es: "el vehículo de emergencia", en: "the emergency vehicle", fr: "le véhicule d'urgence", ar: "مركبة الطوارئ" },
+    sign: { es: "la señal", en: "the sign", fr: "le panneau", ar: "الإشارة" },
+    light: { es: "el semáforo", en: "the traffic light", fr: "le feu", ar: "الإشارة الضوئية" },
+    marking: { es: "la marca vial", en: "the road marking", fr: "le marquage au sol", ar: "العلامة الأرضية" },
+  },
   whatIf: {
     heading: { es: "¿Y si…?", en: "What if…?", fr: "Et si… ?", ar: "ماذا لو…؟" },
     // Suggestion chips, in the learner's words.

@@ -562,3 +562,208 @@ test("askUnderstand turns refusals and failures into replies", async () => {
   }) as unknown as typeof fetch;
   assert.deepEqual(await askUnderstand("x", "en", offline), { ok: false, reason: "error", message: null });
 });
+
+// Fact ids in explanations (2026-10-28). Muse Spark reads the scene facts with their ids (s1 a
+// sign, l1 a light, m1 a marking, u1 a road user) and sometimes writes them: 46 times in the
+// stored answers. The page hides them; the decision prompt stays as it is, so the eval holds.
+// The examples are stored answers from data/roadsense/scenes/index.json unless marked made up.
+const { withoutFactIds } = view;
+const { COPY } = await import("../components/roadsense/copy-table.ts");
+const { scenesFrom } = await import("../lib/roadsense/scenes.ts");
+
+type Lang = "es" | "en" | "fr" | "ar";
+/** The fact names in one language, as app/roadsense/copy.ts resolves them for the page. */
+const namesIn = (locale: Lang) =>
+  Object.fromEntries(Object.entries(COPY.factNames).map(([kind, name]) => [kind, name[locale]])) as import("../components/roadsense/view.ts").FactNames;
+
+/** Scene facts with just these ids: s signs, l lights (by state), m markings, u road users. */
+function factsOf(kinds: Record<string, string>) {
+  const box = BOX(0, 0, 100, 100);
+  const of = (prefix: string) => Object.entries(kinds).filter(([id]) => id.startsWith(prefix));
+  return {
+    ...FACTS,
+    signs: of("s").map(([id, kind]) => ({ id, kind, appliesTo: "ego", box, confidence: 0.9 })),
+    lights: of("l").map(([id, state]) => ({ id, state, appliesTo: "ego", box, confidence: 0.9 })),
+    markings: of("m").map(([id, kind]) => ({ id, kind, appliesTo: "ego", box, confidence: 0.9 })),
+    roadUsers: of("u").map(([id, kind]) => ({ id, kind, position: "from_right", emergencyLightsOn: kind === "emergency_vehicle", box, confidence: 0.9 })),
+  } as import("../lib/roadsense/types.ts").SceneFacts;
+}
+
+const plain = (locale: Lang, text: string, kinds: Record<string, string> = {}) => withoutFactIds(text, factsOf(kinds), namesIn(locale), locale);
+
+test("an id in brackets is dropped from an explanation, in all four languages", () => {
+  assert.equal(plain("es", "Tu semáforo (l1) está en rojo."), "Tu semáforo está en rojo.");
+  assert.equal(
+    plain("es", "En esta intersección en T viene por tu derecha un (vehículo prioritario) (u1) con las luces de emergencia encendidas."),
+    "En esta intersección en T viene por tu derecha un (vehículo prioritario) con las luces de emergencia encendidas.",
+  );
+  assert.equal(
+    plain(
+      "en",
+      "You face a red traffic light (l1) at the crossroads. You also have a yield sign (s1) and a stop line (m1), but traffic lights (semáforos) have preference over vertical signs (señales verticales) and road markings (marcas viales).",
+    ),
+    "You face a red traffic light at the crossroads. You also have a yield sign and a stop line, but traffic lights (semáforos) have preference over vertical signs (señales verticales) and road markings (marcas viales).",
+  );
+  assert.equal(
+    plain(
+      "fr",
+      "Vous arrivez à un carrefour avec un feu rouge qui s'applique à vous (l1). Une lumière rouge non clignotante (luz roja no intermitente) interdit le passage. Les feux (semáforos) passent avant le panneau vertical cédez-le-passage (s1) [(señales verticales de circulación)] et la ligne au sol (m1) [(marcas viales)], donc vous devez rester arrêté au feu.",
+    ),
+    "Vous arrivez à un carrefour avec un feu rouge qui s'applique à vous. Une lumière rouge non clignotante (luz roja no intermitente) interdit le passage. Les feux (semáforos) passent avant le panneau vertical cédez-le-passage [(señales verticales de circulación)] et la ligne au sol [(marcas viales)], donc vous devez rester arrêté au feu.",
+  );
+  assert.equal(plain("ar", "توجد سيارة (u1) تسير داخل الطريق الدائري."), "توجد سيارة تسير داخل الطريق الدائري.");
+  assert.equal(
+    plain("ar", "أفسح فقط للسيارة داخل الدوار (u1) ثم ادخل لأن (ceda el paso) تعني ذلك فقط"),
+    "أفسح فقط للسيارة داخل الدوار ثم ادخل لأن (ceda el paso) تعني ذلك فقط",
+  );
+  // Made up: several ids in one pair of brackets.
+  assert.equal(plain("en", "Your lane has a yield sign and line (s1, m1)."), "Your lane has a yield sign and line.");
+});
+
+test("an id in brackets where a noun belongs becomes the fact's name", () => {
+  // Made up: brackets label the word before them, unless a sentence, an article or a preposition needs a noun there.
+  assert.equal(plain("es", "(u1) tiene prioridad.", { u1: "car" }), "El coche tiene prioridad.");
+  assert.equal(plain("es", "Debes ceder el paso a (u1).", { u1: "car" }), "Debes ceder el paso al coche.");
+  assert.equal(plain("ar", "(u1) تسير أمامك.", { u1: "car" }), "السيارة تسير أمامك.");
+  assert.equal(plain("ar", "أفسح الطريق لـ (u2).", { u2: "emergency_vehicle" }), "أفسح الطريق لمركبة الطوارئ.");
+  assert.equal(plain("fr", "Le feu s'applique à vous (l1).", { l1: "red" }), "Le feu s'applique à vous.");
+});
+
+test("an id right after the fact it labels is dropped", () => {
+  assert.equal(
+    plain("en", "Your light l1 is red and applies to you. A steady red prohibits passage (prohibe el paso), so you must stop at the stop line m1 and wait.", {
+      l1: "red",
+      m1: "stop_line",
+    }),
+    "Your light is red and applies to you. A steady red prohibits passage (prohibe el paso), so you must stop at the stop line and wait.",
+  );
+  assert.equal(
+    plain("fr", "Vous arrivez à un carrefour avec un panneau (stop) pour vous et un (vehículo prioritario) u1 qui arrive de la droite avec ses feux spéciaux allumés.", {
+      s1: "stop",
+      u1: "emergency_vehicle",
+    }),
+    "Vous arrivez à un carrefour avec un panneau (stop) pour vous et un (vehículo prioritario) qui arrive de la droite avec ses feux spéciaux allumés.",
+  );
+  // "وهي u1" (and it is u1) goes whole.
+  assert.equal(
+    plain("ar", "أنت على طريق ذي أولوية (vía con prioridad) حسب اللافتة s1. لكن من اليمين تقترب مركبة طوارئ (vehículo de servicios de urgencia) وهي u1 وأضواؤها الخاصة مشتعلة.", {
+      s1: "priority_road",
+      u1: "emergency_vehicle",
+    }),
+    "أنت على طريق ذي أولوية (vía con prioridad) حسب اللافتة. لكن من اليمين تقترب مركبة طوارئ (vehículo de servicios de urgencia) وأضواؤها الخاصة مشتعلة.",
+  );
+  // Made up: other words a fact goes by, and a sign named by what it says.
+  assert.equal(plain("es", "Un camión u1 se acerca.", { u1: "car" }), "Un camión se acerca.");
+  assert.equal(plain("es", "La señal de ceda el paso s1 obliga a parar.", { s1: "yield" }), "La señal de ceda el paso obliga a parar.");
+});
+
+test("an id that stands for a fact becomes that fact's name", () => {
+  const emergency = { u1: "emergency_vehicle" };
+  assert.equal(
+    plain("en", "The excerpts require you to facilitate its passage (facilitarles el paso), pulling right or stopping if needed, and not force the priority vehicle to brake or swerve, so you must let u1 go first.", emergency),
+    "The excerpts require you to facilitate its passage (facilitarles el paso), pulling right or stopping if needed, and not force the priority vehicle to brake or swerve, so you must let the emergency vehicle go first.",
+  );
+  assert.equal(
+    plain("en", "The excerpts say emergency vehicles in service have priority over all others (prioridad de paso) and you must facilitate the priority vehicle (vehiculo prioritario) by moving right or stopping if needed, so u1 goes before you.", emergency),
+    "The excerpts say emergency vehicles in service have priority over all others (prioridad de paso) and you must facilitate the priority vehicle (vehiculo prioritario) by moving right or stopping if needed, so the emergency vehicle goes before you.",
+  );
+  assert.equal(
+    plain("fr", "C'est faux : en l'absence de signal qui règle la priorité (en defecto de señal), vous devez céder le passage aux véhicules qui arrivent par votre droite (vehículos que se aproximen por su derecha), donc u1 passe avant vous.", { u1: "car" }),
+    "C'est faux : en l'absence de signal qui règle la priorité (en defecto de señal), vous devez céder le passage aux véhicules qui arrivent par votre droite (vehículos que se aproximen por su derecha), donc la voiture passe avant vous.",
+  );
+  const roundabout = { u1: "car", u2: "emergency_vehicle" };
+  // "La voiture u1" labels; "le u2" takes the name's own article.
+  assert.equal(
+    plain("fr", "La voiture u1 est déjà dans l'anneau et le u2 est un (vehículo prioritario) avec signaux spéciaux allumés venant de droite. Ce véhicule en service a (prioridad de paso) et vous devez lui faciliter le passage (apartarse a su derecha o deteniéndose) sans forcer u1 et u2 à modifier brusquement trajectoire ou vitesse.", roundabout),
+    "La voiture est déjà dans l'anneau et le véhicule d'urgence est un (vehículo prioritario) avec signaux spéciaux allumés venant de droite. Ce véhicule en service a (prioridad de paso) et vous devez lui faciliter le passage (apartarse a su derecha o deteniéndose) sans forcer la voiture et le véhicule d'urgence à modifier brusquement trajectoire ou vitesse.",
+  );
+  assert.equal(
+    plain("fr", "Les extraits donnent au (vehículo prioritario) en service la (prioridad de paso) sur les autres et obligent à lui faciliter le passage dès les signaux perçus, donc céder seulement à u1 et passer avant u2 est interdit.", roundabout),
+    "Les extraits donnent au (vehículo prioritario) en service la (prioridad de paso) sur les autres et obligent à lui faciliter le passage dès les signaux perçus, donc céder seulement à la voiture et passer avant le véhicule d'urgence est interdit.",
+  );
+  // "لـ u1" joins its name: للسيارة. The "لـ" before a bracket stays.
+  assert.equal(
+    plain("ar", "مركبة الطوارئ في الخدمة (vehículo prioritario) لها (prioridad de paso) على باقي المركبات، وبمجرد إدراك (señales especiales) يجب اتخاذ التدابير لـ (facilitarles el paso)، فلا يكفي إفساح المجال لـ u1 والدخول قبلها.", { u1: "car" }),
+    "مركبة الطوارئ في الخدمة (vehículo prioritario) لها (prioridad de paso) على باقي المركبات، وبمجرد إدراك (señales especiales) يجب اتخاذ التدابير لـ (facilitarles el paso)، فلا يكفي إفساح المجال للسيارة والدخول قبلها.",
+  );
+  assert.equal(
+    plain("ar", "يوجد ممر مشاة مخطط (paso para peatones) والمشاة u1 عليه أمامك وله الأولوية. لذلك يجب التوقف التام وإفساح الطريق (ceder el paso) لمركبات الطريق المفضلة (vía preferente) مثل u2 وللمشاة u1.", { u1: "pedestrian", u2: "car" }),
+    "يوجد ممر مشاة مخطط (paso para peatones) والمشاة عليه أمامك وله الأولوية. لذلك يجب التوقف التام وإفساح الطريق (ceder el paso) لمركبات الطريق المفضلة (vía preferente) مثل السيارة وللمشاة.",
+  );
+});
+
+test("a name joins the word before it as each language does", () => {
+  // Made up: no stored Spanish answer names a fact by its bare id.
+  assert.equal(plain("es", "Debes ceder el paso a u1 y al peatón.", { u1: "car" }), "Debes ceder el paso al coche y al peatón.");
+  assert.equal(plain("es", "La prioridad es de u1.", { u1: "tram" }), "La prioridad es del tranvía.");
+  assert.equal(plain("es", "Cede el paso al u1.", { u1: "motorcycle" }), "Cede el paso a la moto.");
+  assert.equal(plain("fr", "Cédez le passage à u1.", { u1: "tram" }), "Cédez le passage au tram.");
+  assert.equal(plain("fr", "Cédez le passage au u1.", { u1: "car" }), "Cédez le passage à la voiture.");
+  assert.equal(plain("fr", "u1 passe avant vous.", { u1: "car" }), "La voiture passe avant vous.");
+  assert.equal(plain("en", "Let the u1 go first.", { u1: "pedestrian" }), "Let the pedestrian go first.");
+  assert.equal(plain("en", "This u1 has priority.", { u1: "car" }), "The car has priority.");
+  assert.equal(plain("en", "U1 is coming.", { u1: "car" }), "The car is coming.");
+  assert.equal(plain("es", "¿u1 pasa primero?", { u1: "car" }), "¿El coche pasa primero?");
+  // The article goes to the name, and the preposition before it still merges; French elides before u1.
+  assert.equal(plain("es", "Cede el paso a la u1.", { u1: "car" }), "Cede el paso al coche.");
+  assert.equal(plain("fr", "Cédez le passage à la u2.", { u2: "tram" }), "Cédez le passage au tram.");
+  assert.equal(plain("fr", "Cédez le passage aux u1.", { u1: "car" }), "Cédez le passage à la voiture.");
+  assert.equal(plain("fr", "C'est l'u1 qui passe.", { u1: "car" }), "C'est la voiture qui passe.");
+  assert.equal(plain("fr", "La priorité d’u1 est claire.", { u1: "tram" }), "La priorité du tram est claire.");
+  assert.equal(plain("ar", "أفسح الطريق لـ u2.", { u2: "emergency_vehicle" }), "أفسح الطريق لمركبة الطوارئ.");
+  assert.equal(plain("ar", "تمر u1 و u2 قبلك.", { u1: "car", u2: "emergency_vehicle" }), "تمر السيارة ومركبة الطوارئ قبلك.");
+});
+
+test("Spanish words, sign and marking codes and article numbers are left alone", () => {
+  const facts = { s1: "yield", m1: "yield_triangle", m2: "yield_line", u1: "car" };
+  // From the BOE excerpts stored with the answers: the conjunction "u" and an article number.
+  const excerpt =
+    "pueda quedar detenido de forma que impida u obstruya la circulación transversal (artículo 24.2 del texto articulado).";
+  assert.equal(plain("es", excerpt, facts), excerpt);
+  assert.equal(plain("es", "señal vertical (R-1) o marca vial de ceda el paso (M-6.5)", facts), "señal vertical (R-1) o marca vial de ceda el paso (M-6.5)");
+  const codes = "Your lane has a yield triangle (M-6.5) and a broken yield line (M-4.2), so you must give way (ceda el paso).";
+  assert.equal(plain("en", codes, facts), codes);
+  assert.equal(
+    plain("ar", "أمامك معبر مشاة واضح بخطوط بيضاء (paso para peatones / M-4.3) وإشارة عبور مشاة تنطبق عليك. يوجد مشاة (u1) على المعبر أمام سيارتك.", { u1: "pedestrian" }),
+    "أمامك معبر مشاة واضح بخطوط بيضاء (paso para peatones / M-4.3) وإشارة عبور مشاة تنطبق عليك. يوجد مشاة على المعبر أمام سيارتك.",
+  );
+  // Made up: square metres, and an id this answer has no fact for (naming it would invent a road user).
+  assert.equal(plain("es", "Hay 50 m2 libres.", { m2: "zebra_crossing" }), "Hay 50 m2 libres.");
+  assert.equal(plain("es", "El u3 pasa.", { u1: "car" }), "El u3 pasa.");
+});
+
+test("no stored explanation shows a fact id, and one without ids is unchanged", () => {
+  const { readFileSync } = process.getBuiltinModule("node:fs") as typeof import("node:fs");
+  const scenes = scenesFrom(JSON.parse(readFileSync(new URL("../data/roadsense/scenes/index.json", import.meta.url), "utf8")));
+  const ID = /(?<![\p{L}\p{N}_.-])[slmu]\d{1,2}(?![\p{L}\p{N}_])/u;
+  let checked = 0;
+  for (const scene of scenes) {
+    for (const answers of [scene.precomputed, ...scene.whatIfs.map((whatIf) => whatIf.precomputed)]) {
+      for (const locale of ["es", "en", "fr", "ar"] as const) {
+        const { facts, model } = answers[locale];
+        if (!model) continue;
+        for (const text of [model.rationale, model.temptingWrongAnswer, model.whyWrong]) {
+          const shown = withoutFactIds(text, facts, namesIn(locale), locale);
+          assert.doesNotMatch(shown, ID, `${scene.id} ${locale}: ${shown}`);
+          if (!ID.test(text)) assert.equal(shown, text, `${scene.id} ${locale}`);
+          checked++;
+        }
+      }
+    }
+  }
+  assert.ok(checked > 600, `${checked} texts`);
+});
+
+test("model text is shown only by ResultCard, without its fact ids", () => {
+  const card = roadsenseSource("ResultCard.tsx");
+  for (const field of ["rationale", "temptingWrongAnswer", "whyWrong"]) {
+    assert.match(card, new RegExp(`<ModelText\\b[^>]*\\sfacts=\\{result\\.facts\\}[^>]*\\stext=\\{model\\.${field}\\}`), field);
+  }
+  assert.match(card, /<Explained text=\{withoutFactIds\(text, facts, copy\.factNames, locale\)\}/);
+  assert.doesNotMatch(card, /<Explained\s+text=\{model\./, "no model text skips withoutFactIds");
+  // Hero shows the verdict and the law, and the thread shows answers through ResultCard.
+  const { readdirSync } = process.getBuiltinModule("node:fs") as typeof import("node:fs");
+  const others = readdirSync(new URL("../components/roadsense/", import.meta.url)).filter((file) => /\.tsx?$/.test(file) && file !== "ResultCard.tsx");
+  assert.ok(others.includes("Hero.tsx") && others.includes("WhatIfThread.tsx"));
+  for (const file of others) assert.doesNotMatch(roadsenseSource(file), /\.(rationale|temptingWrongAnswer|whyWrong)\b/, file);
+});
