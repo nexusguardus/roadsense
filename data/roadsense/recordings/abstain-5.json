@@ -1,8 +1,8 @@
 {
-  "latencyMs": 9904,
+  "latencyMs": 9936,
   "calls": {
     "sparkModel": "muse-spark-1.3-contributor",
-    "13bb06c82c7cdac3e4dba300e64a395a2cef6bf0197f0d2b52e62fb195eb8329": {
+    "9b55315ae76a202295ed02f038b339349c50c2a34c55d06168de785e17c767a5": {
       "json": {
         "crossRoadPaved": true,
         "egoRoadPaved": true,
@@ -18,7 +18,7 @@
           "right_approach_hidden"
         ]
       },
-      "costUsd": 0.000494986
+      "costUsd": 0.000465642
     }
   }
 }

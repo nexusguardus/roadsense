@@ -90,7 +90,8 @@ export type WhatIfLabelKey =
   | "light_red"
   | "light_green"
   | "add_emergency_vehicle"
-  | "add_pedestrian_on_crossing";
+  | "add_pedestrian_on_crossing"
+  | "add_pedestrian_ahead";
 
 export function whatIfLabelKey(edit: WhatIfEdit): WhatIfLabelKey {
   switch (edit.kind) {
@@ -208,6 +209,10 @@ export function matchLabelKey(match: WhatIfMatch): WhatIfLabelKey | null {
       return match.to ? (match.to === "stop" ? "swap_to_stop" : "swap_to_yield") : null;
     case "set_light":
       return match.to ? (match.to === "red" ? "light_red" : "light_green") : null;
+    case "add_pedestrian_on_crossing":
+    case "add_pedestrian_ahead":
+      // Until the photo decides whether there's a crossing, the wording that fits both.
+      return "add_pedestrian_ahead";
     case "none":
       return null;
     default:

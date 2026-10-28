@@ -95,7 +95,7 @@ test("proposes swap and remove for a scene with a yield sign", () => {
   const edits = proposeEdits(FACTS);
   assert.deepEqual(edits[0], { kind: "swap_sign", factId: "s1", to: "stop" });
   assert.deepEqual(edits[1], { kind: "remove_sign", factId: "s1" });
-  assert.deepEqual(edits.map(editKey), ["swap_sign:s1:stop", "remove_sign:s1", "add_emergency_vehicle"]);
+  assert.deepEqual(edits.map(editKey), ["swap_sign:s1:stop", "remove_sign:s1", "add_emergency_vehicle", "add_pedestrian_ahead"]);
 });
 
 test("never proposes more than four edits", () => {
@@ -104,7 +104,7 @@ test("never proposes more than four edits", () => {
     lights: [{ id: "l1", state: "green", appliesTo: "ego", box: BOX, confidence: 0.9 }],
     markings: [{ id: "m1", kind: "zebra_crossing", appliesTo: "ego", box: BOX, confidence: 0.9 }],
   };
-  assert.deepEqual(proposeEdits(busy).map(editKey), ["swap_sign:s1:stop", "remove_sign:s1", "set_light:l1:red", "add_pedestrian_on_crossing"]);
+  assert.deepEqual(proposeEdits(busy).map(editKey), ["swap_sign:s1:stop", "remove_sign:s1", "set_light:l1:red", "add_emergency_vehicle"]);
 });
 
 test("verifyEdit accepts a clean swap", () => {
@@ -154,6 +154,29 @@ test("verifyEdit checks each kind of change", () => {
   const addPedestrian = { kind: "add_pedestrian_on_crossing" };
   assert.equal(verifyEdit(FACTS, { ...FACTS, roadUsers: [...FACTS.roadUsers, pedestrian] }, addPedestrian), true);
   assert.equal(verifyEdit(FACTS, FACTS, addPedestrian), false);
+
+  const stepping = { id: "u6", kind: "pedestrian", position: "in_path_ahead", emergencyLightsOn: false, box: BOX, confidence: 0.9 };
+  const addStepping = { kind: "add_pedestrian_ahead" };
+  assert.equal(verifyEdit(FACTS, { ...FACTS, roadUsers: [...FACTS.roadUsers, stepping] }, addStepping), true);
+  assert.equal(verifyEdit(FACTS, { ...FACTS, roadUsers: [...FACTS.roadUsers, pedestrian] }, addStepping), false, "a person on a crossing is the other edit");
+  assert.equal(verifyEdit(FACTS, FACTS, addStepping), false);
+});
+
+test("verifyEdit rejects an edit that changed the road surface", () => {
+  // Found on surface-1: the person was added, but the gravel track came back as tarmac.
+  const dirt = { ...FACTS, egoRoadPaved: false };
+  const stepping = { id: "u6", kind: "pedestrian", position: "in_path_ahead", emergencyLightsOn: false, box: BOX, confidence: 0.9 };
+  const addStepping = { kind: "add_pedestrian_ahead" };
+  assert.equal(verifyEdit(dirt, { ...dirt, roadUsers: [...dirt.roadUsers, stepping] }, addStepping), true);
+  assert.equal(verifyEdit(dirt, { ...dirt, egoRoadPaved: true, roadUsers: [...dirt.roadUsers, stepping] }, addStepping), false);
+  // A surface one reading couldn't tell is no change.
+  assert.equal(verifyEdit(dirt, { ...dirt, egoRoadPaved: null, roadUsers: [...dirt.roadUsers, stepping] }, addStepping), true);
+});
+
+test("editPrompt puts the stepping-out person in the road, off any crossing", () => {
+  const prompt = editPrompt({ kind: "add_pedestrian_ahead" }, FACTS);
+  assert.match(prompt, /steps? into the road/i);
+  assert.match(prompt, /not on a (zebra|pedestrian) crossing/i);
 });
 
 test("editKey is stable", () => {
@@ -208,7 +231,7 @@ const { offerableEdits, matchesEdit, whyNotOffered } = await import("../lib/road
 const { NOT_OFFERED_CAUSES } = await import("../lib/roadsense/edits.ts");
 
 /** The spike scene with only what is asked for: the learner's sign and light, a zebra ahead, a pedestrian on it, an ambulance. */
-function factsWith(opts: { sign?: string; light?: string; zebra?: boolean; pedestrian?: boolean; ambulance?: boolean }) {
+function factsWith(opts: { sign?: string; light?: string; zebra?: boolean; pedestrian?: boolean; inPath?: boolean; ambulance?: boolean }) {
   return {
     ...FACTS,
     signs: opts.sign ? [{ id: "s1", kind: opts.sign, appliesTo: "ego", box: SIGN_BOX, confidence: 0.9 }] : [],
@@ -216,6 +239,7 @@ function factsWith(opts: { sign?: string; light?: string; zebra?: boolean; pedes
     markings: opts.zebra ? [{ id: "m1", kind: "zebra_crossing", appliesTo: "ego", box: BOX, confidence: 0.9 }] : [],
     roadUsers: [
       ...(opts.pedestrian ? [{ id: "u1", kind: "pedestrian", position: "on_crossing_ahead", emergencyLightsOn: false, box: BOX, confidence: 0.9 }] : []),
+      ...(opts.inPath ? [{ id: "u3", kind: "pedestrian", position: "in_path_ahead", emergencyLightsOn: false, box: BOX, confidence: 0.9 }] : []),
       ...(opts.ambulance ? [{ id: "u2", kind: "emergency_vehicle", position: "from_left", emergencyLightsOn: true, box: BOX, confidence: 0.9 }] : []),
     ],
   };
@@ -231,6 +255,7 @@ const MATCHES = [
   { kind: "set_light", to: "red" },
   { kind: "set_light", to: "green" },
   { kind: "add_pedestrian_on_crossing" },
+  { kind: "add_pedestrian_ahead" },
   { kind: "add_emergency_vehicle" },
 ];
 
@@ -238,9 +263,28 @@ test("offerableEdits lists every edit; proposeEdits keeps the first four", () =>
   const facts = factsWith({ sign: "stop", light: "green", zebra: true });
   assert.deepEqual(
     offerableEdits(facts).map((edit) => edit.kind),
-    ["swap_sign", "remove_sign", "set_light", "add_pedestrian_on_crossing", "add_emergency_vehicle"],
+    ["swap_sign", "remove_sign", "set_light", "add_emergency_vehicle", "add_pedestrian_on_crossing"],
   );
   assert.deepEqual(proposeEdits(facts), offerableEdits(facts).slice(0, 4));
+});
+
+test("a person steps out in front where there is no zebra crossing, onto the zebra where there is one", () => {
+  assert.deepEqual(
+    offerableEdits(factsWith({ sign: "yield" })).map((edit) => edit.kind),
+    ["swap_sign", "remove_sign", "add_emergency_vehicle", "add_pedestrian_ahead"],
+  );
+  assert.ok(!offerableEdits(factsWith({ sign: "yield", zebra: true })).some((edit) => edit.kind === "add_pedestrian_ahead"));
+  // Never a second person in the learner's path.
+  const pedestrianEdits = (facts: ReturnType<typeof factsWith>) => offerableEdits(facts).filter((edit) => edit.kind.startsWith("add_pedestrian"));
+  assert.deepEqual(pedestrianEdits(factsWith({ inPath: true })), []);
+  assert.deepEqual(pedestrianEdits(factsWith({ zebra: true, pedestrian: true })), []);
+});
+
+test("a person in front matches whichever pedestrian edit the photo offers", () => {
+  // Learners rarely say whether there is a crossing: the photo decides.
+  assert.equal(matchesEdit({ kind: "add_pedestrian_on_crossing" }, { kind: "add_pedestrian_ahead" }), true);
+  assert.equal(matchesEdit({ kind: "add_pedestrian_ahead" }, { kind: "add_pedestrian_on_crossing" }), true);
+  assert.equal(matchesEdit({ kind: "add_pedestrian_ahead" }, { kind: "add_emergency_vehicle" }), false);
 });
 
 test("matchesEdit needs the same kind, and the same direction when the match names one", () => {
@@ -262,7 +306,8 @@ test("whyNotOffered names the cause", () => {
   assert.equal(whyNotOffered({ kind: "swap_sign" }, factsWith({})), "no_sign");
   assert.equal(whyNotOffered({ kind: "remove_sign" }, factsWith({ sign: "priority_road" })), "cant_change");
   assert.equal(whyNotOffered({ kind: "add_pedestrian_on_crossing" }, factsWith({ zebra: true, pedestrian: true })), "pedestrian_already");
-  assert.equal(whyNotOffered({ kind: "add_pedestrian_on_crossing" }, factsWith({})), "no_zebra");
+  assert.equal(whyNotOffered({ kind: "add_pedestrian_on_crossing" }, factsWith({})), null, "no zebra: the person steps out in front instead");
+  assert.equal(whyNotOffered({ kind: "add_pedestrian_ahead" }, factsWith({ inPath: true })), "pedestrian_already");
   assert.equal(whyNotOffered({ kind: "add_emergency_vehicle" }, factsWith({ ambulance: true })), "emergency_already");
   assert.equal(whyNotOffered({ kind: "set_light", to: "red" }, factsWith({ light: "green" })), null);
   assert.equal(whyNotOffered({ kind: "swap_sign" }, factsWith({ sign: "stop" })), null);

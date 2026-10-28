@@ -14,9 +14,20 @@ const egoLight = (facts: SceneFacts): LightFact | undefined =>
 
 const zebraAhead = (facts: SceneFacts): boolean => facts.markings.some((m) => m.kind === "zebra_crossing" && m.appliesTo === "ego");
 const pedestrianOnCrossing = (facts: SceneFacts): boolean => facts.roadUsers.some((u) => u.kind === "pedestrian" && u.position === "on_crossing_ahead");
+const pedestrianInPath = (facts: SceneFacts): boolean =>
+  facts.roadUsers.some((u) => u.kind === "pedestrian" && (u.position === "on_crossing_ahead" || u.position === "in_path_ahead"));
 const emergencyVehicle = (facts: SceneFacts): boolean => facts.roadUsers.some((u) => u.kind === "emergency_vehicle");
 
-/** Every edit that would change the answer, most telling first: what a typed what-if may ask for. */
+/** The one person a what-if may add: onto the zebra crossing when there is one, else stepping into the road in front. */
+function pedestrianEdit(facts: SceneFacts): WhatIfEdit | null {
+  if (zebraAhead(facts)) return pedestrianOnCrossing(facts) ? null : { kind: "add_pedestrian_on_crossing" };
+  return pedestrianInPath(facts) ? null : { kind: "add_pedestrian_ahead" };
+}
+
+/**
+ * Every edit that would change the answer: what a typed what-if may ask for. The order sets the four
+ * chips: the ambulance before the person in front, so the examples' verified ambulances keep a chip.
+ */
 export function offerableEdits(facts: SceneFacts): WhatIfEdit[] {
   const sign = egoSign(facts);
   const light = egoLight(facts);
@@ -24,8 +35,8 @@ export function offerableEdits(facts: SceneFacts): WhatIfEdit[] {
     sign ? { kind: "swap_sign", factId: sign.id, to: sign.kind === "stop" ? "yield" : "stop" } : null,
     sign ? { kind: "remove_sign", factId: sign.id } : null,
     light ? { kind: "set_light", factId: light.id, to: light.state === "green" ? "red" : "green" } : null,
-    zebraAhead(facts) && !pedestrianOnCrossing(facts) ? { kind: "add_pedestrian_on_crossing" } : null,
     emergencyVehicle(facts) ? null : { kind: "add_emergency_vehicle" },
+    pedestrianEdit(facts),
   ];
   return candidates.filter((edit): edit is WhatIfEdit => edit !== null);
 }
@@ -35,9 +46,14 @@ export function proposeEdits(facts: SceneFacts): WhatIfEdit[] {
   return offerableEdits(facts).slice(0, MAX_EDITS);
 }
 
-/** Whether an edit is what the learner asked for: the same kind, and the same direction when they named one. */
+const PEDESTRIAN_KINDS: ReadonlySet<string> = new Set(["add_pedestrian_on_crossing", "add_pedestrian_ahead"]);
+
+/**
+ * Whether an edit is what the learner asked for: the same kind, and the same direction when they
+ * named one. A person in front is either pedestrian edit: the photo decides whether it's a crossing.
+ */
 export function matchesEdit(match: WhatIfMatch, edit: WhatIfEdit): boolean {
-  if (match.kind !== edit.kind) return false;
+  if (match.kind !== edit.kind && !(PEDESTRIAN_KINDS.has(match.kind) && PEDESTRIAN_KINDS.has(edit.kind))) return false;
   if (!("to" in match) || match.to === undefined) return true;
   return "to" in edit && edit.to === match.to;
 }
@@ -46,7 +62,6 @@ export function matchesEdit(match: WhatIfMatch, edit: WhatIfEdit): boolean {
 export const NOT_OFFERED_CAUSES = [
   "no_light",
   "no_sign",
-  "no_zebra",
   "light_already_red",
   "light_already_green",
   "sign_already_stop",
@@ -81,8 +96,8 @@ export function whyNotOffered(match: Exclude<WhatIfMatch, { kind: "none" }>, fac
       return sign.kind === "stop" ? "sign_already_stop" : "sign_already_yield";
     }
     case "add_pedestrian_on_crossing":
-      if (!zebraAhead(facts)) return "no_zebra";
-      return pedestrianOnCrossing(facts) ? "pedestrian_already" : null;
+    case "add_pedestrian_ahead":
+      return pedestrianEdit(facts) ? null : "pedestrian_already";
     case "add_emergency_vehicle":
       return emergencyVehicle(facts) ? "emergency_already" : null;
   }

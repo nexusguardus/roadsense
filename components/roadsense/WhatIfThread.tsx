@@ -6,7 +6,8 @@ import EvidenceImage from "./EvidenceImage";
 import Explained from "./Explained";
 import ResultCard from "./ResultCard";
 import type { AnalysisError } from "./useAnalysisStream";
-import { answerChange, answerKey, evidenceOverlays, fillTemplate, type AnswerKey, type ThreadEntry, type ThreadState } from "./view";
+import { WhatIfChips } from "./WhatIfBox";
+import { answerChange, answerKey, evidenceOverlays, fillTemplate, type AnswerKey, type ThreadEntry, type ThreadState, type WhatIfChip } from "./view";
 
 interface WhatIfThreadProps {
   copy: RoadsenseCopy;
@@ -23,6 +24,10 @@ interface WhatIfThreadProps {
   onSelect: (id: number | null) => void;
   /** fromKeyboard: Run it was pressed with a key, whose click has detail 0 (a tap or a mouse click has 1). */
   onRun: (id: number, fromKeyboard: boolean) => void;
+  /** The what-ifs this photo offers, suggested under the newest reply that couldn't run. */
+  chips: WhatIfChip[];
+  disabled: boolean;
+  onChoose: (chip: WhatIfChip, words: string, fromKeyboard: boolean) => void;
 }
 
 function answerLabel(copy: RoadsenseCopy, key: AnswerKey): string {
@@ -37,7 +42,7 @@ interface EntryProps extends Omit<WhatIfThreadProps, "thread" | "originalLabel">
   newest: boolean;
 }
 
-function Entry({ copy, locale, evaluation, base, stage, errorText, onSelect, onRun, entry, selected, newest }: EntryProps) {
+function Entry({ copy, locale, evaluation, base, stage, errorText, onSelect, onRun, chips, disabled, onChoose, entry, selected, newest }: EntryProps) {
   const { reply, readAs } = entry;
   const readAsText = readAs && (
     <>
@@ -48,6 +53,13 @@ function Entry({ copy, locale, evaluation, base, stage, errorText, onSelect, onR
     </>
   );
   const notCounted = <p className="text-xs text-on-surface-variant">{copy.whatIf.notCounted}</p>;
+  // No dead end: under the newest reply that couldn't run, what this photo can do instead.
+  const suggestions = newest && chips.length > 0 && (
+    <div className="space-y-1.5">
+      <p className="text-xs text-on-surface-variant">{copy.whatIf.tryInstead}</p>
+      <WhatIfChips copy={copy} chips={chips} disabled={disabled} onChoose={onChoose} />
+    </div>
+  );
   const change = reply?.kind === "answer" ? answerChange(base, reply.result) : null;
   const changeText = !change
     ? null
@@ -102,25 +114,31 @@ function Entry({ copy, locale, evaluation, base, stage, errorText, onSelect, onR
               <Explained text={copy.whatIf.notPossible[reply.cause]} locale={locale} />
             </p>
             {notCounted}
+            {suggestions}
           </>
         )}
         {reply?.kind === "not_on_example" && (
           <>
             <p className={ROW}>{copy.whatIf.notOnExample}</p>
             {notCounted}
+            {suggestions}
           </>
         )}
         {reply?.kind === "none" && (
           <>
             <p className={ROW}>{copy.whatIf.none}</p>
             {notCounted}
+            {suggestions}
           </>
         )}
         {reply?.kind === "not_applied" && (
-          <p className={ROW}>
-            {copy.whatIf.notApplied}
-            {reply.refunded === null ? "" : ` ${reply.refunded ? copy.errors.refunded : copy.errors.counted}`}
-          </p>
+          <>
+            <p className={ROW}>
+              {copy.whatIf.notApplied}
+              {reply.refunded === null ? "" : ` ${reply.refunded ? copy.errors.refunded : copy.errors.counted}`}
+            </p>
+            {suggestions}
+          </>
         )}
         {reply?.kind === "paused" && <p className={ROW}>{copy.whatIf.paused}</p>}
         {reply?.kind === "limited" && <p className={ROW}>{reply.message}</p>}

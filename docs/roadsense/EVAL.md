@@ -1,18 +1,18 @@
 # RoadSense evaluation
 
-Replay of the recorded live run, 2026-10-27. Models: muse-spark-1.3-contributor (reasoning effort low), sam-3.1.
+Live run, 2026-10-28. Models: muse-spark-1.3-contributor (reasoning effort low), sam-3.1.
 
 | Measure | Result | Target | Status |
 |---|---|---|---|
 | Answerable scenes answered right and checked | 17/24 (71%) | ≥ 90% | **MISSED** |
 | Wrong answers marked checked | 0 | 0 | met |
-| Answerable scenes left not sure | 7/24 | reported |  |
-| Abstain scenes answered not sure | 4/5 (80%) | ≥ 80% | met |
+| Answerable scenes left not sure | 6/24 | reported |  |
+| Abstain scenes answered not sure | 5/5 (100%) | ≥ 80% | met |
 | Out-of-scope scenes caught | 4/4 | reported |  |
 | Valid citations | 56/56 (100%) | 100% | met |
 | Valid structured output | 33/33 (100%) | 100% | met |
-| Latency p50 / p95 | 17.9 s / 30.0 s | p95 ≤ 20 s | **MISSED** |
-| Cost | $0.071 ($0.0021 a scene) | reported |  |
+| Latency p50 / p95 | 20.9 s / 38.9 s | p95 ≤ 20 s | **MISSED** |
+| Cost | $0.074 ($0.0023 a scene) | reported |  |
 
 ## By rule (answerable scenes)
 
@@ -32,9 +32,9 @@ Replay of the recorded live run, 2026-10-27. Models: muse-spark-1.3-contributor 
 | rgc-56-3 | 5 | 5 |
 | rgc-56-4 | 1 | 1 |
 | rgc-56-5 | 6 | 6 |
-| rgc-57-1 | 4 | 1 |
+| rgc-57-1 | 4 | 0 |
 | rgc-57-1-a | 2 | 0 |
-| rgc-57-1-b | 1 | 0 |
+| rgc-57-1-b | 1 | 1 |
 | rgc-57-1-c | 2 | 1 |
 | rgc-59-1 | 3 | 3 |
 | rgc-65-1-a | 2 | 2 |
@@ -43,14 +43,13 @@ Replay of the recorded live run, 2026-10-27. Models: muse-spark-1.3-contributor 
 
 ## Scenes not answered as expected
 
+- unsigned-1: expected checked (yield), got disagree (proceed)
 - unsigned-2: expected checked (proceed), got not_sure (proceed)
 - unsigned-3: expected checked (proceed), got not_sure (proceed)
 - roundabout-2: expected checked (yield), got not_sure (yield)
-- emergency-2: expected checked (proceed), got not_sure
+- emergency-2: expected checked (proceed), got not_sure (proceed)
 - surface-1: expected checked (yield), got not_sure (yield)
 - surface-2: expected checked (proceed), got not_sure (proceed)
-- tram-1: expected checked (yield), got not_sure
-- abstain-4: expected not_sure, got outside_scope
 
 ## How this evaluation works
 
@@ -113,4 +112,4 @@ These numbers are in-sample: the prompts, thresholds and settings below were tun
 
 ## Typed what-ifs
 
-Learners can type their own "What if…?" question. Muse Spark reads it as one of the five edits or as "none" before anything is drawn. How well it reads 59 phrases in four languages, including typos and attempts to give it instructions (12 of them added after the prompt was written, and not tuned on), is in `eval-understand.md`. Text with markup or braces reads as "none" without a model call.
+Learners can type their own "What if…?" question. Muse Spark reads it as one of five kinds of change (a person in front covers both pedestrian edits) or as "none" before anything is drawn. How well it reads 59 phrases in four languages, including typos and attempts to give it instructions (12 of them added after the prompt was written, and not tuned on), is in `eval-understand.md`. Text with markup or braces reads as "none" without a model call.

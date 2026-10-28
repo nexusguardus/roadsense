@@ -1,20 +1,20 @@
 {
-  "mode": "replay",
+  "mode": "live",
   "spark": "contributor",
   "effort": "low",
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "locale": "en",
   "report": {
     "answerable": {
       "total": 24,
       "correct": 17,
-      "notSure": 7,
+      "notSure": 6,
       "checkedWrong": 0
     },
     "checkedWrong": 0,
     "abstain": {
       "total": 5,
-      "correct": 4
+      "correct": 5
     },
     "outOfScope": {
       "total": 4,
@@ -29,17 +29,17 @@
       "valid": 33
     },
     "latencyMs": {
-      "p50": 17880,
-      "p95": 29968
+      "p50": 20920,
+      "p95": 38903
     },
     "costUsd": {
-      "total": 0.070813094,
-      "perScene": 0.002145851333333333
+      "total": 0.07442024400000001,
+      "perScene": 0.0022551589090909095
     },
     "byRule": {
       "rgc-57-1": {
         "total": 4,
-        "correct": 1
+        "correct": 0
       },
       "rgc-56-1": {
         "total": 7,
@@ -103,7 +103,7 @@
       },
       "rgc-57-1-b": {
         "total": 1,
-        "correct": 0
+        "correct": 1
       },
       "rgc-133-2": {
         "total": 1,
@@ -127,14 +127,13 @@
       }
     },
     "failures": [
+      "unsigned-1: expected checked (yield), got disagree (proceed)",
       "unsigned-2: expected checked (proceed), got not_sure (proceed)",
       "unsigned-3: expected checked (proceed), got not_sure (proceed)",
       "roundabout-2: expected checked (yield), got not_sure (yield)",
-      "emergency-2: expected checked (proceed), got not_sure",
+      "emergency-2: expected checked (proceed), got not_sure (proceed)",
       "surface-1: expected checked (yield), got not_sure (yield)",
-      "surface-2: expected checked (proceed), got not_sure (proceed)",
-      "tram-1: expected checked (yield), got not_sure",
-      "abstain-4: expected not_sure, got outside_scope"
+      "surface-2: expected checked (proceed), got not_sure (proceed)"
     ]
   },
   "results": [
@@ -147,15 +146,14 @@
           "rgc-57-1"
         ]
       },
-      "certainty": "checked",
-      "obligation": "yield",
+      "certainty": "disagree",
+      "obligation": "proceed",
       "engineObligation": "yield",
       "ruleIds": [
-        "rgc-57-1",
-        "rgc-58-1"
+        "rgc-57-1"
       ],
-      "latencyMs": 23676,
-      "costUsd": 0.0034882,
+      "latencyMs": 25983,
+      "costUsd": 0.0035267000000000002,
       "error": null
     },
     {
@@ -173,8 +171,8 @@
       "ruleIds": [
         "rgc-57-1"
       ],
-      "latencyMs": 20273,
-      "costUsd": 0.0009104,
+      "latencyMs": 33059,
+      "costUsd": 0.0011240000000000002,
       "error": null
     },
     {
@@ -192,8 +190,8 @@
       "ruleIds": [
         "rgc-57-1"
       ],
-      "latencyMs": 24336,
-      "costUsd": 0.000882886,
+      "latencyMs": 28992,
+      "costUsd": 0.0008701420000000001,
       "error": null
     },
     {
@@ -211,11 +209,11 @@
       "obligation": "stop_and_yield",
       "engineObligation": "stop_and_yield",
       "ruleIds": [
-        "rgc-56-5",
-        "rgc-56-1"
+        "rgc-56-1",
+        "rgc-56-5"
       ],
-      "latencyMs": 20149,
-      "costUsd": 0.0035130000000000005,
+      "latencyMs": 22714,
+      "costUsd": 0.0033875420000000003,
       "error": null
     },
     {
@@ -236,8 +234,8 @@
         "rgc-56-1",
         "rgc-56-5"
       ],
-      "latencyMs": 14016,
-      "costUsd": 0.0033645999999999997,
+      "latencyMs": 18180,
+      "costUsd": 0.0034306000000000002,
       "error": null
     },
     {
@@ -257,8 +255,8 @@
         "rgc-56-1",
         "rgc-56-4"
       ],
-      "latencyMs": 13976,
-      "costUsd": 0.003190086,
+      "latencyMs": 14491,
+      "costUsd": 0.003214842,
       "error": null
     },
     {
@@ -276,12 +274,12 @@
       "obligation": "stop_at_light",
       "engineObligation": "stop_at_light",
       "ruleIds": [
-        "rgc-56-3",
         "anexo-i-light-red",
+        "rgc-56-3",
         "rgc-133-1"
       ],
-      "latencyMs": 28373,
-      "costUsd": 0.003578286,
+      "latencyMs": 38903,
+      "costUsd": 0.003467642,
       "error": null
     },
     {
@@ -300,12 +298,12 @@
       "obligation": "proceed",
       "engineObligation": "proceed",
       "ruleIds": [
-        "rgc-56-3",
         "anexo-i-light-green",
+        "rgc-56-3",
         "rgc-133-1"
       ],
-      "latencyMs": 22612,
-      "costUsd": 0.0034113859999999998,
+      "latencyMs": 25297,
+      "costUsd": 0.0035719,
       "error": null
     },
     {
@@ -323,12 +321,12 @@
       "obligation": "stop_at_light",
       "engineObligation": "stop_at_light",
       "ruleIds": [
+        "rgc-133-1",
         "rgc-56-3",
-        "anexo-i-light-amber",
-        "rgc-133-1"
+        "anexo-i-light-amber"
       ],
-      "latencyMs": 22548,
-      "costUsd": 0.0034252860000000005,
+      "latencyMs": 21417,
+      "costUsd": 0.003300342,
       "error": null
     },
     {
@@ -350,8 +348,8 @@
         "rgc-56-3",
         "rgc-133-1"
       ],
-      "latencyMs": 18082,
-      "costUsd": 0.003289986,
+      "latencyMs": 25563,
+      "costUsd": 0.0033750420000000004,
       "error": null
     },
     {
@@ -368,13 +366,11 @@
       "engineObligation": "yield",
       "ruleIds": [
         "rgc-56-1",
-        "rgc-56-5",
         "anexo-i-m-6-5",
-        "anexo-i-m-4-2",
-        "rgc-58-1"
+        "anexo-i-m-4-2"
       ],
-      "latencyMs": 22751,
-      "costUsd": 0.003481286,
+      "latencyMs": 19264,
+      "costUsd": 0.003351342,
       "error": null
     },
     {
@@ -393,8 +389,8 @@
         "rgc-57-1-c",
         "rgc-58-1"
       ],
-      "latencyMs": 17198,
-      "costUsd": 0.0007704859999999999,
+      "latencyMs": 16090,
+      "costUsd": 0.000745342,
       "error": null
     },
     {
@@ -414,8 +410,8 @@
         "rgc-65-1-a",
         "anexo-i-m-4-3"
       ],
-      "latencyMs": 11044,
-      "costUsd": 0.003202486,
+      "latencyMs": 12714,
+      "costUsd": 0.0032137420000000003,
       "error": null
     },
     {
@@ -434,10 +430,11 @@
       "engineObligation": "proceed",
       "ruleIds": [
         "anexo-i-light-green",
-        "rgc-133-1"
+        "rgc-133-1",
+        "rgc-59-1"
       ],
-      "latencyMs": 17481,
-      "costUsd": 0.0033263859999999998,
+      "latencyMs": 20611,
+      "costUsd": 0.003345442,
       "error": null
     },
     {
@@ -457,13 +454,12 @@
       "obligation": "stop_and_yield",
       "engineObligation": "stop_and_yield",
       "ruleIds": [
-        "rgc-56-1",
         "rgc-56-5",
         "rgc-65-1-a",
         "anexo-i-m-4-3"
       ],
-      "latencyMs": 29968,
-      "costUsd": 0.006125086,
+      "latencyMs": 48859,
+      "costUsd": 0.0064715680000000005,
       "error": null
     },
     {
@@ -481,11 +477,10 @@
       "engineObligation": "yield_to_emergency_vehicle",
       "ruleIds": [
         "rgc-67-1",
-        "rgc-69",
-        "rgc-58-1"
+        "rgc-69"
       ],
-      "latencyMs": 33308,
-      "costUsd": 0.003596586,
+      "latencyMs": 34845,
+      "costUsd": 0.0035372420000000003,
       "error": null
     },
     {
@@ -498,11 +493,13 @@
         ]
       },
       "certainty": "not_sure",
-      "obligation": null,
-      "engineObligation": null,
-      "ruleIds": [],
-      "latencyMs": 20485,
-      "costUsd": 0.000704386,
+      "obligation": "proceed",
+      "engineObligation": "proceed",
+      "ruleIds": [
+        "rgc-57-1"
+      ],
+      "latencyMs": 35567,
+      "costUsd": 0.001031142,
       "error": null
     },
     {
@@ -521,8 +518,8 @@
         "rgc-57-1-a",
         "rgc-58-1"
       ],
-      "latencyMs": 14821,
-      "costUsd": 0.000719786,
+      "latencyMs": 26640,
+      "costUsd": 0.0009252420000000001,
       "error": null
     },
     {
@@ -540,8 +537,8 @@
       "ruleIds": [
         "rgc-57-1-a"
       ],
-      "latencyMs": 13752,
-      "costUsd": 0.000693286,
+      "latencyMs": 20990,
+      "costUsd": 0.000715542,
       "error": null
     },
     {
@@ -553,12 +550,15 @@
           "rgc-57-1-b"
         ]
       },
-      "certainty": "not_sure",
-      "obligation": null,
-      "engineObligation": null,
-      "ruleIds": [],
-      "latencyMs": 17880,
-      "costUsd": 0.000692586,
+      "certainty": "checked",
+      "obligation": "yield",
+      "engineObligation": "yield",
+      "ruleIds": [
+        "rgc-57-1-b",
+        "rgc-58-1"
+      ],
+      "latencyMs": 24613,
+      "costUsd": 0.003324542,
       "error": null
     },
     {
@@ -582,8 +582,8 @@
         "rgc-133-1",
         "rgc-133-2"
       ],
-      "latencyMs": 20866,
-      "costUsd": 0.003411486,
+      "latencyMs": 20920,
+      "costUsd": 0.003365342,
       "error": null
     },
     {
@@ -606,8 +606,8 @@
         "anexo-i-light-green",
         "rgc-56-3"
       ],
-      "latencyMs": 19753,
-      "costUsd": 0.003353286,
+      "latencyMs": 14809,
+      "costUsd": 0.003241942,
       "error": null
     },
     {
@@ -626,12 +626,12 @@
       "obligation": "stop_and_yield",
       "engineObligation": "stop_and_yield",
       "ruleIds": [
-        "rgc-56-1",
         "anexo-i-m-6-3",
-        "anexo-i-m-4-1"
+        "anexo-i-m-4-1",
+        "rgc-56-5"
       ],
-      "latencyMs": 20515,
-      "costUsd": 0.003385186,
+      "latencyMs": 22940,
+      "costUsd": 0.003374242,
       "error": null
     },
     {
@@ -652,10 +652,11 @@
       "ruleIds": [
         "rgc-56-1",
         "rgc-56-5",
-        "anexo-i-m-6-5"
+        "anexo-i-m-6-5",
+        "anexo-i-m-4-2"
       ],
-      "latencyMs": 11794,
-      "costUsd": 0.003225786,
+      "latencyMs": 15141,
+      "costUsd": 0.003251642,
       "error": null
     },
     {
@@ -669,8 +670,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 19282,
-      "costUsd": 0.000732586,
+      "latencyMs": 14051,
+      "costUsd": 0.000551842,
       "error": null
     },
     {
@@ -684,8 +685,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 10423,
-      "costUsd": 0.000540386,
+      "latencyMs": 9647,
+      "costUsd": 0.000475242,
       "error": null
     },
     {
@@ -699,8 +700,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 15565,
-      "costUsd": 0.000682586,
+      "latencyMs": 32336,
+      "costUsd": 0.000903442,
       "error": null
     },
     {
@@ -710,12 +711,12 @@
         "obligation": null,
         "ruleIds": []
       },
-      "certainty": "outside_scope",
+      "certainty": "not_sure",
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 6687,
-      "costUsd": 0.000460986,
+      "latencyMs": 17520,
+      "costUsd": 0.0006408420000000001,
       "error": null
     },
     {
@@ -729,8 +730,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 9904,
-      "costUsd": 0.000494986,
+      "latencyMs": 9936,
+      "costUsd": 0.000465642,
       "error": null
     },
     {
@@ -744,8 +745,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 15756,
-      "costUsd": 0.0006625860000000001,
+      "latencyMs": 14237,
+      "costUsd": 0.000606842,
       "error": null
     },
     {
@@ -759,8 +760,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 8514,
-      "costUsd": 0.0004987860000000001,
+      "latencyMs": 9793,
+      "costUsd": 0.000496642,
       "error": null
     },
     {
@@ -774,8 +775,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 5182,
-      "costUsd": 0.00041418600000000004,
+      "latencyMs": 7962,
+      "costUsd": 0.000453442,
       "error": null
     },
     {
@@ -789,8 +790,8 @@
       "obligation": null,
       "engineObligation": null,
       "ruleIds": [],
-      "latencyMs": 10772,
-      "costUsd": 0.0005837860000000001,
+      "latencyMs": 17367,
+      "costUsd": 0.000663242,
       "error": null
     }
   ]

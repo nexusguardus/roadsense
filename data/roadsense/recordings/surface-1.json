@@ -1,8 +1,8 @@
 {
-  "latencyMs": 14821,
+  "latencyMs": 26640,
   "calls": {
     "sparkModel": "muse-spark-1.3-contributor",
-    "39d85dde7464fe4b3ae7c2ef1d42b7c0faccc8bb8d0818320ef6f35185e50e59": {
+    "e11a63debf34026f2b01e84237c80841a1e0d18116fed51af42aea40cbeb541f": {
       "json": {
         "crossRoadPaved": true,
         "egoRoadPaved": false,
@@ -16,33 +16,33 @@
           {
             "appliesTo": "ego",
             "box": {
-              "x1": 758,
-              "x2": 792,
-              "y1": 226,
+              "x1": 756,
+              "x2": 793,
+              "y1": 225,
               "y2": 275
             },
-            "confidence": 0.85,
+            "confidence": 0.9,
             "id": "s1",
             "kind": "other"
           }
         ],
         "unknowns": []
       },
-      "costUsd": 0.00046538600000000003
+      "costUsd": 0.000652842
     },
-    "459e204d1b5f3d8ff157e6f60915f441450b1437e48de07e5cffbe81911fbc96": {
+    "d39cf43f7627782af6295082f3b39dfe6ed239d37318d27de306d2bee4c45a43": {
       "json": {
         "obligation": "yield",
         "priorityTo": [],
-        "rationale": "You are on an unpaved road coming to a crossroads with a paved road. Vehicles on the paved road have right of preference of passage (preferencia de paso). So you must give way (ceda el paso) and you may go once it is clear. No vehicles are visible now, so there is nobody to wait for.",
+        "rationale": "You are on an unpaved road (vía sin pavimentar) arriving at a crossroads with a paved road (vía pavimentada). Vehicles on the paved road have right of preference (preferencia de paso). So you must yield (ceda el paso), and you may go once it is clear without forcing others to brake or swerve.",
         "ruleIds": [
           "rgc-57-1-a",
           "rgc-58-1"
         ],
-        "temptingWrongAnswer": "Proceed normally because there is no traffic and no yield sign for you.",
-        "whyWrong": "The paved road has priority over the unpaved road even without a sign. You still have the duty to give way (ceda el paso) and only go when it will not force others to brake or swerve."
+        "temptingWrongAnswer": "Proceed because the junction looks empty and no one is coming.",
+        "whyWrong": "An empty view does not give you priority. The excerpt gives preference to paved-road traffic over unpaved-road traffic, so you must still yield first."
       },
-      "costUsd": 0.0002544
+      "costUsd": 0.0002724
     }
   }
 }

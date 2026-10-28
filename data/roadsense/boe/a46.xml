@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <status>
+    <code>200</code>
+    <text>ok</text>
+  </status>
+  <data>
+    <bloque id="a46" tipo="precepto" titulo="Artículo 46">
+      <version id_norma="BOE-A-2003-23514" fecha_publicacion="20031223" fecha_vigencia="20040123">
+        <p class="articulo">Artículo 46. Moderación de la velocidad. Casos.</p>
+        <p class="parrafo">1. Se circulará a velocidad moderada y, si fuera preciso, se detendrá el vehículo cuando las circunstancias lo exijan, especialmente en los casos siguientes:</p>
+        <p class="parrafo_2">a) Cuando haya peatones en la parte de la vía que se esté utilizando o pueda preverse racionalmente su irrupción en ella, principalmente si se trata de niños, ancianos, invidentes u otras personas manifiestamente impedidas.</p>
+        <p class="parrafo">b) Al aproximarse a ciclos circulando, así como en las intersecciones y en las proximidades de vías de uso exclusivo de ciclos y de los pasos de peatones no regulados por semáforo o agentes de la circulación, así como al acercarse a mercados, centros docentes o a lugares en que sea previsible la presencia de niños.</p>
+        <p class="parrafo">c) Cuando haya animales en la parte de la vía que se esté utilizando o pueda preverse racionalmente su irrupción en ella.</p>
+        <p class="parrafo">d) En los tramos con edificios de inmediato acceso a la parte de la vía que se esté utilizando.</p>
+        <p class="parrafo">e) Al aproximarse a un autobús en situación de parada, principalmente si se trata de un autobús de transporte escolar.</p>
+        <p class="parrafo">f) Fuera de poblado al acercarse a vehículos inmovilizados en la calzada y a ciclos que circulan por ella o por su arcén.</p>
+        <p class="parrafo">g) Al circular por pavimento deslizante o cuando pueda salpicarse o proyectarse agua, gravilla u otras materias a los demás usuarios de la vía.</p>
+        <p class="parrafo">h) Al aproximarse a pasos a nivel, a glorietas e intersecciones en que no se goce de prioridad, a lugares de reducida visibilidad o a estrechamientos.</p>
+        <p class="parrafo">Si las intersecciones están debidamente señalizadas y la visibilidad de la vía es prácticamente nula, la velocidad de los vehículos no deberá exceder de 50 kilómetros por hora.</p>
+        <p class="parrafo">i) En el cruce con otro vehículo, cuando las circunstancias de la vía, de los vehículos o las meteorológicas o ambientales no permitan realizarlo con seguridad.</p>
+        <p class="parrafo">j) En caso de deslumbramiento, de conformidad con lo dispuesto en el artículo 102.3.</p>
+        <p class="parrafo">k) En los casos de niebla densa, lluvia intensa, nevada o nubes de polvo o humo.</p>
+        <p class="parrafo_2">2. Las infracciones a las normas de este precepto tendrán la consideración de graves o muy graves, según corresponda por el exceso de velocidad, conforme se prevé en los artículos 65.4.c) y 65.5.e), ambos del texto articulado.</p>
+      </version>
+      <version id_norma="BOE-A-2021-4194" fecha_publicacion="20210317" fecha_vigencia="20210701">
+        <p class="articulo">Artículo 46. Moderación de la velocidad. Casos.</p>
+        <p class="parrafo">1. Se circulará a velocidad moderada y, si fuera preciso, se detendrá el vehículo cuando las circunstancias lo exijan, especialmente en los casos siguientes:</p>
+        <p class="parrafo_2">a) Cuando haya peatones en la parte de la vía que se esté utilizando o pueda preverse racionalmente su irrupción en ella, principalmente si se trata de niños, ancianos, invidentes u otras personas manifiestamente impedidas.</p>
+        <p class="parrafo">b) Al aproximarse a ciclos circulando, así como en las intersecciones y en las proximidades de vías de uso exclusivo de ciclos y de los pasos de peatones no regulados por semáforo o agentes de la circulación, así como al acercarse a mercados, centros docentes o a lugares en que sea previsible la presencia de niños.</p>
+        <p class="parrafo">c) Cuando haya animales en la parte de la vía que se esté utilizando o pueda preverse racionalmente su irrupción en ella.</p>
+        <p class="parrafo">d) En los tramos con edificios de inmediato acceso a la parte de la vía que se esté utilizando.</p>
+        <p class="parrafo">e) Al aproximarse a un autobús en situación de parada, principalmente si se trata de un autobús de transporte escolar.</p>
+        <p class="parrafo">f) Fuera de poblado al acercarse a vehículos inmovilizados en la calzada, a vehículos de auxilio prestando servicio y a ciclos que circulan por ella o por su arcén.</p>
+        <blockquote caduca="20210701" class="soloTexto">
+          <p class="parrafo">Téngase en cuenta que esta última actualización de la letra f), establecida por la disposición final 1.1 del Real Decreto 159/2021, de 16 de marzo. <a class="refPost">Ref. BOE-A-2021-4194#df</a>, entra en vigor el 1 de julio de 2021, según determina su disposición final 7.</p>
+          <p class="cita_con_pleca">Redacción anterior:</p>
+          <p class="parrafo">"f) Fuera de poblado al acercarse a vehículos inmovilizados en la calzada y a ciclos que circulan por ella o por su arcén."</p>
+        </blockquote>
+        <p class="parrafo">g) Al circular por pavimento deslizante o cuando pueda salpicarse o proyectarse agua, gravilla u otras materias a los demás usuarios de la vía.</p>
+        <p class="parrafo">h) Al aproximarse a pasos a nivel, a glorietas e intersecciones en que no se goce de prioridad, a lugares de reducida visibilidad o a estrechamientos.</p>
+        <p class="parrafo">Si las intersecciones están debidamente señalizadas y la visibilidad de la vía es prácticamente nula, la velocidad de los vehículos no deberá exceder de 50 kilómetros por hora.</p>
+        <p class="parrafo">i) En el cruce con otro vehículo, cuando las circunstancias de la vía, de los vehículos o las meteorológicas o ambientales no permitan realizarlo con seguridad.</p>
+        <p class="parrafo">j) En caso de deslumbramiento, de conformidad con lo dispuesto en el artículo 102.3.</p>
+        <p class="parrafo">k) En los casos de niebla densa, lluvia intensa, nevada o nubes de polvo o humo.</p>
+        <p class="parrafo_2">2. Las infracciones a las normas de este precepto tendrán la consideración de graves o muy graves, según corresponda por el exceso de velocidad, conforme se prevé en los artículos 65.4.c) y 65.5.e), ambos del texto articulado.</p>
+        <blockquote>
+          <p class="nota_pie">Se modifica la letra f) del apartado 1, con efectos de 1 de julio de 2021, por la disposición final 1.1 del Real Decreto 159/2021, de 16 de marzo. <a class="refPost">Ref. BOE-A-2021-4194#df</a></p>
+        </blockquote>
+      </version>
+    </bloque>
+  </data>
+</response>

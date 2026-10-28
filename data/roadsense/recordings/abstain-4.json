@@ -1,34 +1,38 @@
 {
-  "latencyMs": 6687,
+  "latencyMs": 17520,
   "calls": {
     "sparkModel": "muse-spark-1.3-contributor",
-    "00f5e96fc8aff2ca21a5261ea0fb9efeb845422ba89c40134d4dec9c5fe8ac56": {
+    "ea8f56b349e9ef6c9f01756d9900eabf4c750a81328cd43e937fc94f6074a22e": {
       "json": {
         "crossRoadPaved": null,
         "egoRoadPaved": true,
-        "inScope": false,
-        "junction": "none",
+        "inScope": true,
+        "junction": "crossroads",
         "lights": [],
         "markings": [],
-        "outOfScopeReason": "no_junction",
+        "outOfScopeReason": null,
         "roadUsers": [],
         "signs": [
           {
             "appliesTo": "ego",
             "box": {
-              "x1": 678,
-              "x2": 726,
-              "y1": 408,
-              "y2": 472
+              "x1": 664,
+              "x2": 712,
+              "y1": 431,
+              "y2": 495
             },
             "confidence": 0.85,
             "id": "s1",
             "kind": "other"
           }
         ],
-        "unknowns": []
+        "unknowns": [
+          "junction_unclear",
+          "right_approach_hidden",
+          "surface_unclear"
+        ]
       },
-      "costUsd": 0.000460986
+      "costUsd": 0.0006408420000000001
     }
   }
 }

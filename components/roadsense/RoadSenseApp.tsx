@@ -224,6 +224,13 @@ export default function RoadSenseApp({ copy, locale, scenes, hero, evaluation, c
                       if (fromKeyboard) whatIfInputRef.current?.focus();
                       void whatIfs.confirm(subject, id);
                     }}
+                    chips={chips}
+                    disabled={busy || whatIfs.busy}
+                    onChoose={(chip, words, fromKeyboard) => {
+                      // A suggestion disappears once chosen: from the keyboard, focus goes back to the box.
+                      if (fromKeyboard) whatIfInputRef.current?.focus();
+                      void whatIfs.choose(subject, chip, words);
+                    }}
                   />
                 )}
                 {subject && subject.base.certainty !== "outside_scope" && (

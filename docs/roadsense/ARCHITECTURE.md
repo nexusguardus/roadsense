@@ -16,7 +16,7 @@ RoadSense answers one question about a photo taken from the driver's seat: what 
    An invalid reply is retried once.
 2. **Check** (`engine.ts`). `decideObligation(facts)` is a deterministic rule engine. It returns one of three statuses: `decided`, `insufficient` (something it needs is hidden) or `out_of_scope`. With it come the obligation, the rule ids and the facts the decision depends on.
    - It follows art. 133's order of preference: officers, temporary signals, lights, signs, markings.
-   - It covers arts. 56–59 with the 57.1 exceptions, art. 65 (pedestrians), arts. 67–69 (emergency vehicles) and Anexo I.
+   - It covers arts. 56–59 with the 57.1 exceptions, art. 65 (pedestrians on crossings), art. 46.1.a) (a pedestrian in the learner's path off a crossing), arts. 67–69 (emergency vehicles) and Anexo I.
    - `docs/roadsense/RULES.md` is its table, row by row.
 3. **Confirm** (`evidence.ts`, `sam.ts`). SAM 3.1 segments the concept of each fact the decision depends on, at most five concepts per photo. A fact is confirmed when one detection covers at least 0.4 of the smaller of the two boxes, at a comparable size (area ratio of at least 0.25).
 4. **Retrieve** (`retrieve.ts`, `corpus.ts`). A deterministic lookup from facts to rule ids. Each rule's excerpt in `data/roadsense/corpus.json` is the BOE consolidated text, word for word, with its sha256, its version date and plain explanations in four languages. `scripts/roadsense/check-corpus.ts` fetches the BOE again and fails if an excerpt no longer matches.
@@ -38,10 +38,10 @@ RoadSense answers one question about a photo taken from the driver's seat: what 
 
 ## What-if edits
 
-`offerableEdits(facts)` (`edits.ts`) lists every edit a photo allows, from a closed list: swap the learner's STOP and yield signs, remove the sign, switch the light between red and green, add a pedestrian on the crossing, or add an ambulance with its lights on. `proposeEdits` keeps the first four as the page's suggestion chips.
+`offerableEdits(facts)` (`edits.ts`) lists every edit a photo allows, from a closed list: swap the learner's STOP and yield signs, remove the sign, switch the light between red and green, add an ambulance with its lights on, or add a person in front: on the zebra crossing when there is one, else stepping into the road. `proposeEdits` keeps the first four as the page's suggestion chips; a reply that can't run suggests them too, so a question never ends in a plain "no".
 
 Learners can also type a what-if in their own words:
-- **Understanding.** `understandWhatIf` (`understand.ts`) makes one text-only Muse Spark call in Standard mode. Its structured output can only be one of the five edit kinds, with a direction for a sign or a light, or "none". The words travel as data in the user message, so they can't choose an edit or reach an image prompt.
+- **Understanding.** `understandWhatIf` (`understand.ts`) makes one text-only Muse Spark call in Standard mode. Its structured output can only be one of five kinds of change, with a direction for a sign or a light, or "none". "A person in front" is one kind: the photo decides whether the person goes on a zebra crossing or steps into the road. The words travel as data in the user message, so they can't choose an edit or reach an image prompt.
 - **Resolving.** The page checks the reading against the photo's facts (`resolveTypedWhatIf`, `whyNotOffered`) and runs an offered edit. When it can't, it says why: there's no light, the light is already red, an amber light can't be switched, and so on.
 - **Asking first.** On the learner's own photo it asks before running, since a live what-if counts as one analysis.
 - **Evaluation.** `scripts/roadsense/eval-understand.ts` scores the reading on 59 phrases in four languages (`eval-understand.md`).

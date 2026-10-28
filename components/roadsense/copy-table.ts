@@ -219,6 +219,12 @@ export const COPY = {
       fr: "Laissez passer le véhicule d'urgence",
       ar: "أفسح الطريق لمركبة الطوارئ",
     },
+    slow_down_for_pedestrian: {
+      es: "Reduce la velocidad y detente si hace falta",
+      en: "Slow down, and stop if needed",
+      fr: "Ralentissez et arrêtez-vous si nécessaire",
+      ar: "خفّف السرعة وتوقّف إذا لزم الأمر",
+    },
   },
   unknowns: {
     ego_signage_hidden: {
@@ -382,6 +388,7 @@ export const COPY = {
     light_green: { es: "el semáforo se pone en verde", en: "the light turns green", fr: "le feu passe au vert", ar: "تصبح الإشارة الضوئية خضراء" },
     add_emergency_vehicle: { es: "llega una ambulancia", en: "an ambulance comes", fr: "une ambulance arrive", ar: "تصل سيارة إسعاف" },
     add_pedestrian_on_crossing: { es: "cruza un peatón delante", en: "a person crosses in front", fr: "un piéton traverse devant", ar: "يعبر أحد المشاة أمامك" },
+    add_pedestrian_ahead: { es: "sale un peatón delante", en: "a person steps out in front", fr: "un piéton surgit devant", ar: "يخرج أحد المشاة أمامك" },
     original: { es: "Ejemplo original", en: "Original example", fr: "Exemple d'origine", ar: "المثال الأصلي" },
     notApplied: {
       es: "No hemos podido hacer ese cambio con fiabilidad en esta foto.",
@@ -424,6 +431,12 @@ export const COPY = {
         fr: "un piéton sur le passage piéton devant vous",
         ar: "أحد المشاة على ممر المشاة أمامك",
       },
+      add_pedestrian_ahead: {
+        es: "un peatón que se mete en la calzada delante de ti",
+        en: "a person stepping into the road in front of you",
+        fr: "un piéton qui s'engage sur la chaussée devant vous",
+        ar: "أحد المشاة يدخل الطريق أمامك",
+      },
       add_emergency_vehicle: {
         es: "llega una ambulancia con las luces encendidas",
         en: "an ambulance arrives with its lights on",
@@ -451,12 +464,6 @@ export const COPY = {
         fr: "Il n'y a pas de STOP ni de cédez-le-passage (ceda el paso) pour vous sur cette photo.",
         ar: "لا توجد في هذه الصورة إشارة STOP أو أفسح الطريق (ceda el paso) خاصة بك.",
       },
-      no_zebra: {
-        es: "No hay un paso de cebra delante donde poner un peatón.",
-        en: "There's no zebra crossing ahead to put a person on.",
-        fr: "Il n'y a pas de passage piéton devant vous où placer un piéton.",
-        ar: "لا يوجد ممر مشاة أمامك لوضع أحد المشاة عليه.",
-      },
       light_already_red: { es: "Tu semáforo ya está en rojo.", en: "Your light is already red.", fr: "Votre feu est déjà rouge.", ar: "إشارتك الضوئية حمراء بالفعل." },
       light_already_green: { es: "Tu semáforo ya está en verde.", en: "Your light is already green.", fr: "Votre feu est déjà vert.", ar: "إشارتك الضوئية خضراء بالفعل." },
       sign_already_stop: { es: "Tu señal ya es un STOP.", en: "Your sign is already a STOP.", fr: "Votre panneau est déjà un STOP.", ar: "إشارتك STOP بالفعل." },
@@ -467,10 +474,10 @@ export const COPY = {
         ar: "إشارتك أفسح الطريق (ceda el paso) بالفعل.",
       },
       pedestrian_already: {
-        es: "Ya hay un peatón en el paso.",
-        en: "There's already a person on the crossing.",
-        fr: "Il y a déjà un piéton sur le passage.",
-        ar: "يوجد بالفعل أحد المشاة على الممر.",
+        es: "Ya hay un peatón delante.",
+        en: "There's already a person in front of you.",
+        fr: "Il y a déjà un piéton devant vous.",
+        ar: "يوجد بالفعل أحد المشاة أمامك.",
       },
       emergency_already: {
         es: "Ya hay un vehículo de emergencia en esta foto.",
@@ -492,16 +499,22 @@ export const COPY = {
       ar: "هذا المثال لا يتضمّن هذا التغيير جاهزًا. جرّبه على صورتك.",
     },
     none: {
-      es: "Eso todavía no lo puedo probar. Puedo cambiar el semáforo o la señal, poner un peatón en el paso o traer un vehículo de emergencia.",
-      en: "I can't test that one yet. I can change the traffic light or the sign, put a person on the crossing, or bring in an emergency vehicle.",
-      fr: "Je ne peux pas encore tester cela. Je peux changer le feu ou le panneau, placer un piéton sur le passage ou faire venir un véhicule d'urgence.",
-      ar: "لا يمكنني اختبار ذلك بعد. يمكنني تغيير الإشارة الضوئية أو الإشارة، أو وضع أحد المشاة على الممر، أو إحضار مركبة طوارئ.",
+      es: "Eso todavía no lo puedo probar. Puedo cambiar el semáforo o la señal, poner un peatón delante o traer un vehículo de emergencia.",
+      en: "I can't test that one yet. I can change the traffic light or the sign, put a person in front of you, or bring in an emergency vehicle.",
+      fr: "Je ne peux pas encore tester cela. Je peux changer le feu ou le panneau, placer un piéton devant vous ou faire venir un véhicule d'urgence.",
+      ar: "لا يمكنني اختبار ذلك بعد. يمكنني تغيير الإشارة الضوئية أو الإشارة، أو وضع أحد المشاة أمامك، أو إحضار مركبة طوارئ.",
     },
     notCounted: {
       es: "No ha contado en tus análisis del día.",
       en: "This didn't count towards your daily analyses.",
       fr: "Cela n'a pas compté dans vos analyses du jour.",
       ar: "لم يُحتسب ذلك ضمن تحليلاتك اليومية.",
+    },
+    tryInstead: {
+      es: "Prueba con una de estas:",
+      en: "Try one of these instead:",
+      fr: "Essayez plutôt l'une de celles-ci :",
+      ar: "جرّب أحد هذه الاقتراحات بدلًا من ذلك:",
     },
     paused: {
       es: "Las preguntas escritas están en pausa ahora mismo. Las sugerencias de abajo siguen funcionando.",

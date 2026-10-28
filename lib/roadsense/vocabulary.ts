@@ -40,6 +40,7 @@ export const ROAD_USER_POSITIONS = keys<RoadUserPosition>({
   oncoming: true,
   inside_roundabout: true,
   on_crossing_ahead: true,
+  in_path_ahead: true,
   behind: true,
 });
 export const UNKNOWN_CODES = keys<UnknownCode>({
@@ -62,6 +63,7 @@ export const OBLIGATIONS = keys<Obligation>({
   stop_at_light: true,
   yield_to_pedestrians: true,
   yield_to_emergency_vehicle: true,
+  slow_down_for_pedestrian: true,
 });
 
 /**

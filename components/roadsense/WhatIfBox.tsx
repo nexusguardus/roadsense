@@ -22,6 +22,30 @@ interface WhatIfBoxProps {
 const CHIP =
   "rounded-full border border-outline-variant bg-surface-container px-3.5 py-2 text-sm font-medium text-on-surface transition-colors hover:border-primary/70 disabled:cursor-not-allowed disabled:opacity-50";
 
+interface WhatIfChipsProps {
+  copy: RoadsenseCopy;
+  chips: WhatIfChip[];
+  disabled: boolean;
+  /** fromKeyboard: the chip was pressed with a key, whose click has detail 0 (a tap or a mouse click has 1). */
+  onChoose: (chip: WhatIfChip, words: string, fromKeyboard: boolean) => void;
+}
+
+/** The photo's what-ifs as one-tap chips: under the box, and under a reply that couldn't run. */
+export function WhatIfChips({ copy, chips, disabled, onChoose }: WhatIfChipsProps) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {chips.map((chip) => {
+        const label = copy.whatIf[whatIfLabelKey(chip.edit)];
+        return (
+          <button key={chip.key} type="button" className={CHIP} disabled={disabled} onClick={(event) => onChoose(chip, label, event.detail === 0)}>
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /** The typed "What if…?" box, with the photo's own what-ifs as suggestions under it. */
 export default function WhatIfBox({ copy, chips, live, disabled, inputRef, onAsk, onChoose }: WhatIfBoxProps) {
   const [text, setText] = useState("");
@@ -63,18 +87,7 @@ export default function WhatIfBox({ copy, chips, live, disabled, inputRef, onAsk
           </button>
         </div>
       </form>
-      {chips.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {chips.map((chip) => {
-            const label = copy.whatIf[whatIfLabelKey(chip.edit)];
-            return (
-              <button key={chip.key} type="button" className={CHIP} disabled={disabled} onClick={() => onChoose(chip, label)}>
-                {label}
-              </button>
-            );
-          })}
-        </div>
-      )}
+      {chips.length > 0 && <WhatIfChips copy={copy} chips={chips} disabled={disabled} onChoose={onChoose} />}
       <p className="text-xs leading-relaxed text-on-surface-variant">
         {copy.whatIf.hint}
         {live ? ` ${copy.whatIf.liveNote}` : ""}

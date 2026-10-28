@@ -14,8 +14,8 @@ const LAW = "BOE-A-2003-23514";
 const API = `https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/${LAW}/texto/bloque/`;
 const CORPUS = resolve("data/roadsense/corpus.json");
 const SNAPSHOTS = resolve("data/roadsense/boe");
-/** Blocks the corpus draws on: arts. 56-59, 65, 67, 69, 133, 145, Anexo I §4 (lights) and §5 (signs and markings). */
-const DEFAULT_BLOCKS = ["a56", "a57", "a58", "a59", "a65", "a67", "a69", "a133", "a145", "A4", "A5"];
+/** Blocks the corpus draws on: arts. 46, 56-59, 65, 67, 69, 133, 145, Anexo I §4 (lights) and §5 (signs and markings). */
+const DEFAULT_BLOCKS = ["a46", "a56", "a57", "a58", "a59", "a65", "a67", "a69", "a133", "a145", "A4", "A5"];
 
 interface CorpusRecord {
   id: string;

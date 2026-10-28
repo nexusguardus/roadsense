@@ -1,25 +1,36 @@
 {
-  "latencyMs": 19282,
+  "latencyMs": 14051,
   "calls": {
     "sparkModel": "muse-spark-1.3-contributor",
-    "21dddbb4120b7261cc6a36ec7f498444f833a1e94aa33827408304d31badb9d5": {
+    "238b42bdd0568e59df33e0fa51392cb8ee229fa1f7693fb465b14da452c0d3d2": {
       "json": {
         "crossRoadPaved": true,
         "egoRoadPaved": true,
         "inScope": true,
-        "junction": "crossroads",
+        "junction": "t_junction",
         "lights": [],
-        "markings": [],
+        "markings": [
+          {
+            "appliesTo": "ego",
+            "box": {
+              "x1": 425,
+              "x2": 540,
+              "y1": 480,
+              "y2": 500
+            },
+            "confidence": 0.55,
+            "id": "m1",
+            "kind": "yield_line"
+          }
+        ],
         "outOfScopeReason": null,
         "roadUsers": [],
         "signs": [],
         "unknowns": [
-          "ego_signage_hidden",
-          "right_approach_hidden",
-          "junction_unclear"
+          "ego_signage_hidden"
         ]
       },
-      "costUsd": 0.000732586
+      "costUsd": 0.000551842
     }
   }
 }

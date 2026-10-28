@@ -307,6 +307,25 @@ test("Run it pressed from the keyboard hands focus back to the What-if box", () 
   assert.match(app, /if \(fromKeyboard\) whatIfInputRef\.current\?\.focus\(\);\s*void whatIfs\.confirm\(subject, id\)/, "focus moves before the run starts");
 });
 
+test("a what-if that can't run suggests what this photo can do instead", () => {
+  const thread = roadsenseSource("WhatIfThread.tsx");
+  assert.match(thread, /<WhatIfChips\b[^>]*\schips=\{chips\}/, "the photo's own what-ifs, one tap each");
+  for (const kind of ["not_possible", "not_on_example", "none", "not_applied"]) {
+    assert.match(thread, new RegExp(`reply\\?\\.kind === "${kind}" && \\([\\s\\S]*?\\{suggestions\\}`), `${kind} ends with the suggestions`);
+  }
+  // Only under the newest reply: older ones keep the thread short.
+  assert.match(thread, /const suggestions = newest && chips\.length > 0 &&/);
+  const app = roadsenseSource("RoadSenseApp.tsx");
+  const threadAt = app.indexOf("<WhatIfThread");
+  const props = app.slice(threadAt, app.indexOf("/>", threadAt));
+  assert.match(props, /\schips=\{chips\}/);
+  // A suggestion disappears once chosen: from the keyboard, focus goes back to the box.
+  assert.match(props, /onChoose=\{\(chip, words, fromKeyboard\) => \{[\s\S]*?if \(fromKeyboard\) whatIfInputRef\.current\?\.focus\(\);\s*void whatIfs\.choose\(subject, chip, words\);/);
+  // The box and the thread draw the same chips.
+  assert.match(roadsenseSource("WhatIfBox.tsx"), /export function WhatIfChips\(/);
+  assert.match(roadsenseSource("WhatIfBox.tsx"), /onClick=\{\(event\) => onChoose\(chip, label, event\.detail === 0\)\}/);
+});
+
 test("thread copy that can hold Spanish terms goes through Explained, so Arabic keeps them left-to-right", () => {
   const source = roadsenseSource("WhatIfThread.tsx");
   assert.match(source, /<Explained\s+text=\{copy\.whatIf\.readAsLabels\[/, "Read as");
@@ -420,7 +439,8 @@ test("a match names its Read-as label only when it names a direction the label n
   const { matchLabelKey } = view as unknown as { matchLabelKey: (match: unknown) => string | null };
   assert.equal(matchLabelKey({ kind: "set_light", to: "green" }), "light_green");
   assert.equal(matchLabelKey({ kind: "swap_sign", to: "stop" }), "swap_to_stop");
-  assert.equal(matchLabelKey({ kind: "add_pedestrian_on_crossing" }), "add_pedestrian_on_crossing");
+  // A person in front, before the photo decides whether there's a crossing: the wording that fits both.
+  assert.equal(matchLabelKey({ kind: "add_pedestrian_on_crossing" }), "add_pedestrian_ahead");
   assert.equal(matchLabelKey({ kind: "set_light" }), null);
   assert.equal(matchLabelKey({ kind: "none" }), null);
 });

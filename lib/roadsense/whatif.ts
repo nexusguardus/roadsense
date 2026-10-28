@@ -49,6 +49,8 @@ export function editPrompt(edit: WhatIfEdit, facts: SceneFacts): string {
       return `Add a white Spanish ambulance with AMBULANCIA lettering and its blue emergency lights flashing, coming towards the junction along the road on the right. ${KEEP}`;
     case "add_pedestrian_on_crossing":
       return `Add a pedestrian walking across the zebra crossing directly in front of the driver. ${KEEP}`;
+    case "add_pedestrian_ahead":
+      return `Add a pedestrian who steps into the road a few metres directly in front of the driver, not on a zebra crossing or pedestrian crossing. ${KEEP}`;
   }
 }
 
@@ -94,6 +96,8 @@ function intended(before: SceneFacts, after: SceneFacts, edit: WhatIfEdit): { vi
       return { visible: after.roadUsers.some((u) => u.kind === "emergency_vehicle" && u.emergencyLightsOn), alters: () => false };
     case "add_pedestrian_on_crossing":
       return { visible: after.roadUsers.some((u) => u.kind === "pedestrian" && u.position === "on_crossing_ahead"), alters: () => false };
+    case "add_pedestrian_ahead":
+      return { visible: after.roadUsers.some((u) => u.kind === "pedestrian" && u.position === "in_path_ahead"), alters: () => false };
   }
 }
 
@@ -104,8 +108,13 @@ const junctionClass = (junction: JunctionType): string => (junction === "t_junct
  * is still there: same kind, same approach, position or state. This covers every road user,
  * not only the facts that decided `before` (the spike's lost car was not one of those).
  */
+/** Both readings could tell the surface, and they differ. */
+const surfaceChanged = (before: boolean | null, after: boolean | null): boolean => before !== null && after !== null && before !== after;
+
 export function verifyEdit(before: SceneFacts, after: SceneFacts, edit: WhatIfEdit): boolean {
   if (after.inScope !== before.inScope || junctionClass(after.junction) !== junctionClass(before.junction)) return false;
+  // The surface decides some answers (art. 57.1.a): an edit must not pave a dirt road, or the reverse.
+  if (surfaceChanged(before.egoRoadPaved, after.egoRoadPaved) || surfaceChanged(before.crossRoadPaved, after.crossRoadPaved)) return false;
   const { visible, alters } = intended(before, after, edit);
   if (!visible) return false;
   const kept = tally(after, () => false);
@@ -137,6 +146,11 @@ function simulateEdit(facts: SceneFacts, edit: WhatIfEdit): SceneFacts {
       return {
         ...facts,
         roadUsers: [...facts.roadUsers, { id: "edit", kind: "pedestrian", position: "on_crossing_ahead", emergencyLightsOn: false, box: NO_BOX, confidence: 1 }],
+      };
+    case "add_pedestrian_ahead":
+      return {
+        ...facts,
+        roadUsers: [...facts.roadUsers, { id: "edit", kind: "pedestrian", position: "in_path_ahead", emergencyLightsOn: false, box: NO_BOX, confidence: 1 }],
       };
   }
 }

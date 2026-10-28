@@ -1,8 +1,8 @@
 {
-  "latencyMs": 20485,
+  "latencyMs": 35567,
   "calls": {
     "sparkModel": "muse-spark-1.3-contributor",
-    "120a9642208a47b86ba98177133eb96e3523b89a36a82cf4a6599856839f2e95": {
+    "4af8e9f6b3785fa164df5d1721c58d8948b430ae00f7b44f977930397577058d": {
       "json": {
         "crossRoadPaved": true,
         "egoRoadPaved": true,
@@ -16,8 +16,8 @@
             "box": {
               "x1": 70,
               "x2": 380,
-              "y1": 260,
-              "y2": 628
+              "y1": 261,
+              "y2": 626
             },
             "confidence": 0.95,
             "emergencyLightsOn": false,
@@ -30,21 +30,21 @@
           {
             "appliesTo": "ego",
             "box": {
-              "x1": 675,
-              "x2": 710,
-              "y1": 312,
-              "y2": 369
+              "x1": 676,
+              "x2": 708,
+              "y1": 314,
+              "y2": 371
             },
-            "confidence": 0.85,
+            "confidence": 0.9,
             "id": "s1",
             "kind": "other"
           },
           {
-            "appliesTo": "ego",
+            "appliesTo": "ahead",
             "box": {
-              "x1": 674,
-              "x2": 704,
-              "y1": 369,
+              "x1": 676,
+              "x2": 705,
+              "y1": 370,
               "y2": 417
             },
             "confidence": 0.9,
@@ -52,11 +52,22 @@
             "kind": "other"
           }
         ],
-        "unknowns": [
-          "right_approach_hidden"
-        ]
+        "unknowns": []
       },
-      "costUsd": 0.000704386
+      "costUsd": 0.0007798420000000001
+    },
+    "b17cae82693ecb71908ccfdaed319d7aabe77fcc8d736558eccce85c4b5fed1a": {
+      "json": {
+        "obligation": "proceed",
+        "priorityTo": [],
+        "rationale": "This is a T-junction with no sign that regulates priority (preferencia de paso) for your approach. The rule requires you to yield (ceda el paso) to vehicles approaching from your right. The only other vehicle is oncoming, not from your right, and its emergency lights are off, so you may proceed.",
+        "ruleIds": [
+          "rgc-57-1"
+        ],
+        "temptingWrongAnswer": "Yield to the emergency vehicle just because it is an emergency vehicle.",
+        "whyWrong": "The given rule only makes you yield to vehicles from the right when there is no regulating sign. It gives no automatic priority to an emergency vehicle here, especially with its lights off and not coming from the right."
+      },
+      "costUsd": 0.00025130000000000004
     }
   }
 }

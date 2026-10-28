@@ -1,5 +1,22 @@
 [
   {
+    "id": "rgc-46-1-a",
+    "law": "RGC",
+    "boeBlockId": "a46",
+    "article": "RGC art. 46.1.a)",
+    "title": "Moderación de la velocidad",
+    "excerptEs": "1. Se circulará a velocidad moderada y, si fuera preciso, se detendrá el vehículo cuando las circunstancias lo exijan, especialmente en los casos siguientes: a) Cuando haya peatones en la parte de la vía que se esté utilizando o pueda preverse racionalmente su irrupción en ella, principalmente si se trata de niños, ancianos, invidentes u otras personas manifiestamente impedidas.",
+    "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23514#a46",
+    "versionDate": "2021-07-01",
+    "sha256": "1be58ae2333d75fab37b0b78c6569e0c0567243820a052df95314c4128c4c3ae",
+    "explanation": {
+      "es": "Si hay peatones en la parte de la vía por la que circulas, o es previsible que entren en ella, debes moderar la velocidad y detenerte si hace falta.",
+      "en": "If there are pedestrians on the part of the road you are using, or they could reasonably step onto it, you must slow down and stop if needed.",
+      "fr": "Si des piétons se trouvent sur la partie de la route que vous empruntez, ou peuvent raisonnablement s'y engager, vous devez modérer votre vitesse (velocidad moderada) et vous arrêter si nécessaire.",
+      "ar": "إذا كان هناك مشاة على جزء الطريق الذي تسير فيه، أو كان من المتوقع أن يدخلوه، فعليك أن تخفّف سرعتك (velocidad moderada) وأن تتوقف إذا لزم الأمر."
+    }
+  },
+  {
     "id": "rgc-56-1",
     "law": "RGC",
     "boeBlockId": "a56",

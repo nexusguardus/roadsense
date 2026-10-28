@@ -11,7 +11,7 @@ RoadSense is part of DriveIQ, a theory-exam app for the Spanish driving test (pe
 - **Muse Spark 1.3** reads the photo into structured facts: the junction, its signs, lights and road markings and whom they govern, the road users and where they come from, and what is hidden. It then explains the decision in the learner's language, citing only the BOE excerpts it was given, with the tempting wrong answer and why it is wrong.
 - **SAM 3.1** takes a second, independent look. It segments each object the decision depends on ("traffic sign", "traffic light", "person", "ambulance"…) and confirms a fact only when its box overlaps Muse Spark's: at least 0.4 of the smaller box, at a comparable size. The confirmed boxes are the outlines learners see.
 - **Muse Image** makes the what-if edits (swap a STOP sign for a yield sign, turn the light red, bring in an ambulance…). The edited photo is read again and analysed only if the intended change took and nothing else the rule engine reads moved. Learners can also type a what-if in their own words, such as "what if a person comes in front": Muse Spark reads it as one of those edits, or answers that RoadSense can't test it yet. Muse Image also generated the 33 curated scenes.
-- A **rule engine** in TypeScript decides the learner's obligation from the facts on its own: the order of preference between signals (art. 133), intersections and priority to the right (arts. 56–59), pedestrians and emergency vehicles (arts. 65–69) and the light and marking definitions of Anexo I. The certainty comes from comparing the two answers.
+- A **rule engine** in TypeScript decides the learner's obligation from the facts on its own: the order of preference between signals (art. 133), intersections and priority to the right (arts. 56–59), pedestrians (art. 65, and art. 46.1.a for someone stepping into the road) and emergency vehicles (arts. 67–69) and the light and marking definitions of Anexo I. The certainty comes from comparing the two answers.
 
 `docs/roadsense/ARCHITECTURE.md` walks through the pipeline; `docs/roadsense/RULES.md` lists every rule the engine applies.
 
@@ -37,14 +37,14 @@ Replay mode answers every model call from the recordings in `data/roadsense/reco
 |---|---|---|
 | Answerable scenes answered right and checked | 17/24 (71%) | ≥ 90% (missed) |
 | Wrong answers marked checked | 0 | 0 |
-| Abstain scenes answered not sure | 4/5 | ≥ 80% |
+| Abstain scenes answered not sure | 5/5 | ≥ 80% |
 | Out-of-scope scenes caught | 4/4 | |
 | Valid citations | 56/56 | 100% |
 | Valid structured output | 33/33 | 100% |
-| Latency p95, contributor mode | 30.0 s | ≤ 20 s (missed) |
+| Latency p95, contributor mode | 38.9 s | ≤ 20 s (missed) |
 | Latency p95, Standard mode (8 scenes) | 9.8 s | ≤ 20 s |
 
-The numbers are in-sample: the prompts and thresholds were tuned on these same scenes. An answer that rests on nothing the photo can confirm (nobody coming, an empty roundabout, a dirt road) is "not sure" by design, because the badge promises evidence. Five answerable scenes are not sure for that reason alone. `docs/roadsense/EVAL.md` has the full report, by rule, and what the evaluation changed.
+The numbers are in-sample: the prompts and thresholds were tuned on these same scenes. An answer that rests on nothing the photo can confirm (nobody coming, an empty roundabout, a dirt road) is "not sure" by design, because the badge promises evidence. Six answerable scenes are not sure for that reason alone. `docs/roadsense/EVAL.md` has the full report, by rule, and what the evaluation changed.
 
 ## What is here
 

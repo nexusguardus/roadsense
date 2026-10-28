@@ -7,13 +7,15 @@ type Raw = Record<string, unknown>;
 
 const LOCALES: readonly RoadsenseLocale[] = ["es", "en", "fr", "ar"];
 const EXPECTED_KINDS = ["answerable", "abstain", "out_of_scope"] as const;
-const EDIT_KINDS: readonly WhatIfEdit["kind"][] = [
-  "swap_sign",
-  "remove_sign",
-  "set_light",
-  "add_emergency_vehicle",
-  "add_pedestrian_on_crossing",
-];
+// Keyed by every edit kind, so TypeScript rejects a new kind this validator doesn't know.
+const EDIT_KINDS = Object.keys({
+  swap_sign: true,
+  remove_sign: true,
+  set_light: true,
+  add_emergency_vehicle: true,
+  add_pedestrian_on_crossing: true,
+  add_pedestrian_ahead: true,
+} satisfies Record<WhatIfEdit["kind"], true>) as readonly WhatIfEdit["kind"][];
 const CERTAINTIES: readonly AnalysisResult["certainty"][] = ["checked", "disagree", "not_sure", "outside_scope"];
 
 function fail(path: string, message: string): never {
@@ -125,4 +127,12 @@ export function scenesFrom(data: unknown): CuratedScene[] {
  * ambulance came out far ahead while a pedestrian crosses right in front, so "let the emergency
  * vehicle through" taught the wrong priority for that picture (redesign review, 2026-10-27).
  */
-export const DROPPED_WHATIFS: readonly string[] = ["conflict-2|set_light:l1:red", "conflict-1|remove_sign:s1", "crossing-1|add_emergency_vehicle"];
+export const DROPPED_WHATIFS: readonly string[] = [
+  "conflict-2|set_light:l1:red",
+  "conflict-1|remove_sign:s1",
+  "crossing-1|add_emergency_vehicle",
+  // The person was added, but the gravel track came back as tarmac (image review, 2026-10-28).
+  "surface-1|add_pedestrian_ahead",
+  // Muse Spark disagreed with the engine in every language once a person in the path kept the ambulance's priority.
+  "emergency-1|add_pedestrian_ahead",
+];

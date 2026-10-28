@@ -35,7 +35,7 @@ export type LightState = "red" | "amber" | "green" | "amber_flashing" | "off";
 /** Which approach a sign, light or marking governs, seen from the learner (the camera). */
 export type Approach = "ego" | "left" | "right" | "ahead";
 export type RoadUserKind = "car" | "motorcycle" | "bicycle" | "pedestrian" | "tram" | "emergency_vehicle";
-export type RoadUserPosition = "from_right" | "from_left" | "oncoming" | "inside_roundabout" | "on_crossing_ahead" | "behind";
+export type RoadUserPosition = "from_right" | "from_left" | "oncoming" | "inside_roundabout" | "on_crossing_ahead" | "in_path_ahead" | "behind";
 /** Something perception could not see well enough to report as a fact. */
 export type UnknownCode = "ego_signage_hidden" | "light_state_unclear" | "junction_unclear" | "right_approach_hidden" | "surface_unclear";
 
@@ -93,7 +93,8 @@ export type Obligation =
   | "stop_and_yield"
   | "stop_at_light"
   | "yield_to_pedestrians"
-  | "yield_to_emergency_vehicle";
+  | "yield_to_emergency_vehicle"
+  | "slow_down_for_pedestrian";
 
 export interface EngineVerdict {
   status: "decided" | "insufficient" | "out_of_scope";
@@ -142,13 +143,14 @@ export type WhatIfEdit =
   | { kind: "remove_sign"; factId: string }
   | { kind: "set_light"; factId: string; to: "red" | "green" }
   | { kind: "add_emergency_vehicle" }
-  | { kind: "add_pedestrian_on_crossing" };
+  | { kind: "add_pedestrian_on_crossing" }
+  | { kind: "add_pedestrian_ahead" };
 
 /** What a learner's typed what-if asks for: one of the edits, maybe without a direction, or nothing RoadSense can test. */
 export type WhatIfMatch =
   | { kind: "swap_sign"; to?: "stop" | "yield" }
   | { kind: "set_light"; to?: "red" | "green" }
-  | { kind: "remove_sign" | "add_pedestrian_on_crossing" | "add_emergency_vehicle" }
+  | { kind: "remove_sign" | "add_pedestrian_on_crossing" | "add_pedestrian_ahead" | "add_emergency_vehicle" }
   | { kind: "none" };
 
 export interface CuratedScene {

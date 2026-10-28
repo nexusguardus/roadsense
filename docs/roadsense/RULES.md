@@ -18,7 +18,7 @@ The first rule that matches wins. "My" signs, lights and markings are only those
 | 10 | A pedestrian is on a marked crossing in my path and I have a STOP (sign or marking) | stop, then give way | arts. 56.1, 56.5, 65.1.a), plus 133.1 (sign) or marking M-6.3, and M-4.3 when the zebra is visible |
 | 11 | A pedestrian is on a marked crossing in my path | give way to the pedestrians | art. 65.1.a), plus marking M-4.3 when the zebra is visible |
 | 12 | Signage on my approach is hidden (checked before rows 10 and 11) | not sure: what's hidden could be a higher-ranked light or sign | none |
-| 13 | There is no junction (a light or a pedestrian crossing ahead would have decided above) | outside scope | none |
+| 13 | There is no junction (a light or a pedestrian crossing ahead would have decided above), unless a pedestrian is in my path (see below the table) | outside scope | none |
 | 14 | I have a STOP sign | stop, then give way | arts. 56.1, 56.5, 133.1 (+ 133.2 if a yield sign or marking contradicts it) |
 | 15 | I have a yield sign | give way | arts. 56.1, 56.5, 133.1 (+ 133.2 if a STOP marking contradicts it: the sign outranks the marking) |
 | 16 | I have a priority-road sign | go | arts. 56.1, 56.4 (+ 133.1 and 133.2 if a STOP or yield marking contradicts it) |
@@ -34,6 +34,8 @@ The first rule that matches wins. "My" signs, lights and markings are only those
 | 26 | The approach on my right is hidden | not sure | none |
 | 27 | A vehicle is coming from my right | give way | art. 57.1 |
 | 28 | Otherwise | go: no duty to give way, because art. 57.1 binds only towards vehicles on the right | art. 57.1 |
+
+**A pedestrian in my path, off any marked crossing.** This applies after the table, whichever row decided. Art. 65.1.a) covers marked crossings only, but art. 46.1.a) still requires slowing down, and stopping if needed, when pedestrians are on the part of the road in use. So a decided answer keeps its duty to stop or give way and also cites art. 46.1.a). Only a "go" becomes "slow down, and stop if needed". A "not sure" stays not sure. Away from a junction (row 13), the pedestrian alone decides: slow down, and stop if needed.
 
 ## Notes
 

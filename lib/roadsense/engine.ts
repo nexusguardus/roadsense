@@ -44,6 +44,8 @@ function decide(facts: SceneFacts): EngineVerdict {
   const atJunction = facts.junction !== "none";
   const lightAtJunction = atJunction ? ["rgc-56-3"] : [];
   const pedestrian = facts.roadUsers.find((u) => u.kind === "pedestrian" && u.position === "on_crossing_ahead");
+  // Off a marked crossing art. 65.1.a doesn't apply, but art. 46.1.a still requires slowing down and stopping if needed.
+  const inPath = facts.roadUsers.find((u) => u.kind === "pedestrian" && u.position === "in_path_ahead");
   const light = governingLight(facts);
   if (light?.state === "red") return decided("stop_at_light", [...lightAtJunction, "anexo-i-light-red", "rgc-133-1"], [light.id]);
   if (light?.state === "amber") return decided("stop_at_light", [...lightAtJunction, "anexo-i-light-amber", "rgc-133-1"], [light.id]);
@@ -81,7 +83,8 @@ function decide(facts: SceneFacts): EngineVerdict {
     return decided("yield_to_pedestrians", crossing, [pedestrian.id]);
   }
 
-  if (!atJunction) return outOfScope();
+  // Away from a junction only a pedestrian in my path is left to decide on (art. 46.1.a).
+  if (!atJunction) return inPath ? decided("slow_down_for_pedestrian", ["rgc-46-1-a"], [inPath.id]) : outOfScope();
 
   // A STOP and a yield indication on the same approach: art. 133.2 settles which one binds.
   const conflict = (stopSign || stopWord) && (yieldSign || yieldTriangle) ? ["rgc-133-2"] : [];
@@ -143,8 +146,20 @@ function decide(facts: SceneFacts): EngineVerdict {
   return decided("proceed", ["rgc-57-1"], []);
 }
 
+/**
+ * A pedestrian on the road in my path, off any marked crossing, never removes a duty to stop or
+ * give way: the answer keeps it and cites art. 46.1.a too. Only a "go" becomes "slow down, and stop
+ * if needed", the duty art. 46.1.a sets when pedestrians are on the part of the road in use.
+ */
+function withPedestrianInPath(facts: SceneFacts, verdict: EngineVerdict): EngineVerdict {
+  const inPath = facts.roadUsers.find((u) => u.kind === "pedestrian" && u.position === "in_path_ahead");
+  if (!inPath || verdict.status !== "decided" || verdict.obligation === null) return verdict;
+  const obligation = verdict.obligation === "proceed" ? "slow_down_for_pedestrian" : verdict.obligation;
+  return decided(obligation, [...new Set([...verdict.ruleIds, "rgc-46-1-a"])], [...new Set([...verdict.criticalFactIds, inPath.id])]);
+}
+
 export function decideObligation(facts: SceneFacts): EngineVerdict {
-  const verdict = decide(facts);
+  const verdict = withPedestrianInPath(facts, decide(facts));
   // Flashing amber does not regulate the junction (Anexo I 4.2.d): the decision falls
   // through to the signs and general rules, and also cites what flashing amber means.
   const flashing = facts.lights.some((l) => l.appliesTo === "ego" && l.state === "amber_flashing");

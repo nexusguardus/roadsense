@@ -59,4 +59,4 @@ These numbers are in-sample: the prompts, thresholds and settings below were tun
 
 ## Typed what-ifs
 
-Learners can type their own "What if…?" question. Muse Spark reads it as one of the five edits or as "none" before anything is drawn. How well it reads 59 phrases in four languages, including typos and attempts to give it instructions (12 of them added after the prompt was written, and not tuned on), is in `eval-understand.md`. Text with markup or braces reads as "none" without a model call.
+Learners can type their own "What if…?" question. Muse Spark reads it as one of five kinds of change (a person in front covers both pedestrian edits) or as "none" before anything is drawn. How well it reads 59 phrases in four languages, including typos and attempts to give it instructions (12 of them added after the prompt was written, and not tuned on), is in `eval-understand.md`. Text with markup or braces reads as "none" without a model call.

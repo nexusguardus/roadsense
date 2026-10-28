@@ -58,8 +58,30 @@ test("ground truth is valid facts and matches the engine", () => {
   }
 });
 
-test("every engine rule has a scene", () => {
-  const covered = new Set(scenes.flatMap((s) => s.expected.ruleIds));
+test("every pre-generated what-if answers what the engine decides on its facts", () => {
+  // Stored answers go stale when a rule changes: they must be re-analysed with it.
+  for (const scene of scenes) {
+    for (const whatIf of scene.whatIfs) {
+      for (const [locale, result] of Object.entries(whatIf.precomputed)) {
+        const verdict = decideObligation(result.facts);
+        const where = `${scene.id} ${whatIf.key} ${locale}`;
+        assert.equal(result.engine.obligation, verdict.obligation, where);
+        assert.deepEqual(result.engine.ruleIds, verdict.ruleIds, where);
+      }
+    }
+  }
+});
+
+test("the scene index accepts every kind of what-if edit", () => {
+  const raw = JSON.parse(readFileSync(new URL("data/roadsense/scenes/index.json", ROOT), "utf8")) as { whatIfs: Record<string, unknown>[] }[];
+  const scene = raw.find((s) => s.whatIfs.length > 0)!;
+  const stepping = { ...scene, whatIfs: [{ ...scene.whatIfs[0], key: "add_pedestrian_ahead", edit: { kind: "add_pedestrian_ahead" } }] };
+  assert.doesNotThrow(() => scenesFrom([stepping]));
+});
+
+test("every engine rule has a scene or an example what-if", () => {
+  // A rule is shown by a scene's own answer or by one of its pre-generated what-ifs.
+  const covered = new Set(scenes.flatMap((s) => [...s.expected.ruleIds, ...s.whatIfs.flatMap((w) => w.precomputed.es.engine.ruleIds)]));
   assert.deepEqual(
     ENGINE_RULES.filter((id: string) => !covered.has(id)),
     [],

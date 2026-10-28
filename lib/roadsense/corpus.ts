@@ -8,6 +8,7 @@ import type { RoadsenseLocale, RuleRecord } from "./types";
  * as images, so those signs are cited through the article text instead.
  */
 export const RULE_IDS = [
+  "rgc-46-1-a",
   "rgc-56-1",
   "rgc-56-3",
   "rgc-56-4",
